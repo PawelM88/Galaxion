@@ -5,18 +5,40 @@
 {% endblock %}
 
 {% block body %}
-	<div class="example-wrapper">
-		<h1>Hello
-			{{ controller_name }}! ✅</h1>
-
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at
-				<code>/mnt/c/xampp/htdocs/starship/src/Controller/MainController.php</code>
-			</li>
-			<li>Your template at
-				<code>/mnt/c/xampp/htdocs/starship/templates/main/index.html.twig</code>
-			</li>
-		</ul>
+	<div class="text-center">
+		<h2>Introduction</h2>
+		<div class="mb-4">
+			Welcome to my own mini game, created from scratch based on
+			<span class="text-primary">Symfony 7</span>! In this game, you have the opportunity to build your own
+			<span class="text-primary">spaceship</span>, which you equip with various
+			<span class="text-primary">weapons</span>,
+			<span class="text-primary">engines</span>,
+			<span class="text-primary">shields</span>, and other improvements. Your goal is to go on
+			<span class="text-primary">missions</span>, during which you will face different opponents, earning valuable
+			<span class="text-primary">points</span>. You can buy new elements for your ship with the points you earn, allowing for further development and raising the level of difficulty.
+		</div>
+		<h4>Shipyard</h4>
+		<div class="mb-4">
+			To begin your adventure, the player must go to the
+			<span class="text-primary">Shipyard</span>, where you will see a view with the number of starting points and your first, basic ship with its simplest equipment. It is here that the player will begin their journey with a modest ship, which they will be able to upgrade as they progress through the game. At first, only basic
+			<span class="text-primary">equipment</span> will be available. However, after going on a mission and successfully completing it, the player will earn valuable points that can be used to purchase new, better equipment for their ship. This will allow them to increase their
+			<span class="text-primary">combat capabilities</span>,
+			<span class="text-primary">protection</span>, and effectiveness in subsequent missions. Additionally, the player can upgrade their ship in the Shipyard. Upgrading the ship can include strengthening
+			<span class="text-primary">shields</span>, adding more advanced
+			<span class="text-primary">weapons</span>, improving
+			<span class="text-primary">defense systems</span>, and other modifications that will allow them to better deal with more difficult opponents in future missions. By upgrading their ship, the player increases their chances of success and earning even more points as they progress through the game.			
+			<img src="{{ asset('images/corvette.jpg') }}" alt="image of a corvette class spaceship" class="img-fluid w-50 d-block mx-auto mt-3">
+		</div>
+		<h4>Fly on a mission</h4>
+		<div class="mb-4">
+			In this section, the player will set off on their
+			<span class="text-primary">missions</span>, where they will face a variety of
+			<span class="text-primary">opponents</span>. The battle takes place automatically, and its outcome depends on the statistics of the
+			<span class="text-primary">ship</span> they have - the attack power of the
+			<span class="text-primary">weapon</span>, the durability of the
+			<span class="text-primary">shields</span> and other equipment. After the end of each battle, the player will receive a detailed summary of the battle. The report will include information about the damage dealt and received, as well as the
+			<span class="text-primary">points</span> earned. This summary allows the player to assess the effectiveness of their strategy and make decisions on further development and improvement of the ship before the next missions.			
+			<img src="{{ asset('images/fregate.jpg') }}" alt="image of a frigate class spaceship" class="img-fluid w-75">
+		</div>
 	</div>	
 {% endblock %}
