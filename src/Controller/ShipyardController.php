@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class MainController extends AbstractController
+class ShipyardController extends AbstractController
 {
-    #[Route('/', name: 'homepage', methods: ['GET'])]
+    #[Route('/shipyard', name: 'shipyard')]
     public function index(): Response
     {
-        return $this->render('main/index.html.twig');
+        return $this->render('shipyard/index.html.twig', [
+            'controller_name' => 'ShipyardController',
+        ]);
     }
 }

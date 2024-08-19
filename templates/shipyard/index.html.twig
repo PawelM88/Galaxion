@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Shipyard
+{% endblock %}
+
+{% block body %}
+	<div class="text-center mt-4">
+		<h2>Shipyard</h2>
+		<div class="my-4 fs-4">
+			Welcome aboard!
+		</div>
+		<div>
+			Here you can develop and upgrade your first spaceship, becoming an increasingly powerful commander. At first, you command a small
+			<span class="text-primary">corvette</span> equipped with basic weapons. You have
+			<span class="text-primary">100 points</span> at your disposal, which you can spend on the first upgrades of your ship.
+			Each successful mission will bring you additional points, which will allow you to further modify and buy new equipment. As you progress, you will be able to obtain a larger ship, a
+			<span class="text-primary">frigate</span>, and equip it with advanced technologies. 
+            If you want to learn more about the specifications of your ship and the available upgrades, we invite you to the
+			<span class="text-primary">Encyclopedia</span> section.
+            {# TODO: Create a link to the Encyclopedia #}
+		</div>
+        <img src="{{ asset('images/corvette.jpg') }}" alt="image of a corvette class spaceship" class="img-fluid w-50 d-block mx-auto my-3">
+	</div>
+</div>{% endblock %}
