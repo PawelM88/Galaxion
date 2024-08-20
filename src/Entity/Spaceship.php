@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Entity;
 
@@ -14,7 +14,7 @@ class Spaceship
     private ?int $id = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Armor $armor = null;
 
     #[ORM\Column(length: 255)]
@@ -24,32 +24,28 @@ class Spaceship
     private ?string $class = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Cockpit $cockpit = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?DefenceSystem $defenceSystem = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?EnergyShield $energyShield = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?EnergyWeapon $energyWeapon = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Engine $engine = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?RocketWeapon $rocketWeapon = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Special $special = null;
 
     public function getId(): ?int
     {
@@ -160,18 +156,6 @@ class Spaceship
     public function setRocketWeapon(?RocketWeapon $rocketWeapon): static
     {
         $this->rocketWeapon = $rocketWeapon;
-
-        return $this;
-    }
-
-    public function getSpecial(): ?Special
-    {
-        return $this->special;
-    }
-
-    public function setSpecial(?Special $special): static
-    {
-        $this->special = $special;
 
         return $this;
     }

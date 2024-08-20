@@ -1,8 +1,9 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Entity;
 
 use App\Repository\EngineRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EngineRepository::class)]
@@ -19,8 +20,8 @@ class Engine
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $modifier = null;
+    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    private ?array $modifier = null;
 
     public function getId(): ?int
     {
@@ -51,12 +52,12 @@ class Engine
         return $this;
     }
 
-    public function getModifier(): ?string
+    public function getModifier(): array
     {
         return $this->modifier;
     }
 
-    public function setModifier(string $modifier): static
+    public function setModifier(array $modifier): static
     {
         $this->modifier = $modifier;
 
