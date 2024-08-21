@@ -23,6 +23,9 @@ class Cockpit
     #[ORM\Column(type: Types::SIMPLE_ARRAY)]
     private ?array $modifier = [];
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $cost = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Cockpit
     public function setModifier(array $modifier): static
     {
         $this->modifier = $modifier;
+
+        return $this;
+    }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(int $cost): static
+    {
+        $this->cost = $cost;
 
         return $this;
     }

@@ -23,6 +23,9 @@ class EnergyWeapon
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $modifier = null;
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $cost = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class EnergyWeapon
     public function setModifier(int $modifier): static
     {
         $this->modifier = $modifier;
+
+        return $this;
+    }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(int $cost): static
+    {
+        $this->cost = $cost;
 
         return $this;
     }

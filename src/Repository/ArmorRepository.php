@@ -1,8 +1,9 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Repository;
 
 use App\Entity\Armor;
+use App\Traits\CostRetrieverTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -11,6 +12,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ArmorRepository extends ServiceEntityRepository
 {
+    use CostRetrieverTrait;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Armor::class);

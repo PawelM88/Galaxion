@@ -31,12 +31,13 @@ class RocketWeaponFixtures extends Fixture
      */
     private function setMinotaur(): RocketWeapon
     {
-        $Minotaur = new RocketWeapon();
-        $Minotaur->setName("Minotaur");
-        $Minotaur->setDescription("The Minotaur RocketWeapon is an advanced protective system designed to absorb and disperse the energy of rocket explosions. The RocketWeapon structure consists of absorbing layers that effectively reduce the force of the explosion and minimize damage. Grants +10 to Rocket Weapon");
-        $Minotaur->setModifier(10);
+        $minotaur = new RocketWeapon();
+        $minotaur->setName("Minotaur");
+        $minotaur->setDescription("The Minotaur RocketWeapon is an advanced protective system designed to absorb and disperse the energy of rocket explosions. The RocketWeapon structure consists of absorbing layers that effectively reduce the force of the explosion and minimize damage. Grants +10 to Rocket Weapon");
+        $minotaur->setModifier(10);
+        $minotaur->setCost(100);
 
-        return $Minotaur;
+        return $minotaur;
     }
 
     /**     
@@ -48,6 +49,7 @@ class RocketWeaponFixtures extends Fixture
         $harpy->setName("Harpy");
         $harpy->setDescription("Harpy is a fast and agile missile designed to destroy air targets and fast-moving units. Thanks to its advanced guidance system, these missiles can track and hit even the most mobile targets. Grants +25 to Rocket Weapon");
         $harpy->setModifier(25);
+        $harpy->setCost(200);
 
         return $harpy;
     }
@@ -61,6 +63,7 @@ class RocketWeaponFixtures extends Fixture
         $typhon->setName("Typhon");
         $typhon->setDescription("The Typhon is a multi-warhead missile system that, when launched, splits into smaller sub-missiles, each targeting a different part of the ship's hull. These missiles are equipped with jamming systems that make it difficult for an enemy to shoot them down or avoid them. Grants +45 Rocket Weapon");
         $typhon->setModifier(45);
+        $typhon->setCost(400);
 
         return $typhon;
     }

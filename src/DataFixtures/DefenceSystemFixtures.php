@@ -29,12 +29,13 @@ class DefenceSystemFixtures extends Fixture
      */
     private function setPhoenix(): DefenceSystem
     {
-        $lightArmor = new DefenceSystem();
-        $lightArmor->setName("Phoenix");
-        $lightArmor->setDescription("The Phoenix system is an advanced defensive device that fires flares when detecting incoming enemy missiles. These flares, emitting intense light and heat, effectively disorient missile guidance systems, causing them to lose their target and detonate far from the unit. Grants -10 to damage from rockets");
-        $lightArmor->setModifier(10);
+        $phoenix = new DefenceSystem();
+        $phoenix->setName("Phoenix");
+        $phoenix->setDescription("The Phoenix system is an advanced defensive device that fires flares when detecting incoming enemy missiles. These flares, emitting intense light and heat, effectively disorient missile guidance systems, causing them to lose their target and detonate far from the unit. Grants -10 to damage from rockets");
+        $phoenix->setModifier(10);
+        $phoenix->setCost(400);
 
-        return $lightArmor;
+        return $phoenix;
     }
 
     /**     
@@ -46,6 +47,7 @@ class DefenceSystemFixtures extends Fixture
         $cerberus->setName("Cerberus");
         $cerberus->setDescription("The Cerberus system is a group of autonomous combat drones that are launched into space and search for an enemy to stick to. Using electro-tools, they systematically destroy enemy ships, dealing additional damage to them each turn. Grants +15 damage");
         $cerberus->setModifier(15);
+        $cerberus->setCost(400);
 
         return $cerberus;
     }
