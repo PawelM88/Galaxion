@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class EnergyWeaponFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class EnergyWeaponFixtures extends Fixture
         $laser = $this->setLaser();
         $plasma = $this->setPlasma();
         $tachyons = $this->setTachyons();
-        
+
         $manager->persist($laser);
         $manager->persist($plasma);
         $manager->persist($tachyons);
@@ -26,7 +28,7 @@ class EnergyWeaponFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyWeapon
      */
     private function setLaser(): EnergyWeapon
@@ -40,7 +42,7 @@ class EnergyWeaponFixtures extends Fixture
         return $laser;
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyWeapon
      */
     private function setPlasma(): EnergyWeapon
@@ -54,7 +56,7 @@ class EnergyWeaponFixtures extends Fixture
         return $plasma;
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyWeapon
      */
     private function setTachyons(): EnergyWeapon

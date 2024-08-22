@@ -59,7 +59,7 @@ class ShipyardController extends AbstractController
     }
 
     #[Route('/update', name: 'update')]
-    public function updateShip(EntityManagerInterface $entityManager)
+    public function updateShip(EntityManagerInterface $entityManager): void
     {
         // TODO: $entityManager->persist() and $entityManager->flush();
     }
@@ -72,7 +72,8 @@ class ShipyardController extends AbstractController
      * @param \App\Repository\EnergyWeaponRepository $energyWeaponRepository
      * @param \App\Repository\EngineRepository $engineRepository
      * @param \App\Repository\RocketWeaponRepository $rocketWeaponRepository
-     * @return array
+     *
+     * @return array<mixed>
      */
     private function getCostOfAllComponents(
         ArmorRepository $armorRepository,
@@ -91,12 +92,14 @@ class ShipyardController extends AbstractController
         $engineCosts = $engineRepository->getCost();
         $rocketCosts = $rocketWeaponRepository->getCost();
 
-        return array_merge($armorCosts, 
-            $cockpitCosts, 
-            $defenceSystemCosts, 
-            $energyShieldCosts, 
-            $energyWeaponCosts, 
-            $engineCosts, 
-            $rocketCosts);
+        return array_merge(
+            $armorCosts,
+            $cockpitCosts,
+            $defenceSystemCosts,
+            $energyShieldCosts,
+            $energyWeaponCosts,
+            $engineCosts,
+            $rocketCosts
+        );
     }
 }

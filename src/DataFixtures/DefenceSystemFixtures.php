@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,23 +10,23 @@ use Doctrine\Persistence\ObjectManager;
 
 class DefenceSystemFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
     {
         $phoenix = $this->setPhoenix();
         $cerberus = $this->setCerberus();
-                
+
         $manager->persist($phoenix);
         $manager->persist($cerberus);
-        
+
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\DefenceSystem
      */
     private function setPhoenix(): DefenceSystem
@@ -38,7 +40,7 @@ class DefenceSystemFixtures extends Fixture
         return $phoenix;
     }
 
-    /**     
+    /**
      * @return \App\Entity\DefenceSystem
      */
     private function setCerberus(): DefenceSystem

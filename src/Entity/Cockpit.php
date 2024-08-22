@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -18,8 +20,11 @@ class Cockpit
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $description = null;    
+    private ?string $description = null;
 
+    /**
+     * @var int[]
+     */
     #[ORM\Column(type: Types::SIMPLE_ARRAY)]
     private ?array $modifier = [];
 
@@ -55,11 +60,17 @@ class Cockpit
         return $this;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function getModifier(): array
     {
         return $this->modifier;
     }
 
+    /**
+     * @param array<mixed> $modifier
+     */
     public function setModifier(array $modifier): static
     {
         $this->modifier = $modifier;

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,23 +10,23 @@ use Doctrine\Persistence\ObjectManager;
 
 class SpaceshipFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
     {
         $corvette = $this->setCorvette();
-        $frigate = $this->setFrigate();        
-        
+        $frigate = $this->setFrigate();
+
         $manager->persist($corvette);
         $manager->persist($frigate);
 
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\Spaceship
      */
     private function setCorvette(): Spaceship
@@ -36,7 +38,7 @@ class SpaceshipFixtures extends Fixture
         return $corvette;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Spaceship
      */
     private function setFrigate(): Spaceship

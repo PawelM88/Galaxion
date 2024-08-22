@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class EngineFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class EngineFixtures extends Fixture
         $hermes = $this->setHermes();
         $eris = $this->setEris();
         $apollo = $this->setApollo();
-        
+
         $manager->persist($hermes);
         $manager->persist($eris);
         $manager->persist($apollo);
@@ -26,7 +28,7 @@ class EngineFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\Engine
      */
     private function setHermes(): Engine
@@ -40,7 +42,7 @@ class EngineFixtures extends Fixture
         return $hermes;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Engine
      */
     private function setEris(): Engine
@@ -54,7 +56,7 @@ class EngineFixtures extends Fixture
         return $eris;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Engine
      */
     private function setApollo(): Engine

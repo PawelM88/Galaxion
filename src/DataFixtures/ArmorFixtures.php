@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class ArmorFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class ArmorFixtures extends Fixture
         $kraken = $this->setKraken();
         $medusa = $this->setMedusa();
         $titan = $this->setTitan();
-        
+
         $manager->persist($kraken);
         $manager->persist($medusa);
         $manager->persist($titan);
@@ -26,7 +28,7 @@ class ArmorFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\Armor
      */
     private function setKraken(): Armor
@@ -40,7 +42,7 @@ class ArmorFixtures extends Fixture
         return $kraken;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Armor
      */
     private function setMedusa(): Armor
@@ -54,7 +56,7 @@ class ArmorFixtures extends Fixture
         return $medusa;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Armor
      */
     private function setTitan(): Armor
