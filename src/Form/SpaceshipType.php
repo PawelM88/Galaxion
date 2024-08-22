@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Form;
 
@@ -20,76 +22,30 @@ class SpaceshipType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder            
-            ->add('armor', EntityType::class, [
-                'class' => Armor::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('cockpit', EntityType::class, [
-                'class' => Cockpit::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('defenceSystem', EntityType::class, [
-                'class' => DefenceSystem::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('energyShield', EntityType::class, [
-                'class' => EnergyShield::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('energyWeapon', EntityType::class, [
-                'class' => EnergyWeapon::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('engine', EntityType::class, [
-                'class' => Engine::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
-            ->add('rocketWeapon', EntityType::class, [
-                'class' => RocketWeapon::class,
-                'choice_label' => 'name',
-                'placeholder' => 'None',
-                'attr' => [
-                    'class' => 'form-select w-50 mx-auto bg-secondary text-white',
-                    'style' => 'min-width: 120px;'
-                ]
-            ])
+        $options = [
+            'choice_label' => 'name',
+            'placeholder' => 'None',
+            'required' => false,
+            'attr' => [
+                'class' => 'form-select w-50 mx-auto bg-secondary text-white',
+                'style' => 'min-width: 120px;'
+            ],
+        ];
+
+        $builder
+            ->add('armor', EntityType::class, array_merge(['class' => Armor::class], $options))
+            ->add('cockpit', EntityType::class, array_merge(['class' => Cockpit::class], $options))
+            ->add('defenceSystem', EntityType::class, array_merge(['class' => DefenceSystem::class], $options))
+            ->add('energyShield', EntityType::class, array_merge(['class' => EnergyShield::class], $options))
+            ->add('energyWeapon', EntityType::class, array_merge(['class' => EnergyWeapon::class], $options))
+            ->add('engine', EntityType::class, array_merge(['class' => Engine::class], $options))
+            ->add('rocketWeapon', EntityType::class, array_merge(['class' => RocketWeapon::class], $options))
             ->add(
-                'save', 
+                'save',
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class'=> 'btn btn-secondary'
+                        'class' => 'btn btn-secondary'
                     ]
                 ]
             );

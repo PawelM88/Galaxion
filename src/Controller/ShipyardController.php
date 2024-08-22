@@ -13,6 +13,7 @@ use App\Repository\EnergyShieldRepository;
 use App\Repository\EnergyWeaponRepository;
 use App\Repository\EngineRepository;
 use App\Repository\RocketWeaponRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,8 @@ class ShipyardController extends AbstractController
         EnergyShieldRepository $energyShieldRepository,
         EnergyWeaponRepository $energyWeaponRepository,
         EngineRepository $engineRepository,
-        RocketWeaponRepository $rocketWeaponRepository
+        RocketWeaponRepository $rocketWeaponRepository,
+        EntityManagerInterface $entityManager
     ): Response {
         $spaceship = new Spaceship();
         $form = $this->createForm(SpaceshipType::class, $spaceship);
@@ -44,16 +46,22 @@ class ShipyardController extends AbstractController
             $rocketWeaponRepository
         );
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->updateShip($entityManager);
+        }
+
         return $this->render('shipyard/index.html.twig', [
             'form' => $form->createView(),
             'costOfAllComponents' => $costOfAllComponents
+
+            // TODO: addFlash() and redirectToRoute()
         ]);
     }
 
     #[Route('/update', name: 'update')]
-    public function updateShip(Request $request): Response
+    public function updateShip(EntityManagerInterface $entityManager)
     {
-        //
+        // TODO: $entityManager->persist() and $entityManager->flush();
     }
 
     /**
