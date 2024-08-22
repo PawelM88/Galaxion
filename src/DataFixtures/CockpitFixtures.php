@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class CockpitFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class CockpitFixtures extends Fixture
         $hawkEye = $this->setHawkEye();
         $griffin = $this->setGriffin();
         $phantom = $this->setPhantom();
-        
+
         $manager->persist($hawkEye);
         $manager->persist($griffin);
         $manager->persist($phantom);
@@ -26,7 +28,7 @@ class CockpitFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\Cockpit
      */
     private function setHawkEye(): Cockpit
@@ -40,7 +42,7 @@ class CockpitFixtures extends Fixture
         return $hawkEye;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Cockpit
      */
     private function setGriffin(): Cockpit
@@ -54,7 +56,7 @@ class CockpitFixtures extends Fixture
         return $griffin;
     }
 
-    /**     
+    /**
      * @return \App\Entity\Cockpit
      */
     private function setPhantom(): Cockpit

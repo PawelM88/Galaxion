@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class EnergyShieldFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class EnergyShieldFixtures extends Fixture
         $aegis = $this->setAegis();
         $aurora = $this->setAurora();
         $atlas = $this->setAtlas();
-        
+
         $manager->persist($aegis);
         $manager->persist($aurora);
         $manager->persist($atlas);
@@ -26,7 +28,7 @@ class EnergyShieldFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyShield
      */
     private function setAegis(): EnergyShield
@@ -40,7 +42,7 @@ class EnergyShieldFixtures extends Fixture
         return $aegis;
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyShield
      */
     private function setAurora(): EnergyShield
@@ -54,7 +56,7 @@ class EnergyShieldFixtures extends Fixture
         return $aurora;
     }
 
-    /**     
+    /**
      * @return \App\Entity\EnergyShield
      */
     private function setAtlas(): EnergyShield

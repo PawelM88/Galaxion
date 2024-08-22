@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,9 +10,9 @@ use Doctrine\Persistence\ObjectManager;
 
 class RocketWeaponFixtures extends Fixture
 {
-    /**     
+    /**
      * @param \Doctrine\Persistence\ObjectManager $manager
-     * 
+     *
      * @return void
      */
     public function load(ObjectManager $manager): void
@@ -18,7 +20,7 @@ class RocketWeaponFixtures extends Fixture
         $minotaur = $this->setMinotaur();
         $harpy = $this->setHarpy();
         $typhon = $this->setTyphon();
-        
+
         $manager->persist($minotaur);
         $manager->persist($harpy);
         $manager->persist($typhon);
@@ -26,7 +28,7 @@ class RocketWeaponFixtures extends Fixture
         $manager->flush();
     }
 
-    /**     
+    /**
      * @return \App\Entity\RocketWeapon
      */
     private function setMinotaur(): RocketWeapon
@@ -40,7 +42,7 @@ class RocketWeaponFixtures extends Fixture
         return $minotaur;
     }
 
-    /**     
+    /**
      * @return \App\Entity\RocketWeapon
      */
     private function setHarpy(): RocketWeapon
@@ -54,7 +56,7 @@ class RocketWeaponFixtures extends Fixture
         return $harpy;
     }
 
-    /**     
+    /**
      * @return \App\Entity\RocketWeapon
      */
     private function setTyphon(): RocketWeapon

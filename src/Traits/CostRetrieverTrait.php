@@ -6,8 +6,8 @@ namespace App\Traits;
 
 trait CostRetrieverTrait
 {
-    /**     
-     * @return array
+    /**
+     * @return array<mixed>
      */
     public function getCost(): array
     {

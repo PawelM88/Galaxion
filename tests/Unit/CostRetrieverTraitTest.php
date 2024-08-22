@@ -11,7 +11,10 @@ use PHPUnit\Framework\TestCase;
 
 class CostRetrieverTraitTest extends TestCase
 {
-    public function testGetCostReturnsCorrectData()
+    /**
+     * @return void
+     */
+    public function testGetCostReturnsCorrectData(): void
     {
         // Arrange        
         $queryBuilder = $this->createMock(QueryBuilder::class);
@@ -40,7 +43,12 @@ class CostRetrieverTraitTest extends TestCase
             {
             }
 
-            public function createQueryBuilder($alias)
+            /**             
+             * @param mixed $alias
+             * 
+             * @return \Doctrine\ORM\QueryBuilder
+             */
+            public function createQueryBuilder($alias): QueryBuilder
             {
                 return $this->queryBuilder;
             }
