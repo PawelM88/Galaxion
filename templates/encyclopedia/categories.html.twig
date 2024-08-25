@@ -1,0 +1,233 @@
+<div class="module-links">
+	<a href="#cockpit">Cockpit</a>
+	<a href="#energy-weapon">Energy Weapon</a>
+	<a href="#rocket-weapon">Rocket Weapon</a>
+	<a href="#engine">Engine</a>
+	<a href="#armor">Armor</a>
+	<a href="#energy-shield">Energy Shield</a>
+	<a href="#defence-system">Defence System</a>
+</div>
+
+<h5 id="cockpit">Cockpit</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for cockpit in cockpits %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ cockpit.name }}</td>
+				<td>{{ cockpit.description }}</td>
+				<td>
+					{% for modifier in cockpit.modifier %}
+						{% if loop.index == 1 %}
+							{{ 'Accuracy: +' ~ modifier }}
+						{% elseif loop.index == 2 %}							
+							{{ 'Initiative: +' ~ modifier }}
+						{% else %}
+							{{ modifier }}
+						{% endif %}
+						{% if not loop.last %}{% endif %}
+					{% endfor %}
+				</td>
+				<td>{{ cockpit.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="energy-weapon">Energy Weapon</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for energyWeapon in energyWeapons %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ energyWeapon.name }}</td>
+				<td>{{ energyWeapon.description }}</td>
+				<td>{{ 'Energy Weapon: +' ~ energyWeapon.modifier }}</td>
+				<td>{{ energyWeapon.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="rocket-weapon">Rocket Weapon</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for rocketWeapon in rocketWeapons %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ rocketWeapon.name }}</td>
+				<td>{{ rocketWeapon.description }}</td>
+				<td>{{ 'Rocket Weapon: +' ~ rocketWeapon.modifier }}</td>
+				<td>{{ rocketWeapon.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="engine">Engine</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for engine in engines %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ engine.name }}</td>
+				<td>{{ engine.description }}</td>
+				<td>
+					{% for modifier in engine.modifier %}
+						{% if loop.index == 1 %}							
+							{{ 'Dodge: +' ~ modifier }}
+						{% elseif loop.index == 2 %}
+							{{ 'Initiative: +' ~ modifier }}
+						{% else %}
+							{{ modifier }}
+						{% endif %}
+						{% if not loop.last %}{% endif %}
+					{% endfor %}
+				</td>
+				<td>{{ engine.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="armor">Armor</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for armor in armors %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ armor.name }}</td>
+				<td>{{ armor.description }}</td>
+				<td>{{ 'Armor: +' ~ armor.modifier }}</td>
+				<td>{{ armor.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="energy-shield">Energy Shield</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for energyShield in energyShields %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ energyShield.name }}</td>
+				<td>{{ energyShield.description }}</td>
+				<td>{{ 'Energy Shield: +' ~ energyShield.modifier }}</td>
+				<td>{{ energyShield.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h5 id="defence-system">Defence System</h5>
+<table class="table table-secondary table-bordered table-custom mb-4">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Description</th>
+			<th scope="col">Modifier</th>
+			<th scope="col">Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for defenceSystem in defenceSystems %}
+			<tr>
+				<th scope="row">{{ loop.index }}</th>
+				<td>{{ defenceSystem.name }}</td>
+				<td>{{ defenceSystem.description }}</td>
+				<td>
+					{% if defenceSystem.modifierType == 'rocket_damage' %}
+						{{ '-' ~ defenceSystem.modifier ~ ' to Rocket damage' }}
+					{% else %}
+						{{ '+' ~ defenceSystem.modifier ~ ' to General damage' }}
+					{% endif %}
+				</td>
+				<td>{{ defenceSystem.cost }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td colspan="5">No data available</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
