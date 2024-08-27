@@ -36,7 +36,7 @@ class EncyclopediaController extends AbstractController
         $energyWeapons = $energyWeaponRepository->findAll();
         $engines = $engineRepository->findAll();
         $rocketWeapons = $rocketWeaponRepository->findAll();
-        $spaceships = $spaceshipRepository->findNamesAndClasses();
+        $spaceships = $spaceshipRepository->findAll();
 
         return $this->render('encyclopedia/index.html.twig', [
             'armors' => $armors,

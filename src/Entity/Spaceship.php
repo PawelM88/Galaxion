@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\SpaceshipRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SpaceshipRepository::class)]
@@ -48,6 +49,27 @@ class Spaceship
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
     private ?RocketWeapon $rocketWeapon = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseHp = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseArmor = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseEnergyShield = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseRocketWeapon = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseEnergyWeapon = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseAccuracy = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $baseInitiative = null;
 
     public function getId(): ?int
     {
@@ -158,6 +180,90 @@ class Spaceship
     public function setRocketWeapon(?RocketWeapon $rocketWeapon): static
     {
         $this->rocketWeapon = $rocketWeapon;
+
+        return $this;
+    }
+
+    public function getBaseHp(): ?int
+    {
+        return $this->baseHp;
+    }
+
+    public function setBaseHp(int $baseHp): static
+    {
+        $this->baseHp = $baseHp;
+
+        return $this;
+    }
+
+    public function getBaseArmor(): ?int
+    {
+        return $this->baseArmor;
+    }
+
+    public function setBaseArmor(int $baseArmor): static
+    {
+        $this->baseArmor = $baseArmor;
+
+        return $this;
+    }
+
+    public function getBaseEnergyShield(): ?int
+    {
+        return $this->baseEnergyShield;
+    }
+
+    public function setBaseEnergyShield(int $baseEnergyShield): static
+    {
+        $this->baseEnergyShield = $baseEnergyShield;
+
+        return $this;
+    }
+
+    public function getBaseRocketWeapon(): ?int
+    {
+        return $this->baseRocketWeapon;
+    }
+
+    public function setBaseRocketWeapon(int $baseRocketWeapon): static
+    {
+        $this->baseRocketWeapon = $baseRocketWeapon;
+
+        return $this;
+    }
+
+    public function getBaseEnergyWeapon(): ?int
+    {
+        return $this->baseEnergyWeapon;
+    }
+
+    public function setBaseEnergyWeapon(int $baseEnergyWeapon): static
+    {
+        $this->baseEnergyWeapon = $baseEnergyWeapon;
+
+        return $this;
+    }
+
+    public function getBaseAccuracy(): ?int
+    {
+        return $this->baseAccuracy;
+    }
+
+    public function setBaseAccuracy(int $baseAccuracy): static
+    {
+        $this->baseAccuracy = $baseAccuracy;
+
+        return $this;
+    }
+
+    public function getBaseInitiative(): ?int
+    {
+        return $this->baseInitiative;
+    }
+
+    public function setBaseInitiative(int $baseInitiative): static
+    {
+        $this->baseInitiative = $baseInitiative;
 
         return $this;
     }

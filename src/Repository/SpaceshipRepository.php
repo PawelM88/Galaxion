@@ -15,18 +15,7 @@ class SpaceshipRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Spaceship::class);
     }
-
-    /**
-     * @return array<string>
-     */
-    public function findNamesAndClasses(): array
-    {
-        return $this->createQueryBuilder('s')
-            ->select('s.name, s.class')
-            ->getQuery()
-            ->getScalarResult();
-    }
-
+    
     //    /**
     //     * @return Spaceship[] Returns an array of Spaceship objects
     //     */

@@ -7,15 +7,14 @@
                 <img src="{{ asset('images/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
                 <div class="card-body text-center">
                     <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>
-                    {# TODO: implement spaceships stats                                  #}
-                    <div class="h5">HP: </div>
-                    <div class="h5">Armor: </div>
-                    <div class="h5">Shields: </div>
-                    <div class="h5">Energy Weapon: </div>
-                    <div class="h5">Rocket Weapon: </div>
-                    <div class="h5">Accuracy: </div>
-                    <div class="h5">Initiative: </div>
+                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>                    
+                    <div class="h5">HP: {{ spaceship.baseHp }}</div>
+                    <div class="h5">Armor: {{ spaceship.baseArmor }}</div>
+                    <div class="h5">Shields: {{ spaceship.baseEnergyShield }}</div>
+                    <div class="h5">Rocket Weapon: {{ spaceship.baseRocketWeapon }}</div>
+                    <div class="h5">Energy Weapon: {{ spaceship.baseEnergyWeapon }}</div>                    
+                    <div class="h5">Accuracy: {{ spaceship.baseAccuracy }}</div>
+                    <div class="h5">Initiative: {{ spaceship.baseInitiative }}</div>
                 </div>
             </div>
         </div>
