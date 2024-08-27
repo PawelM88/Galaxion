@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Repository;
 
@@ -14,6 +14,17 @@ class SpaceshipRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Spaceship::class);
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function findNamesAndClasses(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s.name, s.class')
+            ->getQuery()
+            ->getScalarResult();
     }
 
     //    /**

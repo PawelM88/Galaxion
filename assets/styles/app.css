@@ -43,6 +43,12 @@ footer {
     margin-right: 5px;
 }
 
+.encyclopedia-image {
+    width: 100%;
+    height: 450px;
+    object-fit: fill;
+}
+
 @media (min-width: 768px) {
     .footer-content {
         margin-left: 100px;
@@ -78,7 +84,7 @@ footer {
     .footer-copyright {
         flex-direction: column;
         text-align: center;
-    }
+    }    
 }
 
 .bg-footer {

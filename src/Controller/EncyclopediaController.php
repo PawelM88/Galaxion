@@ -11,6 +11,7 @@ use App\Repository\EnergyShieldRepository;
 use App\Repository\EnergyWeaponRepository;
 use App\Repository\EngineRepository;
 use App\Repository\RocketWeaponRepository;
+use App\Repository\SpaceshipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -25,7 +26,8 @@ class EncyclopediaController extends AbstractController
         EnergyShieldRepository $energyShieldRepository,
         EnergyWeaponRepository $energyWeaponRepository,
         EngineRepository $engineRepository,
-        RocketWeaponRepository $rocketWeaponRepository
+        RocketWeaponRepository $rocketWeaponRepository,
+        SpaceshipRepository $spaceshipRepository
     ): Response {
         $armors = $armorRepository->findAll();
         $cockpits = $cockpitRepository->findAll();
@@ -34,6 +36,7 @@ class EncyclopediaController extends AbstractController
         $energyWeapons = $energyWeaponRepository->findAll();
         $engines = $engineRepository->findAll();
         $rocketWeapons = $rocketWeaponRepository->findAll();
+        $spaceships = $spaceshipRepository->findNamesAndClasses();
 
         return $this->render('encyclopedia/index.html.twig', [
             'armors' => $armors,
@@ -42,7 +45,8 @@ class EncyclopediaController extends AbstractController
             'energyShields' => $energyShields,
             'energyWeapons' => $energyWeapons,
             'engines' => $engines,
-            'rocketWeapons' => $rocketWeapons
+            'rocketWeapons' => $rocketWeapons,
+            'spaceships' => $spaceships
         ]);
     }
 }

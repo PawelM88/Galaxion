@@ -1,0 +1,25 @@
+<h2>Spaceships default statistics</h2>
+
+<div class="row">
+    {% for spaceship in spaceships %}
+        <div class="col-12 col-md-6">
+            <div class="my-5">
+                <img src="{{ asset('images/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>
+                    {# TODO: implement spaceships stats                                  #}
+                    <div class="h5">HP: </div>
+                    <div class="h5">Armor: </div>
+                    <div class="h5">Shields: </div>
+                    <div class="h5">Energy Weapon: </div>
+                    <div class="h5">Rocket Weapon: </div>
+                    <div class="h5">Accuracy: </div>
+                    <div class="h5">Initiative: </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No spaceships found.</p>
+    {% endfor %}
+</div>
