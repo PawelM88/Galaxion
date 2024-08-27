@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <div class="text-center mt-4">
+        {% block description %}
+            {% include 'encyclopedia/description.html.twig' %}
+        {% endblock %}        
+        {% block categories %}
+            {% include 'encyclopedia/categories.html.twig' %}
+        {% endblock %}        
+    </div>
+{% endblock %}

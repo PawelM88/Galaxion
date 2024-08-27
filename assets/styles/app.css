@@ -18,8 +18,8 @@ footer {
 }
 
 .sidebar-container {
-    width: 60px;   
-    position: fixed;    
+    width: 60px;
+    position: fixed;
 }
 
 .footer-content {
@@ -43,18 +43,24 @@ footer {
     margin-right: 5px;
 }
 
+.encyclopedia-image {
+    width: 100%;
+    height: 450px;
+    object-fit: fill;
+}
+
 @media (min-width: 768px) {
     .footer-content {
         margin-left: 100px;
     }
 
     .flex-body {
-        margin-left: 60px;
+        margin-left: 75px;
         margin-right: 10px;
     }
 
     .sidebar-container {
-        width: 100px;
+        width: 130px;
     }
 
     .nav-link span {
@@ -78,7 +84,7 @@ footer {
     .footer-copyright {
         flex-direction: column;
         text-align: center;
-    }
+    }    
 }
 
 .bg-footer {
@@ -98,4 +104,28 @@ footer {
 
 .form-section {
     margin-bottom: 20px;
+}
+
+.table-custom {    
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.module-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.module-links a {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.module-links a:hover {
+    text-decoration: underline;
 }

@@ -19,11 +19,14 @@ class DefenceSystem
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 500)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $modifier = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $modifier_type = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $cost = null;
@@ -65,6 +68,18 @@ class DefenceSystem
     public function setModifier(int $modifier): static
     {
         $this->modifier = $modifier;
+
+        return $this;
+    }
+
+    public function getModifierType(): ?string
+    {
+        return $this->modifier_type;
+    }
+
+    public function setModifierType(string $modifier_type): static
+    {
+        $this->modifier_type = $modifier_type;
 
         return $this;
     }

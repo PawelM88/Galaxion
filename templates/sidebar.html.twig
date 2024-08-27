@@ -1,7 +1,7 @@
 <div class="d-flex">
     <div class="sidebar-container bg-dark">
         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center" id="menu">
                 <li class="nav-item">
                     <a href="{{ path('homepage') }}" class="nav-link align-middle px-0 text-center">
                         <i class="bi bi-star"></i>
@@ -20,7 +20,12 @@
                         <span class="ms-1 d-none d-md-inline">Fly on a mission</span>
                     </a>
                 </li>
-                {# TODO: Create a link to the Encyclopedia #}
+                <li class="nav-item">
+                    <a href="{{ path('encyclopedia') }}" class="nav-link align-middle px-0 text-center">
+                        <i class="bi bi-info-square-fill"></i>
+                        <span class="ms-1 d-none d-md-inline">Encyclopedia</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
