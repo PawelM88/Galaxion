@@ -21,14 +21,16 @@
 		{% endblock %}
 	</head>
 
-	<body class="{% if not is_granted('ROLE_USER') %}login-page{% endif %}">
+	<body class="{% if not is_granted('ROLE_USER') %}auth-page no-footer-margin{% endif %}">
 		<div class="wrapper d-flex flex-column min-vh-100">
-			{% block sidebar %}
-				{% include 'sidebar.html.twig' %}
-			{% endblock %}
+			{% if is_granted('ROLE_USER') %}
+				{% block sidebar %}
+					{% include 'sidebar.html.twig' %}
+				{% endblock %}
+			{% endif %}
 
-			<div class="flex-body flex-grow-1">
-				<div class="flex-body">
+			<div class="{% if is_granted('ROLE_USER') %}flex-body flex-grow-1{% endif %}">
+				<div class="{% if is_granted('ROLE_USER') %}flex-body{% endif %}">
 					{% block body %}{% endblock %}
 				</div>
 			</div>
@@ -36,6 +38,6 @@
 			{% block footer %}
 				{% include 'footer.html.twig' %}
 			{% endblock %}
-		</div>	
+		</div>		
 	</body>
 </html>
