@@ -25,4 +25,4 @@ services:
 
     App\EventListener\UserRegisteredListener:
         tags:
-            - { name: 'kernel.event_listener', event: 'user.registered', method: 'onKernelResponse' }
+            - { name: 'kernel.event_listener', event: 'user.registered', method: 'assignDefaultShipToUser' }

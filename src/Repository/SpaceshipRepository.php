@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -15,7 +17,22 @@ class SpaceshipRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Spaceship::class);
     }
-    
+
+    /**
+     * @param string $name
+     * 
+     * @return \App\Entity\Spaceship|null
+     */
+    public function findOneByName(string $name): ?Spaceship
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.name = :name')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     //    /**
     //     * @return Spaceship[] Returns an array of Spaceship objects
     //     */
