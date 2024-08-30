@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Spaceship;
+use App\Entity\UserSpaceship;
 use App\Form\UserSpaceshipType;
 use App\Repository\ArmorRepository;
 use App\Repository\CockpitRepository;
@@ -16,7 +16,6 @@ use App\Repository\RocketWeaponRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/shipyard', name: 'shipyard_')]
@@ -33,8 +32,8 @@ class ShipyardController extends AbstractController
         RocketWeaponRepository $rocketWeaponRepository,
         EntityManagerInterface $entityManager
     ): Response {
-        $spaceship = new Spaceship();
-        $form = $this->createForm(UserSpaceshipType::class, $spaceship);
+        $userSpaceship = new UserSpaceship();
+        $form = $this->createForm(UserSpaceshipType::class, $userSpaceship);
 
         $costOfAllComponents = $this->getCostOfAllComponents(
             $armorRepository,

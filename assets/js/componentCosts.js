@@ -1,12 +1,12 @@
 function initializeCostUpdate() {
     const componentSelects = {
-        'armor': document.querySelector('#spaceship_armor'),
-        'cockpit': document.querySelector('#spaceship_cockpit'),
-        'defenceSystem': document.querySelector('#spaceship_defenceSystem'),
-        'energyShield': document.querySelector('#spaceship_energyShield'),
-        'energyWeapon': document.querySelector('#spaceship_energyWeapon'),
-        'engine': document.querySelector('#spaceship_engine'),
-        'rocketWeapon': document.querySelector('#spaceship_rocketWeapon')
+        'armor': document.querySelector('#user_spaceship_armor'),
+        'cockpit': document.querySelector('#user_spaceship_cockpit'),
+        'defenceSystem': document.querySelector('#user_spaceship_defenceSystem'),
+        'energyShield': document.querySelector('#user_spaceship_energyShield'),
+        'energyWeapon': document.querySelector('#user_spaceship_energyWeapon'),
+        'engine': document.querySelector('#user_spaceship_engine'),
+        'rocketWeapon': document.querySelector('#user_spaceship_rocketWeapon')
     };
 
     const costDisplays = {
