@@ -34,13 +34,13 @@ class SpaceshipFixtures extends Fixture
         $corvette = new Spaceship();
         $corvette->setName("Helios X-21");
         $corvette->setClass("Corvette");
-        $corvette->setBaseHp(200);
-        $corvette->setBaseArmor(35);
-        $corvette->setBaseEnergyShield(35);
-        $corvette->setBaseRocketWeapon(55);
-        $corvette->setBaseEnergyWeapon(45);
-        $corvette->setBaseAccuracy(45);
-        $corvette->setBaseInitiative(30);
+        $corvette->setHp(200);
+        $corvette->setArmor(35);
+        $corvette->setEnergyShield(35);
+        $corvette->setRocketWeapon(55);
+        $corvette->setEnergyWeapon(45);
+        $corvette->setAccuracy(45);
+        $corvette->setInitiative(30);
 
         return $corvette;
     }
@@ -53,13 +53,13 @@ class SpaceshipFixtures extends Fixture
         $frigate = new Spaceship();
         $frigate->setName("Vanguard K-3");
         $frigate->setClass("Frigate");
-        $frigate->setBaseHp(400);
-        $frigate->setBaseArmor(55);
-        $frigate->setBaseEnergyShield(55);
-        $frigate->setBaseRocketWeapon(75);
-        $frigate->setBaseEnergyWeapon(65);
-        $frigate->setBaseAccuracy(55);
-        $frigate->setBaseInitiative(40);
+        $frigate->setHp(400);
+        $frigate->setArmor(55);
+        $frigate->setEnergyShield(55);
+        $frigate->setRocketWeapon(75);
+        $frigate->setEnergyWeapon(65);
+        $frigate->setAccuracy(55);
+        $frigate->setInitiative(40);
 
         return $frigate;
     }

@@ -15,77 +15,37 @@ class Spaceship
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Armor $armor = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $class = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Cockpit $cockpit = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?DefenceSystem $defenceSystem = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?EnergyShield $energyShield = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?EnergyWeapon $energyWeapon = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Engine $engine = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?RocketWeapon $rocketWeapon = null;
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $hp = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseHp = null;
+    private ?int $armor = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseArmor = null;
+    private ?int $energyShield = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseEnergyShield = null;
+    private ?int $rocketWeapon = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseRocketWeapon = null;
+    private ?int $energyWeapon = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseEnergyWeapon = null;
+    private ?int $accuracy = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseAccuracy = null;
-
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $baseInitiative = null;
+    private ?int $initiative = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getArmor(): ?Armor
-    {
-        return $this->armor;
-    }
-
-    public function setArmor(?Armor $armor): static
-    {
-        $this->armor = $armor;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -110,161 +70,89 @@ class Spaceship
         $this->class = $class;
 
         return $this;
+    } 
+
+    public function getHp(): ?int
+    {
+        return $this->hp;
     }
 
-    public function getCockpit(): ?Cockpit
+    public function setHp(int $hp): static
     {
-        return $this->cockpit;
-    }
-
-    public function setCockpit(?Cockpit $cockpit): static
-    {
-        $this->cockpit = $cockpit;
+        $this->hp = $hp;
 
         return $this;
     }
 
-    public function getDefenceSystem(): ?DefenceSystem
+    public function getArmor(): ?int
     {
-        return $this->defenceSystem;
+        return $this->armor;
     }
 
-    public function setDefenceSystem(?DefenceSystem $defenceSystem): static
+    public function setArmor(int $armor): static
     {
-        $this->defenceSystem = $defenceSystem;
+        $this->armor = $armor;
 
         return $this;
     }
 
-    public function getEnergyShield(): ?EnergyShield
+    public function getEnergyShield(): ?int
     {
         return $this->energyShield;
     }
 
-    public function setEnergyShield(?EnergyShield $energyShield): static
+    public function setEnergyShield(int $energyShield): static
     {
         $this->energyShield = $energyShield;
 
         return $this;
     }
 
-    public function getEnergyWeapon(): ?EnergyWeapon
-    {
-        return $this->energyWeapon;
-    }
-
-    public function setEnergyWeapon(?EnergyWeapon $energyWeapon): static
-    {
-        $this->energyWeapon = $energyWeapon;
-
-        return $this;
-    }
-
-    public function getEngine(): ?Engine
-    {
-        return $this->engine;
-    }
-
-    public function setEngine(?Engine $engine): static
-    {
-        $this->engine = $engine;
-
-        return $this;
-    }
-
-    public function getRocketWeapon(): ?RocketWeapon
+    public function getRocketWeapon(): ?int
     {
         return $this->rocketWeapon;
     }
 
-    public function setRocketWeapon(?RocketWeapon $rocketWeapon): static
+    public function setRocketWeapon(int $rocketWeapon): static
     {
         $this->rocketWeapon = $rocketWeapon;
 
         return $this;
     }
 
-    public function getBaseHp(): ?int
+    public function getEnergyWeapon(): ?int
     {
-        return $this->baseHp;
+        return $this->energyWeapon;
     }
 
-    public function setBaseHp(int $baseHp): static
+    public function setEnergyWeapon(int $energyWeapon): static
     {
-        $this->baseHp = $baseHp;
+        $this->energyWeapon = $energyWeapon;
 
         return $this;
     }
 
-    public function getBaseArmor(): ?int
+    public function getAccuracy(): ?int
     {
-        return $this->baseArmor;
+        return $this->accuracy;
     }
 
-    public function setBaseArmor(int $baseArmor): static
+    public function setAccuracy(int $accuracy): static
     {
-        $this->baseArmor = $baseArmor;
+        $this->accuracy = $accuracy;
 
         return $this;
     }
 
-    public function getBaseEnergyShield(): ?int
+    public function getInitiative(): ?int
     {
-        return $this->baseEnergyShield;
+        return $this->initiative;
     }
 
-    public function setBaseEnergyShield(int $baseEnergyShield): static
+    public function setInitiative(int $initiative): static
     {
-        $this->baseEnergyShield = $baseEnergyShield;
+        $this->initiative = $initiative;
 
         return $this;
-    }
-
-    public function getBaseRocketWeapon(): ?int
-    {
-        return $this->baseRocketWeapon;
-    }
-
-    public function setBaseRocketWeapon(int $baseRocketWeapon): static
-    {
-        $this->baseRocketWeapon = $baseRocketWeapon;
-
-        return $this;
-    }
-
-    public function getBaseEnergyWeapon(): ?int
-    {
-        return $this->baseEnergyWeapon;
-    }
-
-    public function setBaseEnergyWeapon(int $baseEnergyWeapon): static
-    {
-        $this->baseEnergyWeapon = $baseEnergyWeapon;
-
-        return $this;
-    }
-
-    public function getBaseAccuracy(): ?int
-    {
-        return $this->baseAccuracy;
-    }
-
-    public function setBaseAccuracy(int $baseAccuracy): static
-    {
-        $this->baseAccuracy = $baseAccuracy;
-
-        return $this;
-    }
-
-    public function getBaseInitiative(): ?int
-    {
-        return $this->baseInitiative;
-    }
-
-    public function setBaseInitiative(int $baseInitiative): static
-    {
-        $this->baseInitiative = $baseInitiative;
-
-        return $this;
-    }
+    }      
 }

@@ -11,14 +11,14 @@ use App\Entity\EnergyShield;
 use App\Entity\EnergyWeapon;
 use App\Entity\Engine;
 use App\Entity\RocketWeapon;
-use App\Entity\Spaceship;
+use App\Entity\UserSpaceship;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SpaceshipType extends AbstractType
+class UserSpaceshipType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -54,7 +54,7 @@ class SpaceshipType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Spaceship::class,
+            'data_class' => UserSpaceship::class,
         ]);
     }
 }
