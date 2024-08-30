@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Spaceship;
-use App\Form\SpaceshipType;
+use App\Form\UserSpaceshipType;
 use App\Repository\ArmorRepository;
 use App\Repository\CockpitRepository;
 use App\Repository\DefenceSystemRepository;
@@ -34,7 +34,7 @@ class ShipyardController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response {
         $spaceship = new Spaceship();
-        $form = $this->createForm(SpaceshipType::class, $spaceship);
+        $form = $this->createForm(UserSpaceshipType::class, $spaceship);
 
         $costOfAllComponents = $this->getCostOfAllComponents(
             $armorRepository,
