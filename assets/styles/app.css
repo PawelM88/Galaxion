@@ -7,6 +7,59 @@ footer {
     width: 100%;
 }
 
+body.auth-page {
+    background-image: url('../images/auth_background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.login-form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-signin input {
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-signin input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.terms-container {
+    background-color: #000000b3;
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    max-width: 50rem;
+    margin: auto;
+}
+
+.terms-container h1, .terms-container p {
+    color: white;
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.8); /* Zamieniono 2px i 4px na odpowiednio 0.125rem i 0.25rem */
+}
+
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.d-flex.align-items-center.justify-content-center {
+    height: 100vh;
+}
+
 .wrapper {
     display: flex;    
     min-height: 100vh;
@@ -48,6 +101,10 @@ footer {
 .nav-link span {
     display: block;
     margin-top: 0.25rem;
+}
+
+.no-footer-margin .footer-content {
+    margin: auto;
 }
 
 @media (min-width: 768px) {
