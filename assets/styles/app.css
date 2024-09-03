@@ -40,9 +40,11 @@ body.auth-page {
     margin: auto;
 }
 
-.terms-container h1, .terms-container p {
+.terms-container h1,
+.terms-container p {
     color: white;
-    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.8); /* Zamieniono 2px i 4px na odpowiednio 0.125rem i 0.25rem */
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.8);
+    /* Zamieniono 2px i 4px na odpowiednio 0.125rem i 0.25rem */
 }
 
 
@@ -61,7 +63,7 @@ body.auth-page {
 }
 
 .wrapper {
-    display: flex;    
+    display: flex;
     min-height: 100vh;
 }
 
@@ -107,6 +109,26 @@ body.auth-page {
     margin: auto;
 }
 
+.spaceship-image-col img {
+    height: auto;
+    width: auto;
+    max-height: 30rem;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.equipment-image {
+    max-width: 80%;
+    max-height: 15rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 @media (min-width: 768px) {
     .footer-content {
         margin-left: 6.25rem;
@@ -128,6 +150,26 @@ body.auth-page {
     .nav-link i {
         font-size: 1.25rem;
     }
+
+    .spaceship-container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .spaceship-details-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .spaceship-image-col {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -142,7 +184,39 @@ body.auth-page {
     .footer-copyright {
         flex-direction: column;
         text-align: center;
-    }    
+    }
+
+    .spaceship-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .spaceship-image-col {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spaceship-details-col {
+        width: 100%;
+    }
+
+    .spaceship-image-col img {
+        height: auto;
+        max-width: 100%;
+        max-height: 20rem;
+    }
+
+    .col-md-4 {
+        width: 100%;
+    }
+
+    .text-center img {
+        margin-top: 1rem;
+    }
 }
 
 .bg-footer {
@@ -153,7 +227,7 @@ body.auth-page {
     margin-bottom: 1.25rem;
 }
 
-.table-encyclopedia {    
+.table-encyclopedia {
     border: 0.125rem solid #000;
     border-radius: 0.3125rem;
 }
