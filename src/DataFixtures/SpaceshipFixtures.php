@@ -41,6 +41,7 @@ class SpaceshipFixtures extends Fixture
         $corvette->setEnergyWeapon(45);
         $corvette->setAccuracy(45);
         $corvette->setInitiative(30);
+        $corvette->setDefenceSystem(0);
 
         return $corvette;
     }
@@ -60,6 +61,7 @@ class SpaceshipFixtures extends Fixture
         $frigate->setEnergyWeapon(65);
         $frigate->setAccuracy(55);
         $frigate->setInitiative(40);
+        $frigate->setDefenceSystem(0);
 
         return $frigate;
     }

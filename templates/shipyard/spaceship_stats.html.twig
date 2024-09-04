@@ -1,17 +1,39 @@
 <div class="spaceship-container my-4">
-	<div class="spaceship-details-col">
-		<h4>{{ spaceship.name }}</h4>
-		<h5>Class: {{ spaceship.class }}</h5>
-		<h5>HP: {{ spaceship.hp }}</h5>
-		<h5>Armor: {{ spaceship.armor }}</h5>
-		<h5>Energy Shield: {{ spaceship.energyShield }}</h5>
-		<h5>Rocket Weapon: {{ spaceship.rocketWeapon }}</h5>
-		<h5>Energy Weapon: {{ spaceship.energyWeapon }}</h5>
-		<h5>Accuracy: {{ spaceship.accuracy }}</h5>
-		<h5>Initiative: {{ spaceship.initiative }}</h5>
-	</div>
+    <div class="spaceship-details-col">
+        <h4>{{ spaceship.name }}</h4>
+        <h5>Class: {{ spaceship.class }}</h5>
+        <h5>HP: {{ spaceship.hp }}</h5>
 
-	<div class="spaceship-image-col">
-		<img src="{{ asset('images/' ~ spaceship.class|lower ~ '.jpg') }}" alt="User Spaceship Image"/>
-	</div>
+        <h5>Armor: <span id="base-armor">{{ spaceship.armor }}</span>
+            <span id="armor-modifier" class="text-success"></span>
+        </h5>
+
+        <h5>Energy Shield: <span id="base-energyShield">{{ spaceship.energyShield }}</span>
+            <span id="energyShield-modifier" class="text-success"></span>
+        </h5>
+
+        <h5>Rocket Weapon: <span id="base-rocketWeapon">{{ spaceship.rocketWeapon }}</span>
+            <span id="rocketWeapon-modifier" class="text-success"></span>
+        </h5>
+
+        <h5>Energy Weapon: <span id="base-energyWeapon">{{ spaceship.energyWeapon }}</span>
+            <span id="energyWeapon-modifier" class="text-success"></span>
+        </h5>
+
+        <h5>Accuracy: <span id="base-accuracy">{{ spaceship.accuracy }}</span>
+            <span id="accuracy-modifier" class="text-success"></span>
+        </h5>
+
+        <h5>Initiative: <span id="base-initiative">{{ spaceship.initiative }}</span>
+            <span id="initiative-modifier" class="text-success"></span>
+        </h5>
+
+		<h5>Defence System: {{ spaceship.defenceSystem }}</span>
+            <span id="defenceSystem-modifier" class="text-success"></span>
+        </h5>
+    </div>
+
+    <div class="spaceship-image-col">
+        <img src="{{ asset('images/' ~ spaceship.class|lower ~ '.jpg') }}" alt="User Spaceship Image"/>
+    </div>
 </div>

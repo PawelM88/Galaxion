@@ -29,18 +29,7 @@
 				<th scope="row">{{ loop.index }}</th>
 				<td>{{ cockpit.name }}</td>
 				<td>{{ cockpit.description }}</td>
-				<td>
-					{% for modifier in cockpit.modifier %}
-						{% if loop.index == 1 %}
-							{{ 'Accuracy: +' ~ modifier }}
-						{% elseif loop.index == 2 %}							
-							{{ 'Initiative: +' ~ modifier }}
-						{% else %}
-							{{ modifier }}
-						{% endif %}
-						{% if not loop.last %}{% endif %}
-					{% endfor %}
-				</td>
+				<td>{{ 'Accuracy: +' ~ cockpit.modifier }}</td>
 				<td>{{ cockpit.cost }}</td>
 			</tr>
 		{% else %}
@@ -124,18 +113,7 @@
 				<th scope="row">{{ loop.index }}</th>
 				<td>{{ engine.name }}</td>
 				<td>{{ engine.description }}</td>
-				<td>
-					{% for modifier in engine.modifier %}
-						{% if loop.index == 1 %}							
-							{{ 'Dodge: +' ~ modifier }}
-						{% elseif loop.index == 2 %}
-							{{ 'Initiative: +' ~ modifier }}
-						{% else %}
-							{{ modifier }}
-						{% endif %}
-						{% if not loop.last %}{% endif %}
-					{% endfor %}
-				</td>
+				<td>{{ 'Initiative: +' ~ engine.modifier }}</td>
 				<td>{{ engine.cost }}</td>
 			</tr>
 		{% else %}
@@ -219,13 +197,7 @@
 				<th scope="row">{{ loop.index }}</th>
 				<td>{{ defenceSystem.name }}</td>
 				<td>{{ defenceSystem.description }}</td>
-				<td>
-					{% if defenceSystem.modifierType == 'rocket_damage' %}
-						{{ '-' ~ defenceSystem.modifier ~ ' to Rocket damage' }}
-					{% else %}
-						{{ '+' ~ defenceSystem.modifier ~ ' to General damage' }}
-					{% endif %}
-				</td>
+				<td>{{ 'Defence System: +' ~ defenceSystem.modifier }}</td>
 				<td>{{ defenceSystem.cost }}</td>
 			</tr>
 		{% else %}

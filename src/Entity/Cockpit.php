@@ -22,11 +22,8 @@ class Cockpit
     #[ORM\Column(length: 500)]
     private ?string $description = null;
 
-    /**
-     * @var int[]
-     */
-    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
-    private ?array $modifier = [];
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $modifier = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $cost = null;
@@ -60,18 +57,12 @@ class Cockpit
         return $this;
     }
 
-    /**
-     * @return array<mixed>
-     */
-    public function getModifier(): array
+    public function getModifier(): ?int
     {
         return $this->modifier;
     }
 
-    /**
-     * @param array<mixed> $modifier
-     */
-    public function setModifier(array $modifier): static
+    public function setModifier(int $modifier): static
     {
         $this->modifier = $modifier;
 
