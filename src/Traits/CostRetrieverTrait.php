@@ -16,4 +16,15 @@ trait CostRetrieverTrait
             ->getQuery()
             ->getScalarResult();
     }
+
+    /**
+     * @return array<mixed>
+     */
+    public function getModifier(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e.id, e.modifier')
+            ->getQuery()
+            ->getScalarResult();
+    }
 }
