@@ -43,6 +43,9 @@ class Spaceship
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $initiative = null;
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $defenceSystem = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,18 @@ class Spaceship
     public function setInitiative(int $initiative): static
     {
         $this->initiative = $initiative;
+
+        return $this;
+    }
+
+    public function getDefenceSystem(): ?int
+    {
+        return $this->defenceSystem;
+    }
+
+    public function setDefenceSystem(int $defenceSystem): static
+    {
+        $this->defenceSystem = $defenceSystem;
 
         return $this;
     }

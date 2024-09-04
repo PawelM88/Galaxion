@@ -17,42 +17,47 @@ class DefenceSystemFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $phoenix = $this->setPhoenix();
-        $cerberus = $this->setCerberus();
+        $cerberus = $this->setPhoenix();
+        $chimera = $this->setChimera();
+        $hydra = $this->setHydra();
 
-        $manager->persist($phoenix);
         $manager->persist($cerberus);
+        $manager->persist($chimera);
+        $manager->persist($hydra);
 
         $manager->flush();
     }
 
-    /**
-     * @return \App\Entity\DefenceSystem
-     */
     private function setPhoenix(): DefenceSystem
     {
         $phoenix = new DefenceSystem();
         $phoenix->setName("Phoenix");
-        $phoenix->setDescription("The Phoenix system is an advanced defensive device that fires flares when detecting incoming enemy missiles. These flares, emitting intense light and heat, effectively disorient missile guidance systems, causing them to lose their target and detonate far from the unit. Grants -10 to damage from rockets");
-        $phoenix->setModifier(10);
-        $phoenix->setCost(400);
-        $phoenix->setModifierType('rocket_damage');
+        $phoenix->setDescription("The Phoenix System is an advanced defensive device that fires flares upon detecting incoming enemy missiles. Additionally, the system has ablation mirrors that effectively reflect some energy weapons. Grants -5 damage to rocket and energy weapons");
+        $phoenix->setModifier(5);
+        $phoenix->setCost(200);
 
         return $phoenix;
     }
 
-    /**
-     * @return \App\Entity\DefenceSystem
-     */
-    private function setCerberus(): DefenceSystem
+    private function setChimera(): DefenceSystem
     {
-        $cerberus = new DefenceSystem();
-        $cerberus->setName("Cerberus");
-        $cerberus->setDescription("The Cerberus system is a group of autonomous combat drones that are launched into space and search for an enemy to stick to. Using electro-tools, they systematically destroy enemy ships, dealing additional damage to them each turn. Grants +15 general damage");
-        $cerberus->setModifier(15);
-        $cerberus->setCost(400);
-        $cerberus->setModifierType('general_damage');
+        $phoenix = new DefenceSystem();
+        $phoenix->setName("Chimera");
+        $phoenix->setDescription("In Greek mythology, the Chimera was a mythical monster that combined various beasts into one body—with the head of a lion, the tail of a snake, and the breath of a dragon. The Chimera Defense operates on the principle of adaptive defense, automatically changing its mode to adapt to threats. Its reflectors deflect missiles, and its emitters disperse incoming energy from energy weapon attacks. Grants -10 damage to rocket and energy weapons");
+        $phoenix->setModifier(10);
+        $phoenix->setCost(400);
 
-        return $cerberus;
+        return $phoenix;
+    }
+
+    private function setHydra(): DefenceSystem
+    {
+        $phoenix = new DefenceSystem();
+        $phoenix->setName("Hydra");
+        $phoenix->setDescription("Named after the mythical Hydra, a multi-headed monster from Greek mythology, The Hydra Shield is an advanced defense system that not only deflects incoming missiles, but also creates a dynamic protective field that can rebuild itself after each energy weapon attack. Like the heads of the Hydra, the system constantly regenerates its defense capabilities after each strike. Grants -15 damage to rocket and energy weapons");
+        $phoenix->setModifier(15);
+        $phoenix->setCost(600);
+
+        return $phoenix;
     }
 }
