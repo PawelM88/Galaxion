@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -18,13 +20,12 @@ class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'register')]
     public function register(
-        Request $request, 
-        UserPasswordHasherInterface $userPasswordHasher, 
-        Security $security, 
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        Security $security,
         EntityManagerInterface $entityManager,
         EventDispatcherInterface $eventDispatcher
-        ): Response
-    {
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -40,7 +41,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            
+
             $this->dispatchUserRegisteredEvent($eventDispatcher, $user);
 
             return $security->login($user, 'form_login', 'main');
@@ -54,11 +55,11 @@ class RegistrationController extends AbstractController
     /**
      * @param \Symfony\Contracts\EventDispatcher\EventDispatcherInterface $eventDispatcher
      * @param \App\Entity\User $user
-     * 
+     *
      * @return void
      */
     private function dispatchUserRegisteredEvent(EventDispatcherInterface $eventDispatcher, User $user): void
     {
-        $eventDispatcher->dispatch(new UserRegisteredEvent($user), UserRegisteredEvent::NAME);        
+        $eventDispatcher->dispatch(new UserRegisteredEvent($user), UserRegisteredEvent::NAME);
     }
 }

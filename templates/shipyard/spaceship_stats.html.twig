@@ -1,0 +1,17 @@
+<div class="spaceship-container my-4">
+	<div class="spaceship-details-col">
+		<h4>{{ spaceship.name }}</h4>
+		<h5>Class: {{ spaceship.class }}</h5>
+		<h5>HP: {{ spaceship.hp }}</h5>
+		<h5>Armor: {{ spaceship.armor }}</h5>
+		<h5>Energy Shield: {{ spaceship.energyShield }}</h5>
+		<h5>Rocket Weapon: {{ spaceship.rocketWeapon }}</h5>
+		<h5>Energy Weapon: {{ spaceship.energyWeapon }}</h5>
+		<h5>Accuracy: {{ spaceship.accuracy }}</h5>
+		<h5>Initiative: {{ spaceship.initiative }}</h5>
+	</div>
+
+	<div class="spaceship-image-col">
+		<img src="{{ asset('images/' ~ spaceship.class|lower ~ '.jpg') }}" alt="User Spaceship Image"/>
+	</div>
+</div>

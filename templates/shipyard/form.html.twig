@@ -1,57 +1,96 @@
+<div class="my-4">
+    <h3>Available points: </h3>
+</div>
+<div class="text-center my-4">
+    <h3>Total Cost: <span id="total-cost">0</span></h3>
+</div>
+
 {{ form_start(form) }}
+<div class="container">
     <div class="row">
-        <div class="mb-3">
-                {{ form_widget(form.save) }}
-            </div>      
-        <div class="col-md-3">            
+        <div class="col-12 text-center mb-4">
+            {{ form_widget(form.save) }}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Cockpit</h2>
-                {{ form_widget(form.cockpit) }}                             
+                {{ form_widget(form.cockpit) }}
                 <span>Cost: <span id="cockpit-cost" class="text-primary"></span></span>
             </div>
-
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/cockpit.jpg') }}" alt="Image of the module showing the cockpit" class="img-fluid equipment-image">
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Energy Weapon</h2>
                 {{ form_widget(form.energyWeapon) }}
-                <span>Cost: <span id="energyWeapon-cost" class="text-primary"></span></span>                
+                <span>Cost: <span id="energyWeapon-cost" class="text-primary"></span></span>
             </div>
-
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/energy_weapon.jpg') }}" alt="Image of the module showing the energy weapon" class="img-fluid equipment-image">
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Rocket Weapon</h2>
                 {{ form_widget(form.rocketWeapon) }}
                 <span>Cost: <span id="rocketWeapon-cost" class="text-primary"></span></span>
             </div>
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/rocket_weapon.jpg') }}" alt="Image of the module showing the rocket weapon" class="img-fluid equipment-image">
+            </div>
         </div>
+    </div>
 
-        <div class="col-md-6 text-center">
-            <img src="{{ asset('images/corvette.jpg') }}" alt="image of a corvette class spaceship" 
-            class="img-fluid w-100 d-block mx-auto my-3">
-        </div>
-
-        <div class="col-md-3">
+    <div class="row mb-4">
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Engine</h2>
                 {{ form_widget(form.engine) }}
                 <span>Cost: <span id="engine-cost" class="text-primary"></span></span>
             </div>
-
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/engine.jpg') }}" alt="Image of the module showing the engine" class="img-fluid equipment-image">
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Armor</h2>
-                {{ form_widget(form.armor) }}                
+                {{ form_widget(form.armor) }}
                 <span>Cost: <span id="armor-cost" class="text-primary"></span></span>
             </div>
-
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/armor.jpg') }}" alt="Image of the module showing the armor" class="img-fluid equipment-image">
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-section">
                 <h2>Energy Shield</h2>
                 {{ form_widget(form.energyShield) }}
                 <span>Cost: <span id="energyShield-cost" class="text-primary"></span></span>
             </div>
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/energy_shield.jpg') }}" alt="Image of the module showing the energy shield" class="img-fluid equipment-image">
+            </div>
+        </div>
+    </div>
 
+    <div class="row mb-4">
+        <div class="col-md-4 offset-md-4">
             <div class="form-section">
                 <h2>Defence System</h2>
                 {{ form_widget(form.defenceSystem) }}
                 <span>Cost: <span id="defenceSystem-cost" class="text-primary"></span></span>
-            </div>            
+            </div>
+            <div class="text-center mb-5">
+                <img src="{{ asset('images/defence_system.jpg') }}" alt="Image of the module showing the defence system" class="img-fluid equipment-image">
+            </div>
         </div>
-    </div>  
+    </div>    
+    
+</div>
 {{ form_end(form) }}

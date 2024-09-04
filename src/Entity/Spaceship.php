@@ -15,7 +15,7 @@ class Spaceship
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
+
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
@@ -70,7 +70,7 @@ class Spaceship
         $this->class = $class;
 
         return $this;
-    } 
+    }
 
     public function getHp(): ?int
     {
@@ -154,5 +154,5 @@ class Spaceship
         $this->initiative = $initiative;
 
         return $this;
-    }      
+    }
 }

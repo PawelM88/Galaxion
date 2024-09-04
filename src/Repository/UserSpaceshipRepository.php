@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\UserSpaceship;
@@ -14,6 +16,21 @@ class UserSpaceshipRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UserSpaceship::class);
+    }
+
+    /**
+     * @param int $userId
+     *
+     * @return \App\Entity\UserSpaceship|null
+     */
+    public function findOneByUserId(int $userId): ?UserSpaceship
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.user', 'user')
+            ->andWhere('user.id = :user_id')
+            ->setParameter('user_id', $userId)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     //    /**
