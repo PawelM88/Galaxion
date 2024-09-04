@@ -20,7 +20,7 @@ class SpaceshipRepository extends ServiceEntityRepository
 
     /**
      * @param string $name
-     * 
+     *
      * @return \App\Entity\Spaceship|null
      */
     public function findOneByName(string $name): ?Spaceship

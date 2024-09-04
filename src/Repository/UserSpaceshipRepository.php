@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -18,18 +20,18 @@ class UserSpaceshipRepository extends ServiceEntityRepository
 
     /**
      * @param int $userId
-     * 
+     *
      * @return \App\Entity\UserSpaceship|null
      */
     public function findOneByUserId(int $userId): ?UserSpaceship
-{
-    return $this->createQueryBuilder('u')
-        ->join('u.user', 'user')
-        ->andWhere('user.id = :user_id')
-        ->setParameter('user_id', $userId)
-        ->getQuery()
-        ->getOneOrNullResult();
-}
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.user', 'user')
+            ->andWhere('user.id = :user_id')
+            ->setParameter('user_id', $userId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     //    /**
     //     * @return UserSpaceship[] Returns an array of UserSpaceship objects

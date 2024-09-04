@@ -14,7 +14,6 @@ use App\Repository\EnergyShieldRepository;
 use App\Repository\EnergyWeaponRepository;
 use App\Repository\EngineRepository;
 use App\Repository\RocketWeaponRepository;
-use App\Repository\SpaceshipRepository;
 use App\Repository\UserSpaceshipRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,8 +30,7 @@ class ShipyardController extends AbstractController
      * @param \App\Repository\EnergyShieldRepository $energyShieldRepository
      * @param \App\Repository\EnergyWeaponRepository $energyWeaponRepository
      * @param \App\Repository\EngineRepository $engineRepository
-     * @param \App\Repository\RocketWeaponRepository $rocketWeaponRepository
-     * @param \App\Repository\SpaceshipRepository $spaceship
+     * @param \App\Repository\RocketWeaponRepository $rocketWeaponRepository     
      * @param \App\Repository\UserSpaceshipRepository $userSpaceship
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      */
@@ -43,11 +41,11 @@ class ShipyardController extends AbstractController
         private EnergyShieldRepository $energyShieldRepository,
         private EnergyWeaponRepository $energyWeaponRepository,
         private EngineRepository $engineRepository,
-        private RocketWeaponRepository $rocketWeaponRepository,
-        private SpaceshipRepository $spaceship,
+        private RocketWeaponRepository $rocketWeaponRepository,        
         private UserSpaceshipRepository $userSpaceship,
         private EntityManagerInterface $entityManager,
-    ) {}
+    ) {
+    }
 
     #[Route('/', name: 'index')]
     public function index(): Response

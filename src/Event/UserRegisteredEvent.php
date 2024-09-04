@@ -17,7 +17,7 @@ class UserRegisteredEvent extends Event
     /**
      * @param \App\Entity\User $user
      */
-    public function __construct(private User $user) 
+    public function __construct(private User $user)
     {
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -42,7 +44,7 @@ class UserSpaceship
     private ?EnergyShield $energyShield = null;
 
     #[ORM\ManyToOne]
-    private ?DefenceSystem $defenceSystem = null;    
+    private ?DefenceSystem $defenceSystem = null;
 
     public function getId(): ?int
     {
@@ -155,5 +157,5 @@ class UserSpaceship
         $this->defenceSystem = $defenceSystem;
 
         return $this;
-    }    
+    }
 }

@@ -22,13 +22,12 @@ class UserRegisteredListener
     public function __construct(
         private EntityManagerInterface $entityManager,
         private SpaceshipRepository $spaceshipRepository
-    ) 
-    {        
+    ) {
     }
 
     /**
      * @param \App\Event\UserRegisteredEvent $event
-     * 
+     *
      * @return void
      */
     public function assignDefaultShipToUser(UserRegisteredEvent $event): void
@@ -38,7 +37,7 @@ class UserRegisteredListener
 
         $userSpaceship = new UserSpaceship();
         $userSpaceship
-            ->setUser($user)           
+            ->setUser($user)
             ->setSpaceship($defaultSpaceship);
 
         $this->entityManager->persist($userSpaceship);
