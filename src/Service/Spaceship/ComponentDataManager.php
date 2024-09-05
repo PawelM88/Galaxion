@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Ship;
+namespace App\Service\Spaceship;
 
 use App\Repository\ArmorRepository;
 use App\Repository\CockpitRepository;

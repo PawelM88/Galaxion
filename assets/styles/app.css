@@ -265,3 +265,7 @@ body.auth-page {
 .module-links a:hover {
     text-decoration: underline;
 }
+
+.text-purple {
+    color: #800080;
+}
