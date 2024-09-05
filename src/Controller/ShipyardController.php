@@ -64,7 +64,10 @@ class ShipyardController extends AbstractController
      */
     private function getSpaceshipData(): ?Spaceship
     {
-        $userId = $this->getUser()->getId();
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $userId = $user->getId();
+
         $userSpaceship = $this->userSpaceship->findOneByUserId($userId);
 
         return $userSpaceship->getSpaceship();

@@ -17,6 +17,11 @@ class UserRegisteredListener
     protected const DEFAULT_SPACESHIP_NAME = "Helios X-21";
 
     /**
+     * @var int
+     */
+    protected const DEFAULT_STARTING_POINTS = 100;
+
+    /**
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      */
     public function __construct(
@@ -30,7 +35,7 @@ class UserRegisteredListener
      *
      * @return void
      */
-    public function assignDefaultShipToUser(UserRegisteredEvent $event): void
+    public function assignDefaultAttributesToUser(UserRegisteredEvent $event): void
     {
         $user = $event->getUser();
         $defaultSpaceship = $this->spaceshipRepository->findOneByName(self::DEFAULT_SPACESHIP_NAME);
@@ -38,7 +43,8 @@ class UserRegisteredListener
         $userSpaceship = new UserSpaceship();
         $userSpaceship
             ->setUser($user)
-            ->setSpaceship($defaultSpaceship);
+            ->setSpaceship($defaultSpaceship)
+            ->setAvailablePoints(self::DEFAULT_STARTING_POINTS);
 
         $this->entityManager->persist($userSpaceship);
         $this->entityManager->flush();

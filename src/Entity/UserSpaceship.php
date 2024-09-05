@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\UserSpaceshipRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserSpaceshipRepository::class)]
@@ -24,6 +23,9 @@ class UserSpaceship
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Spaceship $spaceship = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $availablePoints = null;
 
     #[ORM\ManyToOne]
     private ?Cockpit $cockpit = null;
@@ -155,6 +157,18 @@ class UserSpaceship
     public function setDefenceSystem(?DefenceSystem $defenceSystem): static
     {
         $this->defenceSystem = $defenceSystem;
+
+        return $this;
+    }
+
+    public function getAvailablePoints(): ?int
+    {
+        return $this->availablePoints;
+    }
+
+    public function setAvailablePoints(int $availablePoints): static
+    {
+        $this->availablePoints = $availablePoints;
 
         return $this;
     }
