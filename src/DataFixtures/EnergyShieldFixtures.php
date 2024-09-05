@@ -63,7 +63,7 @@ class EnergyShieldFixtures extends Fixture
     {
         $atlas = new EnergyShield();
         $atlas->setName("Atlas");
-        $atlas->setDescription("Atlas is an incredibly powerful energy shield, inspired by the mythical titan who held the sky on his shoulders. This shield creates a dense and incredibly durable protective field, capable of withstanding the most destructive energy weapon attacks. Thanks to advanced regeneration technology, the Atlas shield quickly renews its power, providing long-lasting protection even during intense battles.. Grants +45 Energy Shield");
+        $atlas->setDescription("Atlas is an incredibly powerful energy shield, inspired by the mythical titan who held the sky on his shoulders. This shield creates a dense and incredibly durable protective field, capable of withstanding the most destructive energy weapon attacks. Thanks to advanced regeneration technology, the Atlas shield quickly renews its power, providing long-lasting protection even during intense battles. Grants +45 Energy Shield");
         $atlas->setModifier(45);
         $atlas->setCost(400);
 

@@ -44,7 +44,8 @@ class UserSpaceshipType extends AbstractType
                 'save',
                 SubmitType::class,
                 [
-                    'attr' => [
+                    'label' => 'Upgrade Spaceship',
+                    'attr' => [                        
                         'class' => 'btn btn-secondary'
                     ]
                 ]

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Spaceship;
 use App\Entity\UserSpaceship;
 use App\Form\UserSpaceshipType;
 use App\Repository\UserSpaceshipRepository;
 use App\Service\Ship\ComponentDataManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -18,55 +18,65 @@ use Symfony\Component\Routing\Attribute\Route;
 class ShipyardController extends AbstractController
 {
     /**
-     * @param \App\Repository\UserSpaceshipRepository $userSpaceship
+     * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      * @param \App\Service\Ship\ComponentDataManager $componentDataManager
      */
     public function __construct(   
-        private UserSpaceshipRepository $userSpaceship,
+        private UserSpaceshipRepository $userSpaceshipRepository,
         private EntityManagerInterface $entityManager,
         private ComponentDataManager $componentDataManager
     ) {
     }
 
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $userSpaceship = new UserSpaceship();
+        $userSpaceship = $this->getUserSpaceship();
         $form = $this->createForm(UserSpaceshipType::class, $userSpaceship);
-        $spaceship = $this->getSpaceshipData();
 
-        $costOfAllComponents = $this->componentDataManager->getCostOfAllComponents();
-        $modifierOfAllComponents = $this->componentDataManager->getModifiersOfAllComponents();
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->updateShip($this->entityManager);
+            $this->updateShip($userSpaceship);
+
+            $this->addFlash('success', 'Spaceship upgraded successfully!');
+
+            return $this->redirectToRoute('shipyard_index');
         }
+
+        $spaceship = $this->getUserSpaceship()->getSpaceship();
+        $userAvailablePoints = $this->getUserSpaceship()->getAvailablePoints();
+        $costOfAllComponents = $this->componentDataManager->getCostOfAllComponents();
+        $modifierOfAllComponents = $this->componentDataManager->getModifiersOfAllComponents();
 
         return $this->render('shipyard/index.html.twig', [
             'form' => $form->createView(),
             'costOfAllComponents' => $costOfAllComponents,
             'modifierOfAllComponents' => $modifierOfAllComponents,
-            'spaceship' => $spaceship
+            'spaceship' => $spaceship,
+            'userAvailablePoints' => $userAvailablePoints
         ]);
-
-        // TODO: addFlash() and redirectToRoute()
     }
 
     #[Route('/update', name: 'update')]
-    public function updateShip(EntityManagerInterface $entityManager): void
+    public function updateShip(UserSpaceship $userSpaceship): void
     {
-        // TODO: $entityManager->persist() and $entityManager->flush();
+        $entityManager = $this->entityManager;
+
+        $entityManager->persist($userSpaceship);
+        $entityManager->flush();
     }    
 
     /**
-     * @return Spaceship|null
+     * @return \App\Entity\UserSpaceship
      */
-    private function getSpaceshipData(): ?Spaceship
+    private function getUserSpaceship(): UserSpaceship
     {
-        $userId = $this->getUser()->getId();
-        $userSpaceship = $this->userSpaceship->findOneByUserId($userId);
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $userId = $user->getId();
 
-        return $userSpaceship->getSpaceship();
+        return $this->userSpaceshipRepository->findOneByUserId($userId);
     }
 }

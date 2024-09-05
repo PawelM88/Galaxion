@@ -6,7 +6,8 @@ function initializeCostUpdate() {
         'energyShield': document.querySelector('#user_spaceship_energyShield'),
         'energyWeapon': document.querySelector('#user_spaceship_energyWeapon'),
         'engine': document.querySelector('#user_spaceship_engine'),
-        'rocketWeapon': document.querySelector('#user_spaceship_rocketWeapon')
+        'rocketWeapon': document.querySelector('#user_spaceship_rocketWeapon'),
+        'defenceSystem': document.querySelector('#user_spaceship_defenceSystem')
     };
 
     const costDisplays = {
