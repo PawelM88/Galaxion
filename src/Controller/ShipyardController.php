@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Entity\UserSpaceship;
 use App\Form\UserSpaceshipType;
 use App\Repository\UserSpaceshipRepository;
-use App\Service\Ship\ComponentDataManager;
+use App\Service\Spaceship\ComponentDataManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ class ShipyardController extends AbstractController
     /**
      * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
-     * @param \App\Service\Ship\ComponentDataManager $componentDataManager
+     * @param \App\Service\Spaceship\ComponentDataManager $componentDataManager
      */
     public function __construct(   
         private UserSpaceshipRepository $userSpaceshipRepository,
@@ -37,14 +37,18 @@ class ShipyardController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {            
+            $remainingPoints = $request->request->get('remainingPoints');
+            $userSpaceship->setAvailablePoints((int) $remainingPoints);
+
+            // Zaktualizuj statek i zapisz zmiany
             $this->updateShip($userSpaceship);
 
             $this->addFlash('success', 'Spaceship upgraded successfully!');
 
             return $this->redirectToRoute('shipyard_index');
         }
-
+    
         $spaceship = $this->getUserSpaceship()->getSpaceship();
         $userAvailablePoints = $this->getUserSpaceship()->getAvailablePoints();
         $costOfAllComponents = $this->componentDataManager->getCostOfAllComponents();
@@ -57,7 +61,7 @@ class ShipyardController extends AbstractController
             'spaceship' => $spaceship,
             'userAvailablePoints' => $userAvailablePoints
         ]);
-    }
+    } 
 
     #[Route('/update', name: 'update')]
     public function updateShip(UserSpaceship $userSpaceship): void
@@ -66,7 +70,7 @@ class ShipyardController extends AbstractController
 
         $entityManager->persist($userSpaceship);
         $entityManager->flush();
-    }    
+    }   
 
     /**
      * @return \App\Entity\UserSpaceship

@@ -23,7 +23,15 @@ function initializeCostUpdate() {
     const componentCosts = window.componentCostsData;
 
     function updateCost(component) {
-        const selectedComponentId = componentSelects[component].value;
+        const selectElement = componentSelects[component];
+        const selectedComponentId = selectElement.value;
+        const savedComponentId = selectElement.getAttribute('data-savedId');
+
+        if (selectedComponentId === savedComponentId) {
+            costDisplays[component].textContent = 0;
+            return 0;
+        }
+
         const cost = parseFloat(componentCosts[selectedComponentId]) || 0;
         costDisplays[component].textContent = cost;
         return cost;
@@ -35,6 +43,14 @@ function initializeCostUpdate() {
             totalCost += updateCost(component);
         }
         document.getElementById('total-cost').textContent = totalCost;
+
+        const availablePointsElement = document.getElementById('available-points');
+        const availablePoints = parseInt(availablePointsElement.textContent);
+        let remainingPoints = availablePoints - totalCost;
+
+        document.getElementById('remaining-points-display').textContent = remainingPoints;
+
+        document.getElementById('remaining-points').value = remainingPoints;
     }
 
     for (const component in componentSelects) {
@@ -42,11 +58,11 @@ function initializeCostUpdate() {
             componentSelects[component].addEventListener('change', function() {
                 updateTotalCost();
             });
-            
+
             updateCost(component);
         }
     }
-    
+
     updateTotalCost();
 }
 

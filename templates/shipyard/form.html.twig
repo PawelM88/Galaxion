@@ -6,6 +6,10 @@
     <h3>Total Cost: <span class="text-danger" id="total-cost">0</span></h3>
 </div>
 
+<div class="text-center my-4">
+    <h3>Remaining points: <span id="remaining-points-display" class="text-purple">0</span></h3>
+</div>
+
 {{ form_start(form) }}
 <div class="container">
     <div class="row">
@@ -14,31 +18,35 @@
         </div>
     </div>
 
+<input type="hidden" id="remaining-points" name="remainingPoints" value="{{ userAvailablePoints }}">
+
     <div class="row mb-4">
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Cockpit</h2>
-                {{ form_widget(form.cockpit) }}
+                {{ form_widget(form.cockpit, {'attr': {'data-savedId': form.cockpit.vars.value ? form.cockpit.vars.value : ''}}) }}
                 <span>Cost: <span id="cockpit-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
                 <img src="{{ asset('images/cockpit.jpg') }}" alt="Image of the module showing the cockpit" class="img-fluid equipment-image">
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Energy Weapon</h2>
-                {{ form_widget(form.energyWeapon) }}
+                {{ form_widget(form.energyWeapon, {'attr': {'data-savedId': form.energyWeapon.vars.value ? form.energyWeapon.vars.value : ''}}) }}
                 <span>Cost: <span id="energyWeapon-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
                 <img src="{{ asset('images/energy_weapon.jpg') }}" alt="Image of the module showing the energy weapon" class="img-fluid equipment-image">
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Rocket Weapon</h2>
-                {{ form_widget(form.rocketWeapon) }}
+                {{ form_widget(form.rocketWeapon, {'attr': {'data-savedId': form.rocketWeapon.vars.value ? form.rocketWeapon.vars.value : ''}}) }}
                 <span>Cost: <span id="rocketWeapon-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
@@ -51,27 +59,29 @@
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Engine</h2>
-                {{ form_widget(form.engine) }}
+                {{ form_widget(form.engine, {'attr': {'data-savedId': form.engine.vars.value ? form.engine.vars.value : ''}}) }}
                 <span>Cost: <span id="engine-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
                 <img src="{{ asset('images/engine.jpg') }}" alt="Image of the module showing the engine" class="img-fluid equipment-image">
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Armor</h2>
-                {{ form_widget(form.armor) }}
+                {{ form_widget(form.armor, {'attr': {'data-savedId': form.armor.vars.value ? form.armor.vars.value : ''}}) }}
                 <span>Cost: <span id="armor-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
                 <img src="{{ asset('images/armor.jpg') }}" alt="Image of the module showing the armor" class="img-fluid equipment-image">
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="form-section">
                 <h2>Energy Shield</h2>
-                {{ form_widget(form.energyShield) }}
+                {{ form_widget(form.energyShield, {'attr': {'data-savedId': form.energyShield.vars.value ? form.energyShield.vars.value : ''}}) }}
                 <span>Cost: <span id="energyShield-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
@@ -84,7 +94,7 @@
         <div class="col-md-4 offset-md-4">
             <div class="form-section">
                 <h2>Defence System</h2>
-                {{ form_widget(form.defenceSystem) }}
+                {{ form_widget(form.defenceSystem, {'attr': {'data-savedId': form.defenceSystem.vars.value ? form.defenceSystem.vars.value : ''}}) }}
                 <span>Cost: <span id="defenceSystem-cost" class="text-primary"></span></span>
             </div>
             <div class="text-center mb-5">
