@@ -140,6 +140,10 @@ body.auth-page {
     object-fit: contain;
 }
 
+.alert {
+    margin-left: 3.75rem;
+}
+
 @media (min-width: 768px) {
     .footer-content {
         margin-left: 6.25rem;
@@ -180,6 +184,10 @@ body.auth-page {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .alert {
+        margin-left: 8.125rem;
     }
 }
 

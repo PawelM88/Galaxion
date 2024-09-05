@@ -20,7 +20,7 @@
 			{% endblock %}
 		{% endblock %}
 	</head>
-
+	
 	<body class="{% if not is_granted('ROLE_USER') %}auth-page no-footer-margin{% endif %}">
 		<div class="wrapper d-flex flex-column min-vh-100">
 			{% if is_granted('ROLE_USER') %}
@@ -29,6 +29,16 @@
 				{% endblock %}
 			{% endif %}
 
+			<div class="flash-message">
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+			
 			<div class="{% if is_granted('ROLE_USER') %}flex-body flex-grow-1{% endif %}">
 				<div class="{% if is_granted('ROLE_USER') %}flex-body{% endif %}">
 					{% block body %}{% endblock %}
