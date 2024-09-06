@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fly on a mission{% endblock %}
+
+{% block body %}
+	<div class="mt-4">
+		{% block description %}
+			<h2 class="mb-4 text-center">Battle Missions - Choose Your Difficulty</h2>
+				<div class="mb-4 text-center">
+					Welcome to the Battle Mission System! Here, you can test your spaceship's capabilities against a variety of opponents. 
+					Each mission brings a new challenge, and the difficulty you choose will determine the strength of your enemy. 
+					The more difficult the mission, the more points you can get.
+					Are you ready to prove your skills in the heat of battle?
+				</div>
+			<div class="battle-info">
+				<h2>How does it work:</h2>
+				<p>Choose your difficulty:</p>
+				<ul>
+					<li><strong>Easy</strong>: Face off against weaker opponents to warm up and earn a few points.</li>
+					<li><strong>Medium</strong>: Engage in a balanced battle against an opponent with similar stats to your ship.</li>
+					<li><strong>Hard</strong>: Only the bravest pilots dare to enter these battles. Expect a fierce opponent that will push your ship to its limits.</li>
+				</ul>
+			</div>
+		{% endblock %}
+		{% block battleButtons %}
+			<div class="battle-buttons d-flex justify-content-center">
+				<a href="{{ path('battle_easy') }}" class="btn btn-secondary btn-lg mb-5 mx-2">Fight Easy Mission</a>
+				<a href="{{ path('battle_medium') }}" class="btn btn-secondary btn-lg mb-5 mx-2">Fight Medium Mission</a>
+				<a href="{{ path('battle_hard') }}" class="btn btn-secondary btn-lg mb-5 mx-2">Fight Hard Mission</a>
+			</div>
+		{% endblock %}
+	</div>
+{% endblock %}
