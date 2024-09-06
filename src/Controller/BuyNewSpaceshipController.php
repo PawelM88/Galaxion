@@ -24,11 +24,6 @@ class BuyNewSpaceshipController extends AbstractController
     protected const NEW_SPACESHIP_NAME = "Vanguard K-3";
 
     /**
-     * @var int
-     */
-    protected const NEW_SPACESHIP_COST = 1000;
-
-    /**
      * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \App\Repository\SpaceshipRepository $spaceshipRepository
      */
@@ -53,7 +48,7 @@ class BuyNewSpaceshipController extends AbstractController
     }
 
     #[Route('/purchase', name: 'purchase', methods: ['POST'])]
-    public function purchase(Request $request)
+    public function purchase(Request $request): Response
     {
         if (!$this->isCsrfTokenValid('buy_new_spaceship_token', $request->request->get('_csrf_token'))) {
             throw new AccessDeniedException('Invalid CSRF token.');
@@ -66,6 +61,7 @@ class BuyNewSpaceshipController extends AbstractController
         $this->processPurchase($userSpaceship, $newSpaceship, $newSpaceshipCost);
 
         $this->addFlash('success', 'New spaceship has been bought!');
+
         return $this->redirectToRoute('shipyard_index');
     }
 

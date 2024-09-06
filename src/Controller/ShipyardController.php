@@ -22,7 +22,7 @@ class ShipyardController extends AbstractController
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      * @param \App\Service\Spaceship\ComponentDataManager $componentDataManager
      */
-    public function __construct(   
+    public function __construct(
         private UserSpaceshipRepository $userSpaceshipRepository,
         private EntityManagerInterface $entityManager,
         private ComponentDataManager $componentDataManager
@@ -37,7 +37,7 @@ class ShipyardController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {            
+        if ($form->isSubmitted() && $form->isValid()) {
             $remainingPoints = $request->request->get('remainingPoints');
             $userSpaceship->setAvailablePoints((int) $remainingPoints);
 
@@ -47,7 +47,7 @@ class ShipyardController extends AbstractController
 
             return $this->redirectToRoute('shipyard_index');
         }
-    
+
         $spaceship = $this->getUserSpaceship()->getSpaceship();
         $userAvailablePoints = $this->getUserSpaceship()->getAvailablePoints();
         $costOfAllComponents = $this->componentDataManager->getCostOfAllComponents();
@@ -60,7 +60,7 @@ class ShipyardController extends AbstractController
             'spaceship' => $spaceship,
             'userAvailablePoints' => $userAvailablePoints
         ]);
-    } 
+    }
 
     #[Route('/update', name: 'update')]
     public function updateShip(UserSpaceship $userSpaceship): void
@@ -69,7 +69,7 @@ class ShipyardController extends AbstractController
 
         $entityManager->persist($userSpaceship);
         $entityManager->flush();
-    }   
+    }
 
     /**
      * @return \App\Entity\UserSpaceship
