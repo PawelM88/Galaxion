@@ -1,0 +1,22 @@
+<div class="row my-4">
+    {% for spaceship in [userOwnedSpaceship, newSpaceship] %}
+        <div class="col-12 col-md-6">
+            <div class="my-5">
+                <img src="{{ asset('images/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>                    
+                    <div class="h5">HP: {{ spaceship.Hp }}</div>
+                    <div class="h5">Armor: {{ spaceship.Armor }}</div>
+                    <div class="h5">Shields: {{ spaceship.EnergyShield }}</div>
+                    <div class="h5">Rocket Weapon: {{ spaceship.RocketWeapon }}</div>
+                    <div class="h5">Energy Weapon: {{ spaceship.EnergyWeapon }}</div>                    
+                    <div class="h5">Accuracy: {{ spaceship.Accuracy }}</div>
+                    <div class="h5">Initiative: {{ spaceship.Initiative }}</div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No spaceships found.</p>
+    {% endfor %}
+</div>

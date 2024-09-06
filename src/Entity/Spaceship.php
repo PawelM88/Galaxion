@@ -46,6 +46,9 @@ class Spaceship
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $defenceSystem = null;
 
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $cost = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,6 +170,18 @@ class Spaceship
     public function setDefenceSystem(int $defenceSystem): static
     {
         $this->defenceSystem = $defenceSystem;
+
+        return $this;
+    }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(int $cost): static
+    {
+        $this->cost = $cost;
 
         return $this;
     }

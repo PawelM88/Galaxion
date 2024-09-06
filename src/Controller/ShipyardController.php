@@ -41,7 +41,6 @@ class ShipyardController extends AbstractController
             $remainingPoints = $request->request->get('remainingPoints');
             $userSpaceship->setAvailablePoints((int) $remainingPoints);
 
-            // Zaktualizuj statek i zapisz zmiany
             $this->updateShip($userSpaceship);
 
             $this->addFlash('success', 'Spaceship upgraded successfully!');
