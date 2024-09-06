@@ -7,11 +7,17 @@
 </div>
 
 <div>
-    <form action="{{ path('buy_new_spaceship') }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('buy_new_spaceship_token') }}">
-        <button type="submit" class="btn btn-secondary btn-lg mb-5"
-            {% if newSpaceship.cost > userAvailablePoints %}disabled{% endif %}>
-            Buy {{ newSpaceship.name }}
-        </button>
-    </form>
+    {% if newSpaceship.name == userOwnedSpaceship.name %}
+        <div class="info-message mb-2">
+            You already have a {{ newSpaceship.name }}.
+        </div>
+    {% else %}
+        <form action="{{ path('buy_new_spaceship_purchase') }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('buy_new_spaceship_token') }}">
+            <button type="submit" class="btn btn-secondary btn-lg mb-5"
+                {% if newSpaceship.cost > userAvailablePoints %}disabled{% endif %}>
+                Buy {{ newSpaceship.name }}
+            </button>
+        </form>
+    {% endif %}
 </div>
