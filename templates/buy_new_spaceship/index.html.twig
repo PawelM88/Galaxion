@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Buy New Spaceship{% endblock %}
+
+{% block body %}
+    <div class="text-center mt-4">
+        {% block description %}
+            {% include 'buy_new_spaceship/description.html.twig' %}
+        {% endblock %}
+
+        {% block spaceshipsStats %}
+            {% include 'buy_new_spaceship/spaceships_stats.html.twig' %}
+        {% endblock %}
+
+        {% block spaceship_purchase %}
+            {% include 'buy_new_spaceship/spaceship_purchase.html.twig' %}
+        {% endblock %}
+    </div>
+{% endblock %}

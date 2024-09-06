@@ -21,7 +21,7 @@ class ComponentDataManager
      * @param \App\Repository\EnergyShieldRepository $energyShieldRepository
      * @param \App\Repository\EnergyWeaponRepository $energyWeaponRepository
      * @param \App\Repository\EngineRepository $engineRepository
-     * @param \App\Repository\RocketWeaponRepository $rocketWeaponRepository     
+     * @param \App\Repository\RocketWeaponRepository $rocketWeaponRepository
      */
     public function __construct(
         private ArmorRepository $armorRepository,
@@ -31,7 +31,8 @@ class ComponentDataManager
         private EnergyWeaponRepository $energyWeaponRepository,
         private EngineRepository $engineRepository,
         private RocketWeaponRepository $rocketWeaponRepository
-    ) {}
+    ) {
+    }
 
     /**
      * @return array<mixed>

@@ -269,3 +269,10 @@ body.auth-page {
 .text-purple {
     color: #800080;
 }
+
+.info-message {
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 5px;
+    color: #00695c;
+}
