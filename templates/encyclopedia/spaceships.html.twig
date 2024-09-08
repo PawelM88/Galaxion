@@ -4,7 +4,7 @@
     {% for spaceship in spaceships %}
         <div class="col-12 col-md-6">
             <div class="my-5">
-                <img src="{{ asset('images/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
+                <img src="{{ asset('images/ships/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
                 <div class="card-body text-center">
                     <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
                     <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>                    
