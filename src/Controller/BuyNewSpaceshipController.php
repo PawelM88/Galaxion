@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\Spaceship;
 use App\Entity\UserSpaceship;
 use App\Repository\SpaceshipRepository;
-use App\Repository\UserSpaceshipRepository;
 use App\Service\User\UserProvider;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,17 +24,16 @@ class BuyNewSpaceshipController extends AbstractController
     protected const NEW_SPACESHIP_NAME = "Vanguard K-3";
 
     /**
-     * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\SpaceshipRepository $spaceshipRepository
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      */
     public function __construct(
-        private UserSpaceshipRepository $userSpaceshipRepository,
         private UserProvider $userProvider,
         private SpaceshipRepository $spaceshipRepository,
         private EntityManagerInterface $entityManager
-    ) {}
+    ) {
+    }
 
     #[Route('/', name: 'index')]
     public function index(): Response
@@ -57,7 +55,7 @@ class BuyNewSpaceshipController extends AbstractController
         if (!$this->isCsrfTokenValid('buy_new_spaceship_token', $request->request->get('_csrf_token'))) {
             throw new AccessDeniedException('Invalid CSRF token.');
         }
-        
+
         $userSpaceship = $this->userProvider->getUserSpaceship();
         $newSpaceship = $this->getNewSpaceship();
         $newSpaceshipCost = $newSpaceship->getCost();
@@ -81,7 +79,7 @@ class BuyNewSpaceshipController extends AbstractController
      * @param \App\Entity\UserSpaceship $userSpaceship
      * @param \App\Entity\Spaceship $newSpaceship
      * @param int $newSpaceshipCost
-     * 
+     *
      * @return void
      */
     private function processPurchase(UserSpaceship $userSpaceship, Spaceship $newSpaceship, int $newSpaceshipCost): void
