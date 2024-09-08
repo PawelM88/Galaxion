@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use App\Entity\UserSpaceship;
 use App\Form\UserSpaceshipType;
-use App\Repository\UserSpaceshipRepository;
 use App\Service\Spaceship\ComponentDataManager;
 use App\Service\User\UserProvider;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,14 +18,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class ShipyardController extends AbstractController
 {
     /**
-
-     * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \App\Service\User\UserProvider $userProvider
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      * @param \App\Service\Spaceship\ComponentDataManager $componentDataManager
      */
     public function __construct(
-        private UserSpaceshipRepository $userSpaceshipRepository,
         private UserProvider $userProvider,
         private EntityManagerInterface $entityManager,
         private ComponentDataManager $componentDataManager

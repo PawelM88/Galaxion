@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\DataFixtures;
 
@@ -8,11 +10,11 @@ use Doctrine\Persistence\ObjectManager;
 
 class FoesFixtures extends Fixture
 {
-/**
-     * @param \Doctrine\Persistence\ObjectManager $manager
-     *
-     * @return void
-     */
+    /**
+         * @param \Doctrine\Persistence\ObjectManager $manager
+         *
+         * @return void
+         */
     public function load(ObjectManager $manager): void
     {
         $pirates = $this->setPirates();
@@ -48,7 +50,7 @@ class FoesFixtures extends Fixture
         $pirates->setEnergyWeapon(45);
         $pirates->setAccuracy(50);
         $pirates->setInitiative(30);
-        $pirates->setDefenceSystem(0);        
+        $pirates->setDefenceSystem(0);
 
         return $pirates;
     }
@@ -69,7 +71,7 @@ class FoesFixtures extends Fixture
         $spaceParasites->setEnergyWeapon(45);
         $spaceParasites->setAccuracy(50);
         $spaceParasites->setInitiative(30);
-        $spaceParasites->setDefenceSystem(0);        
+        $spaceParasites->setDefenceSystem(0);
 
         return $spaceParasites;
     }
@@ -90,7 +92,7 @@ class FoesFixtures extends Fixture
         $bountyHunters->setEnergyWeapon(65);
         $bountyHunters->setAccuracy(70);
         $bountyHunters->setInitiative(50);
-        $bountyHunters->setDefenceSystem(10);        
+        $bountyHunters->setDefenceSystem(10);
 
         return $bountyHunters;
     }
@@ -111,7 +113,7 @@ class FoesFixtures extends Fixture
         $rebelRobots->setEnergyWeapon(65);
         $rebelRobots->setAccuracy(70);
         $rebelRobots->setInitiative(50);
-        $rebelRobots->setDefenceSystem(10);        
+        $rebelRobots->setDefenceSystem(10);
 
         return $rebelRobots;
     }
@@ -132,7 +134,7 @@ class FoesFixtures extends Fixture
         $insectoids->setEnergyWeapon(85);
         $insectoids->setAccuracy(90);
         $insectoids->setInitiative(70);
-        $insectoids->setDefenceSystem(10);        
+        $insectoids->setDefenceSystem(10);
 
         return $insectoids;
     }
@@ -153,7 +155,7 @@ class FoesFixtures extends Fixture
         $prophetCruiser->setEnergyWeapon(85);
         $prophetCruiser->setAccuracy(90);
         $prophetCruiser->setInitiative(70);
-        $prophetCruiser->setDefenceSystem(10);        
+        $prophetCruiser->setDefenceSystem(10);
 
         return $prophetCruiser;
     }

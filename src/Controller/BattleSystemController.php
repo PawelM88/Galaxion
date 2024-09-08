@@ -1,9 +1,10 @@
-<?php declare(strict_types=1); 
+<?php
+
+declare(strict_types=1);
 
 namespace App\Controller;
 
 use App\Entity\UserSpaceship;
-use App\Repository\UserSpaceshipRepository;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,13 +14,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class BattleSystemController extends AbstractController
 {
     /**
-     * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
      * @param \App\Service\User\UserProvider $userProvider
      */
     public function __construct(
-        private UserSpaceshipRepository $userSpaceshipRepository,
         private UserProvider $userProvider
-    ) {}
+    ) {
+    }
 
     #[Route('/', name: 'index')]
     public function index(): Response
@@ -65,7 +65,7 @@ class BattleSystemController extends AbstractController
 
     /**
      * @param \App\Entity\UserSpaceship $userSpaceship
-     * 
+     *
      * @return array<mixed>
      */
     private function getModules(UserSpaceship $userSpaceship): array

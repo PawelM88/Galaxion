@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserProvider
 {
-
     /**
      * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $tokenStorage
      * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
@@ -19,8 +18,7 @@ class UserProvider
     public function __construct(
         private TokenStorageInterface $tokenStorage,
         private UserSpaceshipRepository $userSpaceshipRepository
-        )
-    {
+    ) {
     }
 
     /**
@@ -50,6 +48,4 @@ class UserProvider
 
         return $user instanceof UserInterface ? $user : null;
     }
-
-    
 }
