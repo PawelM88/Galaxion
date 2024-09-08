@@ -39,7 +39,7 @@ class FoesFixtures extends Fixture
     {
         $pirates = new Foes();
         $pirates->setName("Neptune's Corsairs");
-        $pirates->setClass("Pirate's Spaceship");
+        $pirates->setClass("Pirate");
         $pirates->setDescription("Elite pirates operating on the outskirts of planetary systems, armed with advanced black market technology. Masters of ambushes and fast raids, they strike without mercy. Their ships are swift but lack strong defenses, making them dangerous yet vulnerable to concentrated counterattacks");
         $pirates->setHp(200);
         $pirates->setArmor(35);
@@ -60,7 +60,7 @@ class FoesFixtures extends Fixture
     {
         $spaceParasites = new Foes();
         $spaceParasites->setName("Space Parasites");
-        $spaceParasites->setClass("Parasite's Spaceship");
+        $spaceParasites->setClass("Parasite");
         $spaceParasites->setDescription("Small ships infected by alien parasites, attacking anything in sight. Weak in defense but deadly in numbers, they swarm their targets, overwhelming them through sheer mass. Ignoring them can be catastrophic as their numbers and attacks grow");
         $spaceParasites->setHp(200);
         $spaceParasites->setArmor(35);
@@ -81,7 +81,7 @@ class FoesFixtures extends Fixture
     {
         $bountyHunters = new Foes();
         $bountyHunters->setName("Bounty Hunters");
-        $bountyHunters->setClass("Bounty Hunter's Spaceship");
+        $bountyHunters->setClass("Hunter");
         $bountyHunters->setDescription("Elite mercenaries hired by a mysterious organization to eliminate targets. Equipped with advanced ships and unique defensive modules, they are extremely hard to defeat. Their weaponry and tactical systems make every encounter a strategic challenge");
         $bountyHunters->setHp(200);
         $bountyHunters->setArmor(55);
@@ -102,7 +102,7 @@ class FoesFixtures extends Fixture
     {
         $rebelRobots = new Foes();
         $rebelRobots->setName("Rebel Robots");
-        $rebelRobots->setClass("Rebel Robot's Spaceship");
+        $rebelRobots->setClass("Robot");
         $rebelRobots->setDescription("Once used for space exploration, now malfunctioning and unpredictable. Though they lack advanced weaponry, their erratic behavior and resistance to traditional attacks make them dangerous. They target ships randomly, driven by corrupted programming");
         $rebelRobots->setHp(200);
         $rebelRobots->setArmor(55);
@@ -123,7 +123,7 @@ class FoesFixtures extends Fixture
     {
         $insectoids = new Foes();
         $insectoids->setName("Insectoids");
-        $insectoids->setClass("Insectoid's Spaceship");
+        $insectoids->setClass("Insectoid");
         $insectoids->setDescription("An aggressive, insect-like alien race seeking to dominate the galaxy. Their organic ships are incredibly fast, equipped with bio-missiles that are difficult to counter. Known for their brutal attacks and resistance to conventional defense systems, they are relentless foes");
         $insectoids->setHp(200);
         $insectoids->setArmor(75);
@@ -144,7 +144,7 @@ class FoesFixtures extends Fixture
     {
         $prophetCruiser = new Foes();
         $prophetCruiser->setName("Prophet Cruiser");
-        $prophetCruiser->setClass("Cruiser");
+        $prophetCruiser->setClass("Prophet");
         $prophetCruiser->setDescription("A fanatical sect believing in the universe's end, attacking anyone in their way. Their powerful ships are equipped with ancient technology, capable of disrupting enemy navigation systems. They fight with a fierce devotion to their apocalyptic beliefs, making them relentless adversaries");
         $prophetCruiser->setHp(200);
         $prophetCruiser->setArmor(75);
