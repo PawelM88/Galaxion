@@ -6,10 +6,11 @@
 	<a href="#armor">Armor</a>
 	<a href="#energy-shield">Energy Shield</a>
 	<a href="#defence-system">Defence System</a>
+	<a href="#foes" class="text-danger">Foes</a>
 </div>
 
-{% block spaceship %}
-    {% include 'encyclopedia/spaceships.html.twig' %}
+{% block userSpaceship %}
+    {% include 'encyclopedia/user_spaceships.html.twig' %}
 {% endblock %}
 
 <h5 id="cockpit">Cockpit</h5>
@@ -207,3 +208,7 @@
 		{% endfor %}
 	</tbody>
 </table>
+
+{% block foesSpaceship %}
+    {% include 'encyclopedia/foes_spaceships.html.twig' %}
+{% endblock %}
