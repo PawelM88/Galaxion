@@ -4,22 +4,41 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
+use App\Entity\UserSpaceship;
+use App\Repository\UserSpaceshipRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserProvider
 {
-    private $tokenStorage;
 
-    public function __construct(TokenStorageInterface $tokenStorage)
+    /**
+     * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $tokenStorage
+     * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
+     */
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+        private UserSpaceshipRepository $userSpaceshipRepository
+        )
     {
-        $this->tokenStorage = $tokenStorage;
+    }
+
+    /**
+     * @return \App\Entity\UserSpaceship
+     */
+    public function getUserSpaceship(): UserSpaceship
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getCurrentUser();
+        $userId = $user->getId();
+
+        return $this->userSpaceshipRepository->findOneByUserId($userId);
     }
 
     /**
      * @return \Symfony\Component\Security\Core\User\UserInterface|null
      */
-    public function getCurrentUser(): ?UserInterface
+    private function getCurrentUser(): ?UserInterface
     {
         $token = $this->tokenStorage->getToken();
 
@@ -31,4 +50,6 @@ class UserProvider
 
         return $user instanceof UserInterface ? $user : null;
     }
+
+    
 }

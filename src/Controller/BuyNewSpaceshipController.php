@@ -8,6 +8,7 @@ use App\Entity\Spaceship;
 use App\Entity\UserSpaceship;
 use App\Repository\SpaceshipRepository;
 use App\Repository\UserSpaceshipRepository;
+use App\Service\User\UserProvider;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,10 +26,13 @@ class BuyNewSpaceshipController extends AbstractController
 
     /**
      * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
+     * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\SpaceshipRepository $spaceshipRepository
+     * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      */
     public function __construct(
         private UserSpaceshipRepository $userSpaceshipRepository,
+        private UserProvider $userProvider,
         private SpaceshipRepository $spaceshipRepository,
         private EntityManagerInterface $entityManager
     ) {}
@@ -36,7 +40,7 @@ class BuyNewSpaceshipController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(): Response
     {
-        $userSpaceship = $this->getUserSpaceship();
+        $userSpaceship = $this->userProvider->getUserSpaceship();
         $newSpaceship = $this->getNewSpaceship();
         $userAvailablePoints = $userSpaceship->getAvailablePoints();
 
@@ -54,7 +58,7 @@ class BuyNewSpaceshipController extends AbstractController
             throw new AccessDeniedException('Invalid CSRF token.');
         }
         
-        $userSpaceship = $this->getUserSpaceship();
+        $userSpaceship = $this->userProvider->getUserSpaceship();
         $newSpaceship = $this->getNewSpaceship();
         $newSpaceshipCost = $newSpaceship->getCost();
 
@@ -63,18 +67,6 @@ class BuyNewSpaceshipController extends AbstractController
         $this->addFlash('success', 'New spaceship has been bought!');
 
         return $this->redirectToRoute('shipyard_index');
-    }
-
-    /**
-     * @return \App\Entity\UserSpaceship
-     */
-    private function getUserSpaceship(): UserSpaceship
-    {
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
-        $userId = $user->getId();
-
-        return $this->userSpaceshipRepository->findOneByUserId($userId);
     }
 
     /**
