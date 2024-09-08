@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1); 
 
 namespace App\Entity;
 
@@ -14,23 +14,35 @@ class Foes
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $cockpit = null;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $class = null;
+
+    #[ORM\Column(length: 500)]
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $energyWeapon = null;
-
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $rocketWeapon = null;
-
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $engine = null;
+    private ?int $hp = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $armor = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $energyShield = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $rocketWeapon = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $energyWeapon = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $accuracy = null;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $initiative = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $defenceSystem = null;
@@ -40,14 +52,50 @@ class Foes
         return $this->id;
     }
 
-    public function getCockpit(): ?int
+    public function getName(): ?string
     {
-        return $this->cockpit;
+        return $this->name;
     }
 
-    public function setCockpit(int $cockpit): static
+    public function setName(string $name): static
     {
-        $this->cockpit = $cockpit;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getClass(): ?string
+    {
+        return $this->class;
+    }
+
+    public function setClass(string $class): static
+    {
+        $this->class = $class;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getHp(): ?int
+    {
+        return $this->hp;
+    }
+
+    public function setHp(int $hp): static
+    {
+        $this->hp = $hp;
 
         return $this;
     }
@@ -72,18 +120,6 @@ class Foes
     public function setRocketWeapon(int $rocketWeapon): static
     {
         $this->rocketWeapon = $rocketWeapon;
-
-        return $this;
-    }
-
-    public function getEngine(): ?int
-    {
-        return $this->engine;
-    }
-
-    public function setEngine(int $engine): static
-    {
-        $this->engine = $engine;
 
         return $this;
     }
@@ -122,5 +158,29 @@ class Foes
         $this->defenceSystem = $defenceSystem;
 
         return $this;
+    }    
+
+    public function getAccuracy(): ?int
+    {
+        return $this->accuracy;
     }
+
+    public function setAccuracy(int $accuracy): static
+    {
+        $this->accuracy = $accuracy;
+
+        return $this;
+    }
+
+    public function getInitiative(): ?int
+    {
+        return $this->initiative;
+    }
+
+    public function setInitiative(int $initiative): static
+    {
+        $this->initiative = $initiative;
+
+        return $this;
+    }    
 }

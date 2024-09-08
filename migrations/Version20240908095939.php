@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240908093821 extends AbstractMigration
+final class Version20240908095939 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20240908093821 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE foes (id INT AUTO_INCREMENT NOT NULL, cockpit SMALLINT NOT NULL, energy_weapon SMALLINT NOT NULL, rocket_weapon SMALLINT NOT NULL, engine SMALLINT NOT NULL, armor SMALLINT NOT NULL, energy_shield SMALLINT NOT NULL, defence_system SMALLINT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE foes (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, class VARCHAR(255) NOT NULL, description VARCHAR(500) NOT NULL, hp SMALLINT NOT NULL, armor SMALLINT NOT NULL, energy_shield SMALLINT NOT NULL, rocket_weapon SMALLINT NOT NULL, energy_weapon SMALLINT NOT NULL, accuracy SMALLINT NOT NULL, initiative SMALLINT NOT NULL, defence_system SMALLINT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
