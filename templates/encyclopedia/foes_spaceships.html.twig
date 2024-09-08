@@ -1,0 +1,31 @@
+<h2 id="foes">Foes Spaceships default statistics</h2>
+
+<div class="row">
+    {% for foe in foes %}
+        <div class="col-12 col-md-6">
+            <div class="my-5">
+                <img src="{{ asset('images/ships/' ~ foe.class | lower ~ '.jpg') }}" alt="image of a {{ foe.class }} spaceship" class="img-fluid mb-2 encyclopedia-image">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Spaceship Name: {{ foe.name }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ foe.class }}</h5>                    
+                    <div class="h5">HP: {{ foe.Hp }}</div>
+                    <div class="h5">Armor: {{ foe.Armor }}</div>
+                    <div class="h5">Shields: {{ foe.EnergyShield }}</div>
+                    <div class="h5">Rocket Weapon: {{ foe.RocketWeapon }}</div>
+                    <div class="h5">Energy Weapon: {{ foe.EnergyWeapon }}</div>                    
+                    <div class="h5">Accuracy: {{ foe.Accuracy }}</div>
+                    <div class="h5">Initiative: {{ foe.Initiative }}</div>
+                    <table class="table table-secondary table-bordered table-encyclopedia mb-5">
+                        <tbody>
+                            <tr>                                
+                                <td>{{ foe.description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No spaceships found.</p>
+    {% endfor %}
+</div>
