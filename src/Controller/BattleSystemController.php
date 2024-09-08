@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\UserSpaceship;
 use App\Repository\UserSpaceshipRepository;
+use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,9 +14,11 @@ class BattleSystemController extends AbstractController
 {
     /**
      * @param \App\Repository\UserSpaceshipRepository $userSpaceshipRepository
+     * @param \App\Service\User\UserProvider $userProvider
      */
     public function __construct(
-        private UserSpaceshipRepository $userSpaceshipRepository
+        private UserSpaceshipRepository $userSpaceshipRepository,
+        private UserProvider $userProvider
     ) {}
 
     #[Route('/', name: 'index')]
@@ -27,7 +30,7 @@ class BattleSystemController extends AbstractController
     #[Route('/easy', name: 'easy')]
     public function easyFight(): Response
     {
-        $userSpaceship = $this->getUserSpaceship();
+        $userSpaceship = $this->userProvider->getUserSpaceship();
         $modules = $this->getModules($userSpaceship);
 
         return $this->render('battle_system/levels/easyFight.html.twig', [
@@ -39,7 +42,7 @@ class BattleSystemController extends AbstractController
     #[Route('/medium', name: 'medium')]
     public function mediumFight(): Response
     {
-        $userSpaceship = $this->getUserSpaceship();
+        $userSpaceship = $this->userProvider->getUserSpaceship();
         $modules = $this->getModules($userSpaceship);
 
         return $this->render('battle_system/levels/mediumFight.html.twig', [
@@ -51,25 +54,13 @@ class BattleSystemController extends AbstractController
     #[Route('/hard', name: 'hard')]
     public function hardFight(): Response
     {
-        $userSpaceship = $this->getUserSpaceship();
+        $userSpaceship = $this->userProvider->getUserSpaceship();
         $modules = $this->getModules($userSpaceship);
 
         return $this->render('battle_system/levels/hardFight.html.twig', [
             'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
             'modules' => $modules
         ]);
-    }
-
-    /**
-     * @return \App\Entity\UserSpaceship
-     */
-    private function getUserSpaceship(): UserSpaceship
-    {
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
-        $userId = $user->getId();
-
-        return $this->userSpaceshipRepository->findOneByUserId($userId);
     }
 
     /**
