@@ -66,49 +66,19 @@ class BattleSystemController extends AbstractController
     #[Route('/easy', name: 'easy')]
     public function easyFight(): Response
     {
-        $userSpaceship = $this->userProvider->getUserSpaceship();
-        $modules = $this->getModules($userSpaceship);
-        $foeName = rand(0, 1) == 0 ? self::PIRATE : self::PARASITE;
-        $foe = $this->foeRepository->findOneByName($foeName);
-
-        return $this->render('battle_system/levels/easyFight.html.twig', [
-            'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
-            'modules' => $modules,
-            'foe' => $foe,
-            'description' => $this->battleDescription->getRandomDescription()
-        ]);
+        return $this->handleFight([self::PIRATE, self::PARASITE], 'battle_system/levels/easyFight.html.twig');
     }
 
     #[Route('/medium', name: 'medium')]
     public function mediumFight(): Response
     {
-        $userSpaceship = $this->userProvider->getUserSpaceship();
-        $modules = $this->getModules($userSpaceship);
-        $foeName = rand(0, 1) == 0 ? self::HUNTER : self::ROBOT;
-        $foe = $this->foeRepository->findOneByName($foeName);
-
-        return $this->render('battle_system/levels/mediumFight.html.twig', [
-            'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
-            'modules' => $modules,
-            'foe' => $foe,
-            'description' => $this->battleDescription->getRandomDescription()
-        ]);
+        return $this->handleFight([self::HUNTER, self::ROBOT], 'battle_system/levels/mediumFight.html.twig');
     }
 
     #[Route('/hard', name: 'hard')]
     public function hardFight(): Response
     {
-        $userSpaceship = $this->userProvider->getUserSpaceship();
-        $modules = $this->getModules($userSpaceship);
-        $foeName = rand(0, 1) == 0 ? self::INSECTOID : self::PROPHET;
-        $foe = $this->foeRepository->findOneByName($foeName);
-
-        return $this->render('battle_system/levels/hardFight.html.twig', [
-            'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
-            'modules' => $modules,
-            'foe' => $foe,
-            'description' => $this->battleDescription->getRandomDescription()
-        ]);
+        return $this->handleFight([self::INSECTOID, self::PROPHET], 'battle_system/levels/hardFight.html.twig');
     }
 
     #[Route('/fight', name: 'fight')]
@@ -124,14 +94,35 @@ class BattleSystemController extends AbstractController
      */
     private function getModules(UserSpaceship $userSpaceship): array
     {
-        $cockpit = array('Cockpit' => $userSpaceship->getCockpit() ? $userSpaceship->getCockpit()->getModifier() : null);
-        $engine = array('Engine' => $userSpaceship->getEngine() ? $userSpaceship->getEngine()->getModifier() : null);
-        $energyWeapon = array('EnergyWeapon' => $userSpaceship->getEnergyWeapon() ? $userSpaceship->getEnergyWeapon()->getModifier() : null);
-        $rocketWeapon = array('RocketWeapon' => $userSpaceship->getRocketWeapon() ? $userSpaceship->getRocketWeapon()->getModifier() : null);
-        $energyShield = array('EnergyShield' => $userSpaceship->getEnergyShield() ? $userSpaceship->getEnergyShield()->getModifier() : null);
-        $armor = array('Armor' => $userSpaceship->getArmor() ? $userSpaceship->getArmor()->getModifier() : null);
-        $defenceSystem = array('DefenceSystem' => $userSpaceship->getDefenceSystem() ? $userSpaceship->getDefenceSystem()->getModifier() : null);
+        return [
+            'Cockpit' => $userSpaceship->getCockpit()?->getModifier(),
+            'Engine' => $userSpaceship->getEngine()?->getModifier(),
+            'EnergyWeapon' => $userSpaceship->getEnergyWeapon()?->getModifier(),
+            'RocketWeapon' => $userSpaceship->getRocketWeapon()?->getModifier(),
+            'EnergyShield' => $userSpaceship->getEnergyShield()?->getModifier(),
+            'Armor' => $userSpaceship->getArmor()?->getModifier(),
+            'DefenceSystem' => $userSpaceship->getDefenceSystem()?->getModifier()
+        ];
+    }
 
-        return array_merge($cockpit, $engine, $energyWeapon, $rocketWeapon, $energyShield, $armor, $defenceSystem);
+    /**
+     * @param array<mixed> $foes
+     * @param string $template
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function handleFight(array $foes, string $template): Response
+    {
+        $userSpaceship = $this->userProvider->getUserSpaceship();
+        $modules = $this->getModules($userSpaceship);
+        $foeName = $foes[array_rand($foes)];
+        $foe = $this->foeRepository->findOneByName($foeName);
+
+        return $this->render($template, [
+            'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
+            'modules' => $modules,
+            'foe' => $foe,
+            'description' => $this->battleDescription->getRandomDescription(),
+        ]);
     }
 }
