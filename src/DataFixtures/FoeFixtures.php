@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Foes;
+use App\Entity\Foe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class FoesFixtures extends Fixture
+class FoeFixtures extends Fixture
 {
     /**
          * @param \Doctrine\Persistence\ObjectManager $manager
@@ -35,11 +35,11 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setPirates(): Foes
+    private function setPirates(): Foe
     {
-        $pirates = new Foes();
+        $pirates = new Foe();
         $pirates->setName("Neptune's Corsairs");
         $pirates->setClass("Pirate");
         $pirates->setDescription("Elite pirates operating on the outskirts of planetary systems, armed with advanced black market technology. Masters of ambushes and fast raids, they strike without mercy. Their ships are swift but lack strong defenses, making them dangerous yet vulnerable to concentrated counterattacks");
@@ -56,11 +56,11 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setSpaceParasites(): Foes
+    private function setSpaceParasites(): Foe
     {
-        $spaceParasites = new Foes();
+        $spaceParasites = new Foe();
         $spaceParasites->setName("Space Parasites");
         $spaceParasites->setClass("Parasite");
         $spaceParasites->setDescription("Small ships infected by alien parasites, attacking anything in sight. Weak in defense but deadly in numbers, they swarm their targets, overwhelming them through sheer mass. Ignoring them can be catastrophic as their numbers and attacks grow");
@@ -77,11 +77,11 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setBountyHunters(): Foes
+    private function setBountyHunters(): Foe
     {
-        $bountyHunters = new Foes();
+        $bountyHunters = new Foe();
         $bountyHunters->setName("Bounty Hunters");
         $bountyHunters->setClass("Hunter");
         $bountyHunters->setDescription("Elite mercenaries hired by a mysterious organization to eliminate targets. Equipped with advanced ships and unique defensive modules, they are extremely hard to defeat. Their weaponry and tactical systems make every encounter a strategic challenge");
@@ -98,11 +98,11 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setRebelRobots(): Foes
+    private function setRebelRobots(): Foe
     {
-        $rebelRobots = new Foes();
+        $rebelRobots = new Foe();
         $rebelRobots->setName("Rebel Robots");
         $rebelRobots->setClass("Robot");
         $rebelRobots->setDescription("Once used for space exploration, now malfunctioning and unpredictable. Though they lack advanced weaponry, their erratic behavior and resistance to traditional attacks make them dangerous. They target ships randomly, driven by corrupted programming");
@@ -119,14 +119,14 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setInsectoids(): Foes
+    private function setInsectoids(): Foe
     {
-        $insectoids = new Foes();
+        $insectoids = new Foe();
         $insectoids->setName("Insectoids");
         $insectoids->setClass("Insectoid");
-        $insectoids->setDescription("An aggressive, insect-like alien race seeking to dominate the galaxy. Their organic ships are incredibly fast, equipped with bio-missiles that are difficult to counter. Known for their brutal attacks and resistance to conventional defense systems, they are relentless foes");
+        $insectoids->setDescription("An aggressive, insect-like alien race seeking to dominate the galaxy. Their organic ships are incredibly fast, equipped with bio-missiles that are difficult to counter. Known for their brutal attacks and resistance to conventional defense systems, they are relentless Foe");
         $insectoids->setHp(200);
         $insectoids->setArmor(75);
         $insectoids->setEnergyShield(75);
@@ -140,11 +140,11 @@ class FoesFixtures extends Fixture
     }
 
     /**
-     * @return \App\Entity\Foes
+     * @return \App\Entity\Foe
      */
-    private function setProphetCruiser(): Foes
+    private function setProphetCruiser(): Foe
     {
-        $prophetCruiser = new Foes();
+        $prophetCruiser = new Foe();
         $prophetCruiser->setName("Prophet Cruiser");
         $prophetCruiser->setClass("Prophet");
         $prophetCruiser->setDescription("A fanatical sect believing in the universe's end, attacking anyone in their way. Their powerful ships are equipped with ancient technology, capable of disrupting enemy navigation systems. They fight with a fierce devotion to their apocalyptic beliefs, making them relentless adversaries");

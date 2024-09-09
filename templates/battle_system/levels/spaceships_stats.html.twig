@@ -1,0 +1,46 @@
+<div class="row my-4">
+    {% for spaceship in [userOwnedSpaceship, foe] %}
+        <div class="col-12 col-md-6">
+            <div class="my-5">
+                <img src="{{ asset('images/ships/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
+                <div class="card-body text-center">
+                    <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>                    
+                    <div class="h5">HP: {{ spaceship.Hp }}</div>
+                    <div class="h5">Armor: {{ spaceship.Armor }}
+                        {% if spaceship == userOwnedSpaceship and modules.Armor is not null %}
+                            + <span class="text-success">{{ modules.Armor }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="h5">Energy Shield: {{ spaceship.EnergyShield }}
+                        {% if spaceship == userOwnedSpaceship and modules.EnergyShield is not null  %}
+                            + <span class="text-success">{{ modules.EnergyShield }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="h5">Rocket Weapon: {{ spaceship.RocketWeapon }}
+                        {% if spaceship == userOwnedSpaceship and modules.RocketWeapon is not null  %}
+                            + <span class="text-success">{{ modules.RocketWeapon }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="h5">Energy Weapon: {{ spaceship.EnergyWeapon }}
+                        {% if spaceship == userOwnedSpaceship and modules.EnergyWeapon is not null  %}
+                            + <span class="text-success">{{ modules.EnergyWeapon }}</span>
+                        {% endif %}
+                    </div>                    
+                    <div class="h5">Accuracy: {{ spaceship.Accuracy }}
+                        {% if spaceship == userOwnedSpaceship and modules.Cockpit is not null  %}
+                            + <span class="text-success">{{ modules.Cockpit }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="h5">Initiative: {{ spaceship.Initiative }}
+                        {% if spaceship == userOwnedSpaceship and modules.Engine is not null  %}
+                            + <span class="text-success">{{ modules.Engine }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>No spaceships found.</p>
+    {% endfor %}
+</div>

@@ -3,5 +3,23 @@
 {% block title %}Hard Fight{% endblock %}
 
 {% block body %}
+    <div class="text-center mt-4">
+        <h2>Spaceship Duel with {{ foe.name }}</h2>
+        <div class="my-4">
+            {% block description %}
+                <p>{{ description }}</p>
+            {% endblock %}
+        </div>
+    </div>
 
+    {% block spaceshipsStats %}
+        {% include 'battle_system/levels/spaceships_stats.html.twig' %}
+    {% endblock %}
+
+    {% block fightButtons %}
+        <div class="battle-buttons d-flex justify-content-center">
+            <a href="#" class="btn btn-secondary btn-lg mb-5 mx-2">Fight</a>
+            <a href="{{ path('battle_fight') }}" class="btn btn-secondary btn-lg mb-5 mx-2">Quick Fight</a>				
+        </div>
+	{% endblock %}
 {% endblock %}
