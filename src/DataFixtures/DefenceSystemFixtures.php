@@ -28,6 +28,9 @@ class DefenceSystemFixtures extends Fixture
         $manager->flush();
     }
 
+    /**
+     * @return \App\Entity\DefenceSystem
+     */
     private function setPhoenix(): DefenceSystem
     {
         $phoenix = new DefenceSystem();
@@ -39,6 +42,9 @@ class DefenceSystemFixtures extends Fixture
         return $phoenix;
     }
 
+    /**
+     * @return \App\Entity\DefenceSystem
+     */
     private function setChimera(): DefenceSystem
     {
         $phoenix = new DefenceSystem();
@@ -50,6 +56,9 @@ class DefenceSystemFixtures extends Fixture
         return $phoenix;
     }
 
+    /**
+     * @return \App\Entity\DefenceSystem
+     */
     private function setHydra(): DefenceSystem
     {
         $phoenix = new DefenceSystem();
