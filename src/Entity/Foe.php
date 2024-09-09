@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\FoesRepository;
+use App\Repository\FoeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: FoesRepository::class)]
-class Foes
+#[ORM\Entity(repositoryClass: FoeRepository::class)]
+class Foe
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

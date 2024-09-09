@@ -10,7 +10,7 @@ use App\Repository\DefenceSystemRepository;
 use App\Repository\EnergyShieldRepository;
 use App\Repository\EnergyWeaponRepository;
 use App\Repository\EngineRepository;
-use App\Repository\FoesRepository;
+use App\Repository\FoeRepository;
 use App\Repository\RocketWeaponRepository;
 use App\Repository\SpaceshipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +29,7 @@ class EncyclopediaController extends AbstractController
         EngineRepository $engineRepository,
         RocketWeaponRepository $rocketWeaponRepository,
         SpaceshipRepository $spaceshipRepository,
-        FoesRepository  $foesRepository
+        FoeRepository  $foeRepository
     ): Response {
         $armors = $armorRepository->findAll();
         $cockpits = $cockpitRepository->findAll();
@@ -39,7 +39,7 @@ class EncyclopediaController extends AbstractController
         $engines = $engineRepository->findAll();
         $rocketWeapons = $rocketWeaponRepository->findAll();
         $spaceships = $spaceshipRepository->findAll();
-        $foes = $foesRepository->findAll();
+        $foes = $foeRepository->findAll();
 
         return $this->render('encyclopedia/index.html.twig', [
             'armors' => $armors,
