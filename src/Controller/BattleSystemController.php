@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\UserSpaceship;
 use App\Form\BattleCalculationType;
 use App\Repository\FoeRepository;
+use App\Service\BattleCalculation\BattleCalculation;
 use App\Service\BattleDescription\BattleDescription;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,11 +52,13 @@ class BattleSystemController extends AbstractController
      * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\FoeRepository $foeRepository
      * @param \App\Service\BattleDescription\BattleDescription $battleDescription
+     * @param \App\Service\BattleCalculation\BattleCalculation $battleCalculation
      */
     public function __construct(
         private UserProvider $userProvider,
         private FoeRepository $foeRepository,
-        private BattleDescription $battleDescription
+        private BattleDescription $battleDescription,
+        private BattleCalculation $battleCalculation
     ) {
     }
 
@@ -89,8 +92,10 @@ class BattleSystemController extends AbstractController
         $form = $this->createForm(BattleCalculationType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
+        if ($form->isSubmitted()) {
+            $battleSpaceshipData = $form->getData();
+
+            $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
             return $this->redirectToRoute('battle_index');
         }
