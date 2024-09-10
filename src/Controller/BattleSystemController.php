@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\UserSpaceship;
+use App\Form\BattleCalculationType;
 use App\Repository\FoeRepository;
 use App\Service\BattleDescription\BattleDescription;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -81,10 +83,17 @@ class BattleSystemController extends AbstractController
         return $this->handleFight([self::INSECTOID, self::PROPHET], 'battle_system/levels/hardFight.html.twig');
     }
 
-    #[Route('/fight', name: 'fight')]
-    public function fight(): Response
+    #[Route('/fight', name: 'fight', methods: ['POST'])]
+    public function fight(Request $request): Response
     {
-        return $this->render('battle_system/index.html.twig');
+        $form = $this->createForm(BattleCalculationType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            return $this->redirectToRoute('battle_index');
+        }
     }
 
     /**
@@ -117,12 +126,17 @@ class BattleSystemController extends AbstractController
         $modules = $this->getModules($userSpaceship);
         $foeName = $foes[array_rand($foes)];
         $foe = $this->foeRepository->findOneByName($foeName);
+        $form = $this->createForm(BattleCalculationType::class, null, [
+            'action' => $this->generateUrl('battle_fight'),
+            'method' => 'POST',
+        ]);
 
         return $this->render($template, [
             'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
             'modules' => $modules,
             'foe' => $foe,
             'description' => $this->battleDescription->getRandomDescription(),
+            'form' => $form,
         ]);
     }
 }

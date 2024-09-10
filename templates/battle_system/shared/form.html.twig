@@ -1,0 +1,35 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            {{ form_row(form.user_hp, {'value': userOwnedSpaceship.Hp}) }}
+            {{ form_row(form.user_armor, {'value': userOwnedSpaceship.Armor}) }}
+            {{ form_row(form.user_energyShield, {'value': userOwnedSpaceship.EnergyShield}) }}
+            {{ form_row(form.user_rocketWeapon, {'value': userOwnedSpaceship.RocketWeapon}) }}
+            {{ form_row(form.user_energyWeapon, {'value': userOwnedSpaceship.EnergyWeapon}) }}
+            {{ form_row(form.user_defenceSystem, {'value': userOwnedSpaceship.DefenceSystem}) }}
+            {{ form_row(form.user_accuracy, {'value': userOwnedSpaceship.Accuracy}) }}
+            {{ form_row(form.user_initiative, {'value': userOwnedSpaceship.Initiative}) }}
+
+            {{ form_row(form.module_armor, {'value': modules.Armor}) }}
+            {{ form_row(form.module_energyShield, {'value': modules.EnergyShield}) }}
+            {{ form_row(form.module_rocketWeapon, {'value': modules.RocketWeapon}) }}
+            {{ form_row(form.module_energyWeapon, {'value': modules.EnergyWeapon}) }}
+            {{ form_row(form.module_defenceSystem, {'value': modules.DefenceSystem}) }}
+            {{ form_row(form.module_accuracy, {'value': modules.Cockpit}) }}
+            {{ form_row(form.module_initiative, {'value': modules.Engine}) }}
+            
+            {{ form_row(form.foe_hp, {'value': foe.Hp}) }}
+            {{ form_row(form.foe_armor, {'value': foe.Armor}) }}
+            {{ form_row(form.foe_energyShield, {'value': foe.EnergyShield}) }}
+            {{ form_row(form.foe_rocketWeapon, {'value': foe.RocketWeapon}) }}
+            {{ form_row(form.foe_energyWeapon, {'value': foe.EnergyWeapon}) }}
+            {{ form_row(form.foe_defenceSystem, {'value': foe.DefenceSystem}) }}
+            {{ form_row(form.foe_accuracy, {'value': foe.Accuracy}) }}
+            {{ form_row(form.foe_initiative, {'value': foe.Initiative}) }}
+            
+            <div class="d-flex justify-content-center">
+                {{ form_widget(form.save) }}
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}

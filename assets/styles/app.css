@@ -145,11 +145,12 @@ body.auth-page {
 
 .battle-buttons {
     flex-wrap: wrap;
-}
-
-.battle-buttons a {
     min-width: 12.5rem;
 }
+
+/* .battle-buttons a {
+    min-width: 12.5rem;
+} */
 
 @media (min-width: 768px) {
     .footer-content {

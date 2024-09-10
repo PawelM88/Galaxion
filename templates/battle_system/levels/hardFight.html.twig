@@ -13,13 +13,16 @@
     </div>
 
     {% block spaceshipsStats %}
-        {% include 'battle_system/levels/spaceships_stats.html.twig' %}
+        {% include 'battle_system/shared/spaceships_stats.html.twig' %}
     {% endblock %}
 
-    {% block fightButtons %}
-        <div class="battle-buttons d-flex justify-content-center">
-            <a href="#" class="btn btn-secondary btn-lg mb-5 mx-2">Fight</a>
-            <a href="{{ path('battle_fight') }}" class="btn btn-secondary btn-lg mb-5 mx-2">Quick Fight</a>				
+    {% block form %}
+        {{ include('battle_system/shared/form.html.twig') }}
+    {% endblock %}
+
+    {% block fightButton %}
+        <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-secondary btn-lg battle-buttons mb-5 mx-2">Fight</a>
         </div>
 	{% endblock %}
 {% endblock %}
