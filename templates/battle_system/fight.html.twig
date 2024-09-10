@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hard Fight{% endblock %}
+{% block title %}{{ level }} Fight{% endblock %}
 
 {% block body %}
     <div class="text-center mt-4">
@@ -13,11 +13,11 @@
     </div>
 
     {% block spaceshipsStats %}
-        {% include 'battle_system/shared/spaceships_stats.html.twig' %}
+        {% include 'battle_system/spaceships_stats.html.twig' %}
     {% endblock %}
 
     {% block form %}
-        {{ include('battle_system/shared/form.html.twig') }}
+        {{ include('battle_system/form.html.twig') }}
     {% endblock %}
 
     {% block fightButton %}

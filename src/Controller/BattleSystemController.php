@@ -68,19 +68,19 @@ class BattleSystemController extends AbstractController
     #[Route('/easy', name: 'easy')]
     public function easyFight(): Response
     {
-        return $this->handleFight([self::PIRATE, self::PARASITE], 'battle_system/levels/easyFight.html.twig');
+        return $this->handleFight([self::PIRATE, self::PARASITE], 'Easy');
     }
 
     #[Route('/medium', name: 'medium')]
     public function mediumFight(): Response
     {
-        return $this->handleFight([self::HUNTER, self::ROBOT], 'battle_system/levels/mediumFight.html.twig');
+        return $this->handleFight([self::HUNTER, self::ROBOT], 'Medium');
     }
 
     #[Route('/hard', name: 'hard')]
     public function hardFight(): Response
     {
-        return $this->handleFight([self::INSECTOID, self::PROPHET], 'battle_system/levels/hardFight.html.twig');
+        return $this->handleFight([self::INSECTOID, self::PROPHET], 'Hard');
     }
 
     #[Route('/fight', name: 'fight', methods: ['POST'])]
@@ -116,11 +116,11 @@ class BattleSystemController extends AbstractController
 
     /**
      * @param array<mixed> $foes
-     * @param string $template
+     * @param string $level
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function handleFight(array $foes, string $template): Response
+    private function handleFight(array $foes, string $level): Response
     {
         $userSpaceship = $this->userProvider->getUserSpaceship();
         $modules = $this->getModules($userSpaceship);
@@ -131,12 +131,13 @@ class BattleSystemController extends AbstractController
             'method' => 'POST',
         ]);
 
-        return $this->render($template, [
+        return $this->render('battle_system/fight.html.twig', [
             'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
             'modules' => $modules,
             'foe' => $foe,
             'description' => $this->battleDescription->getRandomDescription(),
             'form' => $form,
+            'level' => $level
         ]);
     }
 }
