@@ -62,7 +62,7 @@ class BattleCalculation
             list($attacker, $defender) = [$defender, $attacker];            
         }
     
-        if ($userSpaceship['hp'] < 0) {
+        if ($userSpaceship['hp'] <= 0) {
             $battleStats['userVictory'] = false;            
         }
 
