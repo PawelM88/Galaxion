@@ -15,6 +15,8 @@ class BattleCalculationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('user_name', HiddenType::class)
+            ->add('user_class', HiddenType::class)
             ->add('user_hp', HiddenType::class)
             ->add('user_armor', HiddenType::class)
             ->add('user_energyShield', HiddenType::class)
@@ -34,6 +36,8 @@ class BattleCalculationType extends AbstractType
             ->add('module_initiative', HiddenType::class);
 
         $builder
+            ->add('foe_name', HiddenType::class)
+            ->add('foe_class', HiddenType::class)
             ->add('foe_hp', HiddenType::class)
             ->add('foe_armor', HiddenType::class)
             ->add('foe_energyShield', HiddenType::class)

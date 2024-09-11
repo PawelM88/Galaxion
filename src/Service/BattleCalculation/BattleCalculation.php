@@ -85,6 +85,8 @@ class BattleCalculation
     private function prepareSpaceshipData(array $battleSpaceshipData): array
     {
         $userSpaceship = [
+            'name' => $battleSpaceshipData['user_name'],
+            'class' => $battleSpaceshipData['user_class'],
             'hp' => intval($battleSpaceshipData['user_hp']),
             'armor' => intval($battleSpaceshipData['user_armor']) + intval($battleSpaceshipData['module_armor']),
             'energyShield' => intval($battleSpaceshipData['user_energyShield']) + intval($battleSpaceshipData['module_energyShield']),
@@ -102,6 +104,8 @@ class BattleCalculation
         ];
 
         $foeSpaceship = [
+            'name' => $battleSpaceshipData['foe_name'],
+            'class' => $battleSpaceshipData['foe_class'],
             'hp' => intval($battleSpaceshipData['foe_hp']),
             'armor' => intval($battleSpaceshipData['foe_armor']),
             'energyShield' => intval($battleSpaceshipData['foe_energyShield']),
