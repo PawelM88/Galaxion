@@ -95,7 +95,7 @@ class BattleSystemController extends AbstractController
         if ($form->isSubmitted()) {
             $battleSpaceshipData = $form->getData();
 
-            $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
+            $a = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
             return $this->redirectToRoute('battle_index');
         }
