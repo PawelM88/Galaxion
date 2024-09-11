@@ -8,10 +8,10 @@ class BattleCalculation
 {
     /**
      * Calculates the battle outcome based on spaceship data.
-     * 
+     *
      * @param array<string, string|bool> $battleSpaceshipData
-     * 
-     * @return array<string, array<string, int|bool>>
+     *
+     * @return array<int, array<string, bool|float|int>>
      */
     public function calculateBattleResult(array $battleSpaceshipData): array
     {
@@ -45,8 +45,8 @@ class BattleCalculation
                 $attacker['damageDealtByEnergyWeapons'] += $energyAttack;
             } else {
                 $attacker['miss']++;
-            }            
-            
+            }
+
             if ($defender['hp'] <= 0) {
                 if ($defender['isUser']) {
                     $userSpaceship = $defender;
@@ -59,11 +59,11 @@ class BattleCalculation
             }
 
             // Change of attacker
-            list($attacker, $defender) = [$defender, $attacker];            
+            list($attacker, $defender) = [$defender, $attacker];
         }
-    
+
         if ($userSpaceship['hp'] <= 0) {
-            $battleStats['userVictory'] = false;            
+            $battleStats['userVictory'] = false;
         }
 
         $battleStats['round'] = ceil($battleStats['round'] / 2);
@@ -77,9 +77,9 @@ class BattleCalculation
 
     /**
      * Prepares statistics data for user and foe ships.
-     * 
+     *
      * @param array<string, string> $battleSpaceshipData
-     * 
+     *
      * @return array<string, array<string, int|bool>>
      */
     private function prepareSpaceshipData(array $battleSpaceshipData): array
@@ -100,7 +100,7 @@ class BattleCalculation
             'damageDealtByEnergyWeapons' => 0,
             'miss' => 0
         ];
-    
+
         $foeSpaceship = [
             'hp' => intval($battleSpaceshipData['foe_hp']),
             'armor' => intval($battleSpaceshipData['foe_armor']),
@@ -117,7 +117,7 @@ class BattleCalculation
             'damageDealtByEnergyWeapons' => 0,
             'miss' => 0
         ];
-    
+
         return [
             'userSpaceship' => $userSpaceship,
             'foeSpaceship' => $foeSpaceship
@@ -126,10 +126,10 @@ class BattleCalculation
 
     /**
      * Determines which spaceship attacks first based on initiative.
-     * 
+     *
      * @param array<string, int> $userSpaceship
      * @param array<string, int> $foeSpaceship
-     * 
+     *
      * @return array<string, array<string, int|bool>>
      */
     private function calculateInitiative(array $userSpaceship, array $foeSpaceship): array
@@ -140,7 +140,7 @@ class BattleCalculation
                 'defender' => $foeSpaceship
             ];
         }
-    
+
         return [
             'attacker' => $foeSpaceship,
             'defender' => $userSpaceship
@@ -149,14 +149,14 @@ class BattleCalculation
 
     /**
      * Performs an attack from one side to the other, taking into account hits and damage.
-     * 
+     *
      * @param array<string, int> $attacker
      * @param array<string, int> $defender
-     * 
+     *
      * @return array<string, int>
      */
     private function performAttack(array $attacker, array $defender): array
-    {    
+    {
         $accuracyRoll = rand(0, 100);
         if ($accuracyRoll > $attacker['accuracy']) {
             return [
