@@ -26,6 +26,11 @@
                         {% if spaceship == userOwnedSpaceship and modules.EnergyWeapon is not null  %}
                             + <span class="text-success">{{ modules.EnergyWeapon }}</span>
                         {% endif %}
+                    </div>
+                    <div class="h5">Defence System: {{ spaceship.DefenceSystem }}
+                        {% if spaceship == userOwnedSpaceship and modules.DefenceSystem is not null  %}
+                            + <span class="text-success">{{ modules.DefenceSystem }}</span>
+                        {% endif %}
                     </div>                    
                     <div class="h5">Accuracy: {{ spaceship.Accuracy }}
                         {% if spaceship == userOwnedSpaceship and modules.Cockpit is not null  %}
