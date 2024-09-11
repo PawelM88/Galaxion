@@ -69,9 +69,9 @@ class BattleCalculation
         $battleStats['round'] = ceil($battleStats['round'] / 2);
 
         return [
-            $battleStats,
-            $userSpaceship,
-            $foeSpaceship
+            'battleStats' => $battleStats,
+            'userSpaceship' => $userSpaceship,
+            'foeSpaceship' => $foeSpaceship
         ];
     }
 

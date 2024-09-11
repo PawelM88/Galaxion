@@ -92,13 +92,16 @@ class BattleSystemController extends AbstractController
         $form = $this->createForm(BattleCalculationType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
-            $battleSpaceshipData = $form->getData();
+        $battleSpaceshipData = $form->getData();
 
-            $a = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
+        $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
-            return $this->redirectToRoute('battle_index');
-        }
+        return $this->render('battle_system/battle_stats.html.twig', [
+            'roundNumber' => $result['battleStats']['round'],
+            'userVictory' => $result['battleStats']['userVictory'],
+            'userSpaceship' => $result['userSpaceship'],
+            'foeSpaceship' => $result['foeSpaceship'],
+        ]);
     }
 
     /**

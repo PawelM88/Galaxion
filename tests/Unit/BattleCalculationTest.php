@@ -53,9 +53,9 @@ class BattleCalculationTest extends TestCase
         $result = $battleCalc->calculateBattleResult($battleSpaceshipData);
 
         // Assert
-        $this->assertTrue($result[0]['userVictory'], 'User should have won the battle.');
-        $this->assertGreaterThan(0, $result[0]['round'], 'Rounds should be greater than 0.');
-        $this->assertLessThanOrEqual(0, $result[2]['hp'], 'Foe spaceship should have 0 or less HP after battle.');
+        $this->assertTrue($result['battleStats']['userVictory'], 'User should have won the battle.');
+        $this->assertGreaterThan(0, $result['battleStats']['round'], 'Rounds should be greater than 0.');
+        $this->assertLessThanOrEqual(0, $result['foeSpaceship']['hp'], 'Foe spaceship should have 0 or less HP after battle.');
     }
 
     /**
@@ -102,9 +102,9 @@ class BattleCalculationTest extends TestCase
         $result = $battleCalc->calculateBattleResult($battleSpaceshipData);
 
         // Assert
-        $this->assertFalse($result[0]['userVictory'], 'User should have loose the battle.');
-        $this->assertGreaterThan(0, $result[0]['round'], 'Rounds should be greater than 0.');
-        $this->assertLessThanOrEqual(0, $result[1]['hp'], 'User spaceship should have 0 or less HP after battle.');
+        $this->assertFalse($result['battleStats']['userVictory'], 'User should have loose the battle.');
+        $this->assertGreaterThan(0, $result['battleStats']['round'], 'Rounds should be greater than 0.');
+        $this->assertLessThanOrEqual(0, $result['userSpaceship']['hp'], 'User spaceship should have 0 or less HP after battle.');
     }
 
     /**
@@ -148,6 +148,6 @@ class BattleCalculationTest extends TestCase
         $result = $battleCalc->calculateBattleResult($battleSpaceshipData);
 
         // Assert
-        $this->assertEquals(3, $result[0]['round'], 'Rounds should be calculated correctly.');
+        $this->assertEquals(3, $result['battleStats']['round'], 'Rounds should be calculated correctly.');
     }
 }
