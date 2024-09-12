@@ -14,8 +14,8 @@ use App\Service\FoeLevelBalancer\FoeLevelBalancer;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/battle', name: 'battle_')]
@@ -27,13 +27,15 @@ class BattleSystemController extends AbstractController
      * @param \App\Service\BattleDescription\BattleDescription $battleDescription
      * @param \App\Service\BattleCalculation\BattleCalculation $battleCalculation
      * @param \App\Service\FoeLevelBalancer\FoeLevelBalancer $foeLevelBalancer
+     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
      */
     public function __construct(
         private UserProvider $userProvider,
         private FoeRepository $foeRepository,
         private BattleDescription $battleDescription,
         private BattleCalculation $battleCalculation,
-        private FoeLevelBalancer $foeLevelBalancer
+        private FoeLevelBalancer $foeLevelBalancer,
+        private RequestStack $requestStack
     ) {
     }
 
@@ -62,7 +64,7 @@ class BattleSystemController extends AbstractController
     }
 
     #[Route('/fight', name: 'fight', methods: ['GET', 'POST'])]
-    public function fight(Request $request, Session $session): Response
+    public function fight(Request $request): Response
     {
         $form = $this->createForm(BattleCalculationType::class);
         $form->handleRequest($request);
@@ -71,7 +73,8 @@ class BattleSystemController extends AbstractController
             $battleSpaceshipData = $form->getData();
             $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
-            $session->getFlashBag()->add('battle_result', [
+            $session = $this->requestStack->getSession();
+            $session->set('battle_result', [
                 'round' => $result['battleStats']['round'],
                 'userVictory' => $result['battleStats']['userVictory'],
                 'userSpaceship' => $result['userSpaceship'],
@@ -85,15 +88,14 @@ class BattleSystemController extends AbstractController
     }
 
     #[Route('/stats', name: 'stats')]
-    public function battleStats(Session $session): Response
+    public function battleStats(): Response
     {
-        $battleResult = $session->getFlashBag()->get('battle_result');
+        $session = $this->requestStack->getSession();
+        $battleResult = $session->get('battle_result');
 
         if (empty($battleResult)) {
             return $this->redirectToRoute('battle_fight');
         }
-
-        $battleResult = $battleResult[0];
 
         return $this->render('battle_system/battle_stats.html.twig', [
             'round' => $battleResult['round'],
