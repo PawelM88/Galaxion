@@ -11,7 +11,7 @@ class BattleCalculation
      *
      * @param array<string, string|bool> $battleSpaceshipData
      *
-     * @return array<int, array<string, bool|float|int>>
+     * @return array<string, array<string, bool|float|int>>
      */
     public function calculateBattleResult(array $battleSpaceshipData): array
     {

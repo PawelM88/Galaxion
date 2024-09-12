@@ -130,8 +130,8 @@ class FoeFixtures extends Fixture
         $insectoids->setHp(200);
         $insectoids->setArmor(65);
         $insectoids->setEnergyShield(70);
-        $insectoids->setRocketWeapon(80);
-        $insectoids->setEnergyWeapon(95);
+        $insectoids->setRocketWeapon(95);
+        $insectoids->setEnergyWeapon(100);
         $insectoids->setAccuracy(95);
         $insectoids->setInitiative(90);
         $insectoids->setDefenceSystem(15);
@@ -151,8 +151,8 @@ class FoeFixtures extends Fixture
         $prophetCruiser->setHp(200);
         $prophetCruiser->setArmor(70);
         $prophetCruiser->setEnergyShield(65);
-        $prophetCruiser->setRocketWeapon(95);
-        $prophetCruiser->setEnergyWeapon(80);
+        $prophetCruiser->setRocketWeapon(100);
+        $prophetCruiser->setEnergyWeapon(95);
         $prophetCruiser->setAccuracy(95);
         $prophetCruiser->setInitiative(90);
         $prophetCruiser->setDefenceSystem(15);
