@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Battle Statistics {% endblock %}
+
+{% block body %}
+    <div class="text-center mt-4">    
+        <h2>Battle Statistics</h2>        
+    </div>
+
+    {% block battleResultTitle %}
+        <div class="row my-4 fs-1 fw-bold text-center">
+            {% if userVictory == true %}
+                <span class="text-success">You have won!</span>
+            {% else %}
+                <span class="text-danger">You have lost!</span>
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block spaceshipsStats %}
+        <div class="row my-4">
+            {% for spaceship in [userSpaceship, foeSpaceship] %}
+                <div class="col-12 col-md-6">
+                    <img src="{{ asset('images/ships/' ~ spaceship.class | lower ~ '.jpg') }}" alt="image of a {{ spaceship.class }} class spaceship" class="img-fluid mb-2 encyclopedia-image">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Spaceship Name: {{ spaceship.name }}</h4>
+                        <h5 class="card-subtitle mb-2 text-muted">Spaceship Type: {{ spaceship.class }}</h5>
+                        <div class="h5">HP: {{ spaceship.hp }}</div>
+                        <div class="h5">Armor: {{ spaceship.armor }}</div>
+                        <div class="h5">Energy Shield: {{ spaceship.energyShield }}</div>
+                        <div class="h5">Rocket Weapon: {{ spaceship.rocketWeapon }}</div>
+                        <div class="h5">Energy Weapon: {{ spaceship.energyWeapon }}</div>
+                        <div class="h5">Defence System: {{ spaceship.defenceSystem }}</div>
+                        <div class="h5">Accuracy: {{ spaceship.accuracy }}</div>
+                        <div class="h5">Initiative: {{ spaceship.initiative }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <p>No spaceships found.</p>
+            {% endfor %}
+        </div>
+
+        <div class="row my-4">
+            <div class="col-12 text-center">
+                <h5>The fight lasted 
+                    {% if round == 1 %}
+                        {{ round }} round
+                    {% else %}
+                        {{ round }} rounds
+                    {% endif %}
+                </h5>
+                <h5>You missed 
+                    {% if userSpaceship.miss == 1 %}
+                        once
+                    {% else %}
+                        {{ userSpaceship.miss }} times
+                    {% endif %}
+                </h5>
+            </div>
+        </div>
+
+        <div class="row my-4">
+            <div class="col-12 text-center">
+                <h5>You dealt {{ userSpaceship.damageDealtByRockets + userSpaceship.damageDealtByEnergyWeapons }} damage</h5>
+                <h6>Damage dealt by Rockets: {{ userSpaceship.damageDealtByRockets }}</h6>
+                <h6 class="mb-4">Damage dealt by Energy Weapons: {{ userSpaceship.damageDealtByEnergyWeapons }}</h6>
+
+                <h5>You took {{ userSpaceship.damageTakenFromRockets + userSpaceship.damageTakenFromEnergyWeapons }} damage</h5>
+                <h6>Damage taken from Rockets: {{ userSpaceship.damageTakenFromRockets }}</h6>
+                <h6>Damage taken from Energy Weapons: {{ userSpaceship.damageTakenFromEnergyWeapons }}</h6>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block goBackButton %}
+        <div class="d-flex justify-content-center">
+            <a href="{{ path('battle_index') }}" class="btn btn-secondary btn-lg battle-buttons mb-5 mx-2">Go Back</a>
+        </div>
+	{% endblock %}
+{% endblock %}

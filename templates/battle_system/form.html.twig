@@ -1,6 +1,8 @@
 {{ form_start(form) }}
     <div class="row">
         <div class="col-12 text-center mb-4">
+            {{ form_row(form.user_name, {'value': userOwnedSpaceship.Name}) }}
+            {{ form_row(form.user_class, {'value': userOwnedSpaceship.Class}) }}
             {{ form_row(form.user_hp, {'value': userOwnedSpaceship.Hp}) }}
             {{ form_row(form.user_armor, {'value': userOwnedSpaceship.Armor}) }}
             {{ form_row(form.user_energyShield, {'value': userOwnedSpaceship.EnergyShield}) }}
@@ -18,6 +20,8 @@
             {{ form_row(form.module_accuracy, {'value': modules.Cockpit}) }}
             {{ form_row(form.module_initiative, {'value': modules.Engine}) }}
             
+            {{ form_row(form.foe_name, {'value': foe.Name}) }}
+            {{ form_row(form.foe_class, {'value': foe.Class}) }}
             {{ form_row(form.foe_hp, {'value': foe.Hp}) }}
             {{ form_row(form.foe_armor, {'value': foe.Armor}) }}
             {{ form_row(form.foe_energyShield, {'value': foe.EnergyShield}) }}
