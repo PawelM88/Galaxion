@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Const\SpaceshipNamesConst;
 use App\Entity\UserSpaceship;
 use App\Form\BattleCalculationType;
 use App\Repository\FoeRepository;
@@ -18,37 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/battle', name: 'battle_')]
 class BattleSystemController extends AbstractController
-{
-    /**
-     * @var string
-     */
-    private const PIRATE = "Neptune's Corsairs";
-
-    /**
-     * @var string
-     */
-    private const PARASITE = "Space Parasites";
-
-    /**
-     * @var string
-     */
-    private const HUNTER = "Bounty Hunters";
-
-    /**
-     * @var string
-     */
-    private const ROBOT = "Rebel Robots";
-
-    /**
-     * @var string
-     */
-    private const INSECTOID = "Insectoids";
-
-    /**
-     * @var string
-     */
-    private const PROPHET = "Prophet Cruiser";
-
+{    
     /**
      * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\FoeRepository $foeRepository
@@ -72,19 +43,19 @@ class BattleSystemController extends AbstractController
     #[Route('/easy', name: 'easy')]
     public function easyFight(): Response
     {
-        return $this->handleFight([self::PIRATE, self::PARASITE], 'Easy');
+        return $this->handleFight([SpaceshipNamesConst::PIRATE, SpaceshipNamesConst::PARASITE], 'Easy');
     }
 
     #[Route('/medium', name: 'medium')]
     public function mediumFight(): Response
     {
-        return $this->handleFight([self::HUNTER, self::ROBOT], 'Medium');
+        return $this->handleFight([SpaceshipNamesConst::HUNTER, SpaceshipNamesConst::ROBOT], 'Medium');
     }
 
     #[Route('/hard', name: 'hard')]
     public function hardFight(): Response
     {
-        return $this->handleFight([self::INSECTOID, self::PROPHET], 'Hard');
+        return $this->handleFight([SpaceshipNamesConst::INSECTOID, SpaceshipNamesConst::PROPHET], 'Hard');
     }
 
     #[Route('/fight', name: 'fight', methods: ['GET', 'POST'])]

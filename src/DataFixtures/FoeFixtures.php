@@ -11,10 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class FoeFixtures extends Fixture
 {
     /**
-         * @param \Doctrine\Persistence\ObjectManager $manager
-         *
-         * @return void
-         */
+     * @param \Doctrine\Persistence\ObjectManager $manager
+     *
+     * @return void
+     */
     public function load(ObjectManager $manager): void
     {
         $pirates = $this->setPirates();

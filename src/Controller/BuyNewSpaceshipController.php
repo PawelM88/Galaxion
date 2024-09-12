@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Const\SpaceshipNamesConst;
 use App\Entity\Spaceship;
 use App\Entity\UserSpaceship;
 use App\Repository\SpaceshipRepository;
@@ -18,11 +19,6 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 #[Route('/buy-new-spaceship', name: 'buy_new_spaceship_')]
 class BuyNewSpaceshipController extends AbstractController
 {
-    /**
-     * @var string
-     */
-    protected const NEW_SPACESHIP_NAME = "Vanguard K-3";
-
     /**
      * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\SpaceshipRepository $spaceshipRepository
@@ -72,7 +68,7 @@ class BuyNewSpaceshipController extends AbstractController
      */
     private function getNewSpaceship(): ?Spaceship
     {
-        return $this->spaceshipRepository->findOneByName(self::NEW_SPACESHIP_NAME);
+        return $this->spaceshipRepository->findOneByName(SpaceshipNamesConst::NEW_SPACESHIP_NAME);
     }
 
     /**
