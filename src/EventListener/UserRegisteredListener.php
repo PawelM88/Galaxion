@@ -11,7 +11,7 @@ use App\Repository\SpaceshipRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserRegisteredListener
-{ 
+{
     /**
      * @var int
      */

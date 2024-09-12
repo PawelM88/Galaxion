@@ -10,6 +10,7 @@ use App\Form\BattleCalculationType;
 use App\Repository\FoeRepository;
 use App\Service\BattleCalculation\BattleCalculation;
 use App\Service\BattleDescription\BattleDescription;
+use App\Service\FoeLevelBalancer\FoeLevelBalancer;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,18 +20,20 @@ use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/battle', name: 'battle_')]
 class BattleSystemController extends AbstractController
-{    
+{
     /**
      * @param \App\Service\User\UserProvider $userProvider
      * @param \App\Repository\FoeRepository $foeRepository
      * @param \App\Service\BattleDescription\BattleDescription $battleDescription
      * @param \App\Service\BattleCalculation\BattleCalculation $battleCalculation
+     * @param \App\Service\FoeLevelBalancer\FoeLevelBalancer $foeLevelBalancer
      */
     public function __construct(
         private UserProvider $userProvider,
         private FoeRepository $foeRepository,
         private BattleDescription $battleDescription,
-        private BattleCalculation $battleCalculation
+        private BattleCalculation $battleCalculation,
+        private FoeLevelBalancer $foeLevelBalancer
     ) {
     }
 
@@ -63,7 +66,7 @@ class BattleSystemController extends AbstractController
     {
         $form = $this->createForm(BattleCalculationType::class);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $battleSpaceshipData = $form->getData();
             $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
@@ -83,7 +86,7 @@ class BattleSystemController extends AbstractController
 
     #[Route('/stats', name: 'stats')]
     public function battleStats(Session $session): Response
-    {        
+    {
         $battleResult = $session->getFlashBag()->get('battle_result');
 
         if (empty($battleResult)) {
@@ -130,6 +133,11 @@ class BattleSystemController extends AbstractController
         $modules = $this->getModules($userSpaceship);
         $foeName = $foes[array_rand($foes)];
         $foe = $this->foeRepository->findOneByName($foeName);
+
+        if ($userSpaceship->getSpaceship()->getName() == SpaceshipNamesConst::NEW_SPACESHIP_NAME) {
+            $foe = $this->foeLevelBalancer->balanceFoeWithNewShip($foe);
+        }
+
         $form = $this->createForm(BattleCalculationType::class, null, [
             'action' => $this->generateUrl('battle_fight'),
             'method' => 'POST',
