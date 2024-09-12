@@ -47,6 +47,8 @@ class BattleCalculationType extends AbstractType
             ->add('foe_accuracy', HiddenType::class)
             ->add('foe_initiative', HiddenType::class);
 
+        $builder->add('level', HiddenType::class);
+
         $builder->add('save', SubmitType::class, [
             'label' => 'Quick Fight',
             'attr' => [

@@ -28,13 +28,13 @@ class FoeLevelBalancer
      * Adjusts the stats of the given foe to match the user's new ship level.
     *
     * This method modifies the stats of the enemy (Foe) based on the enemy type and the user's ship level.
-    * The method uses predefined level modifiers (easy, medium, hard) to adjust attributes such as 
+    * The method uses predefined level modifiers (easy, medium, hard) to adjust attributes such as
     * armor, energy shield, rocket weapon, energy weapon, accuracy, initiative, and defence system.
-    * 
+    *
     * - Pirate and Parasite enemies are adjusted with the easy level modifier.
     * - Hunter and Robot enemies are adjusted with the medium level modifier.
     * - Prophet and Insectoid enemies are adjusted with the hard level modifier.
-    
+
      * @param \App\Entity\Foe $foe
      *
      * @return \App\Entity\Foe
