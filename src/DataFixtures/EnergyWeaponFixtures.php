@@ -36,7 +36,7 @@ class EnergyWeaponFixtures extends Fixture
         $laser = new EnergyWeapon();
         $laser->setName("Laser");
         $laser->setDescription("The laser is an energy weapon system that emits an extremely concentrated beam of high-powered light. With precise aiming and lightning-fast speed, this laser is ideal for precise attacks on key points of enemy units. Grants +10 to Energy Weapon");
-        $laser->setModifier(10);
+        $laser->setModifier(15);
         $laser->setCost(100);
 
         return $laser;
@@ -50,7 +50,7 @@ class EnergyWeaponFixtures extends Fixture
         $plasma = new EnergyWeapon();
         $plasma->setName("Plasma");
         $plasma->setDescription("A powerful plasma cannon that fires balls of super-heated plasma capable of melting ship hulls and causing massive explosions. The generated Plasma is unstable, allowing each shot to penetrate enemy shields and deal significant damage. Grants +25 to Energy Weapon");
-        $plasma->setModifier(25);
+        $plasma->setModifier(30);
         $plasma->setCost(200);
 
         return $plasma;
