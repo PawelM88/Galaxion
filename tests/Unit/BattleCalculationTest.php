@@ -22,6 +22,8 @@ class BattleCalculationTest extends TestCase
         // Arrange
         $battleCalc = new BattleCalculation();
         $battleSpaceshipData = [
+            'user_name' => 'Some cool name',
+            'user_class' => 'Some cool class',
             'user_hp' => '100',
             'user_armor' => '30',
             'user_energyShield' => '30',
@@ -39,6 +41,8 @@ class BattleCalculationTest extends TestCase
             'module_accuracy' => '10',
             'module_initiative' => '5',
 
+            'foe_name' => 'Not cool name',
+            'foe_class' => 'Not cool class',
             'foe_hp' => '50',
             'foe_armor' => '20',
             'foe_energyShield' => '20',
@@ -71,6 +75,8 @@ class BattleCalculationTest extends TestCase
         // Arrange
         $battleCalc = new BattleCalculation();
         $battleSpaceshipData = [
+            'user_name' => 'Some cool name',
+            'user_class' => 'Some cool class',
             'user_hp' => '50',
             'user_armor' => '30',
             'user_energyShield' => '30',
@@ -88,6 +94,8 @@ class BattleCalculationTest extends TestCase
             'module_accuracy' => '10',
             'module_initiative' => '5',
 
+            'foe_name' => 'Not cool name',
+            'foe_class' => 'Not cool class',
             'foe_hp' => '150',
             'foe_armor' => '50',
             'foe_energyShield' => '50',
@@ -117,6 +125,8 @@ class BattleCalculationTest extends TestCase
         // Arrange
         $battleCalc = new BattleCalculation();
         $battleSpaceshipData = [
+            'user_name' => 'Some cool name',
+            'user_class' => 'Some cool class',
             'user_hp' => '200',
             'user_armor' => '0',
             'user_energyShield' => '0',
@@ -134,6 +144,8 @@ class BattleCalculationTest extends TestCase
             'module_accuracy' => '0',
             'module_initiative' => '0',
 
+            'foe_name' => 'Not cool name',
+            'foe_class' => 'Not cool class',
             'foe_hp' => '150',
             'foe_armor' => '0',
             'foe_energyShield' => '0',

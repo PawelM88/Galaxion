@@ -13,6 +13,7 @@ use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/battle', name: 'battle_')]
@@ -86,21 +87,45 @@ class BattleSystemController extends AbstractController
         return $this->handleFight([self::INSECTOID, self::PROPHET], 'Hard');
     }
 
-    #[Route('/fight', name: 'fight', methods: ['POST'])]
-    public function fight(Request $request): Response
+    #[Route('/fight', name: 'fight', methods: ['GET', 'POST'])]
+    public function fight(Request $request, Session $session): Response
     {
         $form = $this->createForm(BattleCalculationType::class);
         $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $battleSpaceshipData = $form->getData();
+            $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
-        $battleSpaceshipData = $form->getData();
+            $session->getFlashBag()->add('battle_result', [
+                'round' => $result['battleStats']['round'],
+                'userVictory' => $result['battleStats']['userVictory'],
+                'userSpaceship' => $result['userSpaceship'],
+                'foeSpaceship' => $result['foeSpaceship'],
+            ]);
 
-        $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
+            return $this->redirectToRoute('battle_stats');
+        }
+
+        return $this->redirectToRoute('battle_index');
+    }
+
+    #[Route('/stats', name: 'stats')]
+    public function battleStats(Session $session): Response
+    {        
+        $battleResult = $session->getFlashBag()->get('battle_result');
+
+        if (empty($battleResult)) {
+            return $this->redirectToRoute('battle_fight');
+        }
+
+        $battleResult = $battleResult[0];
 
         return $this->render('battle_system/battle_stats.html.twig', [
-            'roundNumber' => $result['battleStats']['round'],
-            'userVictory' => $result['battleStats']['userVictory'],
-            'userSpaceship' => $result['userSpaceship'],
-            'foeSpaceship' => $result['foeSpaceship'],
+            'round' => $battleResult['round'],
+            'userVictory' => $battleResult['userVictory'],
+            'userSpaceship' => $battleResult['userSpaceship'],
+            'foeSpaceship' => $battleResult['foeSpaceship'],
         ]);
     }
 

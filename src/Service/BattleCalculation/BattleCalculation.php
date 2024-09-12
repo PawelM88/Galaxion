@@ -63,7 +63,10 @@ class BattleCalculation
         }
 
         if ($userSpaceship['hp'] <= 0) {
+            $userSpaceship['hp'] = 0;
             $battleStats['userVictory'] = false;
+        } else {
+            $foeSpaceship['hp'] = 0;
         }
 
         $battleStats['round'] = ceil($battleStats['round'] / 2);
