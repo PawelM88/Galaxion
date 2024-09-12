@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
+use App\Const\SpaceshipNamesConst;
 use App\Entity\UserSpaceship;
 use App\Event\UserRegisteredEvent;
 use App\Repository\SpaceshipRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserRegisteredListener
-{
-    /**
-     * @var string
-     */
-    protected const DEFAULT_SPACESHIP_NAME = "Helios X-21";
-
+{ 
     /**
      * @var int
      */
@@ -38,7 +34,7 @@ class UserRegisteredListener
     public function assignDefaultAttributesToUser(UserRegisteredEvent $event): void
     {
         $user = $event->getUser();
-        $defaultSpaceship = $this->spaceshipRepository->findOneByName(self::DEFAULT_SPACESHIP_NAME);
+        $defaultSpaceship = $this->spaceshipRepository->findOneByName(SpaceshipNamesConst::DEFAULT_SPACESHIP_NAME);
 
         $userSpaceship = new UserSpaceship();
         $userSpaceship
