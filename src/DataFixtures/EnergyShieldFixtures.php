@@ -36,7 +36,7 @@ class EnergyShieldFixtures extends Fixture
         $aegis = new EnergyShield();
         $aegis->setName("Aegis");
         $aegis->setDescription("Aegis is a highly advanced energy shield that creates a powerful protective field around the unit. It is particularly effective against all forms of energy weapons, absorbing and dispersing the energy of enemy attacks. Grants +10 to Energy Shield");
-        $aegis->setModifier(10);
+        $aegis->setModifier(15);
         $aegis->setCost(100);
 
         return $aegis;
@@ -50,7 +50,7 @@ class EnergyShieldFixtures extends Fixture
         $aurora = new EnergyShield();
         $aurora->setName("Aurora");
         $aurora->setDescription("The Aurora shield is designed for dynamic battles, where speed of reaction is key. Aurora can automatically adjust its protective field to changing conditions on the battlefield. Grants +25 to Energy Shield");
-        $aurora->setModifier(25);
+        $aurora->setModifier(30);
         $aurora->setCost(200);
 
         return $aurora;

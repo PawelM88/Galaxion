@@ -36,7 +36,7 @@ class EngineFixtures extends Fixture
         $hermes = new Engine();
         $hermes->setName("Hermes");
         $hermes->setDescription("The Hermes Engine is an advanced protective system designed to absorb and disperse the energy of rocket explosions. The Engine structure consists of absorbing layers that effectively reduce the force of the explosion and minimize damage. Grants +5 to Initiative");
-        $hermes->setModifier(5);
+        $hermes->setModifier(15);
         $hermes->setCost(100);
 
         return $hermes;
@@ -50,7 +50,7 @@ class EngineFixtures extends Fixture
         $eris = new Engine();
         $eris->setName("Eris");
         $eris->setDescription("Eris is an engine designed for unpredictable and aggressive maneuvers. Equipped with modern control and stabilization systems, it allows for instant acceleration and lightning-fast turns, which significantly increases the unit's initiative on the battlefield. Grants +15 to Initiative");
-        $eris->setModifier(15);
+        $eris->setModifier(30);
         $eris->setCost(200);
 
         return $eris;
@@ -64,7 +64,7 @@ class EngineFixtures extends Fixture
         $apollo = new Engine();
         $apollo->setName("Apollo");
         $apollo->setDescription("The Apollo engine is an advanced power unit that combines high speed with excellent vehicle control. Optimized for long-term operations, it allows the unit to maneuver quickly and smoothly even in difficult conditions. Grants +30 to Initiative");
-        $apollo->setModifier(30);
+        $apollo->setModifier(45);
         $apollo->setCost(400);
 
         return $apollo;

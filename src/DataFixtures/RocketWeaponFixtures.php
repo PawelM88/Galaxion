@@ -36,7 +36,7 @@ class RocketWeaponFixtures extends Fixture
         $minotaur = new RocketWeapon();
         $minotaur->setName("Minotaur");
         $minotaur->setDescription("The Minotaur RocketWeapon is an advanced protective system designed to absorb and disperse the energy of rocket explosions. The RocketWeapon structure consists of absorbing layers that effectively reduce the force of the explosion and minimize damage. Grants +10 to Rocket Weapon");
-        $minotaur->setModifier(10);
+        $minotaur->setModifier(15);
         $minotaur->setCost(100);
 
         return $minotaur;
@@ -50,7 +50,7 @@ class RocketWeaponFixtures extends Fixture
         $harpy = new RocketWeapon();
         $harpy->setName("Harpy");
         $harpy->setDescription("Harpy is a fast and agile missile designed to destroy air targets and fast-moving units. Thanks to its advanced guidance system, these missiles can track and hit even the most mobile targets. Grants +25 to Rocket Weapon");
-        $harpy->setModifier(25);
+        $harpy->setModifier(30);
         $harpy->setCost(200);
 
         return $harpy;
