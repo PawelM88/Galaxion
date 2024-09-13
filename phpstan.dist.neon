@@ -6,3 +6,5 @@ parameters:
         - public/
         - src/
         - tests/
+    ignoreErrors:
+        - '#Variable \$(userProvider|entityManager) in PHPDoc tag @var does not exist#'

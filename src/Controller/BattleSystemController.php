@@ -11,6 +11,7 @@ use App\Repository\FoeRepository;
 use App\Service\BattleCalculation\BattleCalculation;
 use App\Service\BattleDescription\BattleDescription;
 use App\Service\FoeLevelBalancer\FoeLevelBalancer;
+use App\Service\PointsHandler\PointsHandler;
 use App\Service\User\UserProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,12 +23,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class BattleSystemController extends AbstractController
 {
     /**
-     * @param \App\Service\User\UserProvider $userProvider
-     * @param \App\Repository\FoeRepository $foeRepository
-     * @param \App\Service\BattleDescription\BattleDescription $battleDescription
-     * @param \App\Service\BattleCalculation\BattleCalculation $battleCalculation
-     * @param \App\Service\FoeLevelBalancer\FoeLevelBalancer $foeLevelBalancer
-     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+     * @param UserProvider $userProvider
+     * @param FoeRepository $foeRepository
+     * @param BattleDescription $battleDescription
+     * @param BattleCalculation $battleCalculation
+     * @param FoeLevelBalancer $foeLevelBalancer
+     * @param RequestStack $requestStack
+     * @param PointsHandler $pointsHandler
      */
     public function __construct(
         private UserProvider $userProvider,
@@ -35,7 +37,8 @@ class BattleSystemController extends AbstractController
         private BattleDescription $battleDescription,
         private BattleCalculation $battleCalculation,
         private FoeLevelBalancer $foeLevelBalancer,
-        private RequestStack $requestStack
+        private RequestStack $requestStack,
+        private PointsHandler $pointsHandler
     ) {
     }
 
@@ -73,12 +76,17 @@ class BattleSystemController extends AbstractController
             $battleSpaceshipData = $form->getData();
             $result = $this->battleCalculation->calculateBattleResult($battleSpaceshipData);
 
+            if ($result['battleStats']['userVictory'] == true) {
+                $earnedPoints = $this->pointsHandler->calculatePointsForVictory($battleSpaceshipData['level']);
+            }
+
             $session = $this->requestStack->getSession();
             $session->set('battle_result', [
                 'round' => $result['battleStats']['round'],
                 'userVictory' => $result['battleStats']['userVictory'],
                 'userSpaceship' => $result['userSpaceship'],
                 'foeSpaceship' => $result['foeSpaceship'],
+                'earnedPoints' => $earnedPoints ?? null
             ]);
 
             return $this->redirectToRoute('battle_stats');
@@ -102,6 +110,7 @@ class BattleSystemController extends AbstractController
             'userVictory' => $battleResult['userVictory'],
             'userSpaceship' => $battleResult['userSpaceship'],
             'foeSpaceship' => $battleResult['foeSpaceship'],
+            'earnedPoints' => $battleResult['earnedPoints']
         ]);
     }
 

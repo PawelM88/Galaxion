@@ -67,7 +67,11 @@
 
                 <h5>You took {{ userSpaceship.damageTakenFromRockets + userSpaceship.damageTakenFromEnergyWeapons }} damage</h5>
                 <h6>Damage taken from Rockets: {{ userSpaceship.damageTakenFromRockets }}</h6>
-                <h6>Damage taken from Energy Weapons: {{ userSpaceship.damageTakenFromEnergyWeapons }}</h6>
+                <h6 class="mb-4">Damage taken from Energy Weapons: {{ userSpaceship.damageTakenFromEnergyWeapons }}</h6>
+
+                {% if earnedPoints is not null %}
+                    <h3>You have earned {{ earnedPoints }} points</h3>
+                {% endif %}
             </div>
         </div>
     {% endblock %}
