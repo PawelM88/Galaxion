@@ -67,4 +67,3 @@ function initializeCostUpdate() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeCostUpdate);
-document.addEventListener('turbo:load', initializeCostUpdate);

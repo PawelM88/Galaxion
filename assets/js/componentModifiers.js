@@ -48,4 +48,3 @@ function initializeModifierUpdate() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeModifierUpdate);
-document.addEventListener('turbo:load', initializeModifierUpdate);
