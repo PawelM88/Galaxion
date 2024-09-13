@@ -27,11 +27,17 @@ window.addEventListener('load', function() {
         });
     });
 
+    checkIfCanSave();
+
     observer.observe(totalCostElement, {
         childList: true,
         characterData: true,
         subtree: true
     });
 
-    checkIfCanSave();
+    document.querySelectorAll('select').forEach(function(selectElement) {
+        selectElement.addEventListener('change', function() {
+            checkIfCanSave();
+        });
+    });
 });

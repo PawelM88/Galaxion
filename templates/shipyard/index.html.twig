@@ -22,25 +22,27 @@
             <a href="{{ path('buy_new_spaceship_index') }}" class="btn btn-secondary btn-lg mb-5">Buy New Spaceship</a>
         {% endblock %}
     </div>
-
-    {% block javascripts %}
-        {{ parent() }}
-        <script>
-            window.componentCostsData = {
-                {% for cost in costOfAllComponents %}
-                '{{ cost.id }}': '{{ cost.cost|e('js') }}',
-                {% endfor %}
-            };
-
-            window.componentModifiersData = {
-                {% for modifier in modifierOfAllComponents %}
-                '{{ modifier.id }}': '{{ modifier.modifier|e('js') }}',
-                {% endfor %}
-            };
-        </script>
     
-        <script src="{{ asset('js/componentCosts.js') }}"></script>
-        <script src="{{ asset('js/componentModifiers.js') }}"></script>
-        <script src="{{ asset('js/costValidation.js') }}"></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        window.componentCostsData = {
+            {% for cost in costOfAllComponents %}
+            '{{ cost.id }}': '{{ cost.cost|e('js') }}',
+            {% endfor %}
+        };
+
+        window.componentModifiersData = {
+            {% for modifier in modifierOfAllComponents %}
+            '{{ modifier.id }}': '{{ modifier.modifier|e('js') }}',
+            {% endfor %}
+        };
+    </script>
+        
+    <script src="{{ asset('js/componentModifiers.js') }}"></script>
+    <script src="{{ asset('js/componentCosts.js') }}"></script>
+    <script src="{{ asset('js/costValidation.js') }}"></script>        
 {% endblock %}
