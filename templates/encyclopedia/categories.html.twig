@@ -1,18 +1,3 @@
-<div class="module-links">
-	<a href="#cockpit">Cockpit</a>
-	<a href="#energy-weapon">Energy Weapon</a>
-	<a href="#rocket-weapon">Rocket Weapon</a>
-	<a href="#engine">Engine</a>
-	<a href="#armor">Armor</a>
-	<a href="#energy-shield">Energy Shield</a>
-	<a href="#defence-system">Defence System</a>
-	<a href="#foes" class="text-danger">Foes</a>
-</div>
-
-{% block userSpaceship %}
-    {% include 'encyclopedia/user_spaceships.html.twig' %}
-{% endblock %}
-
 <h5 id="cockpit">Cockpit</h5>
 <table class="table table-secondary table-bordered table-encyclopedia mb-5">
 	<thead>
@@ -208,7 +193,3 @@
 		{% endfor %}
 	</tbody>
 </table>
-
-{% block foesSpaceship %}
-    {% include 'encyclopedia/foes_spaceships.html.twig' %}
-{% endblock %}

@@ -274,6 +274,10 @@ body.auth-page {
     color: #800080;
 }
 
+.module-links a.text-purple {
+    color: #800080;
+}
+
 .info-message {
     background-color: #e0f7fa;
     padding: 1rem;
