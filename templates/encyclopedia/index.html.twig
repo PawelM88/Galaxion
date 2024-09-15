@@ -8,9 +8,21 @@
     <div class="text-center mt-4">
         {% block description %}
             {% include 'encyclopedia/description.html.twig' %}
-        {% endblock %}        
+        {% endblock %}
+        {% block links %}
+            {% include 'encyclopedia/links.html.twig' %}
+        {% endblock %}
+        {% block userSpaceships %}
+            {% include 'encyclopedia/user_spaceships.html.twig' %}
+        {% endblock %}
         {% block categories %}
             {% include 'encyclopedia/categories.html.twig' %}
-        {% endblock %}        
+        {% endblock %}
+        {% block foesSpaceship %}
+            {% include 'encyclopedia/foes_spaceships.html.twig' %}
+        {% endblock %}
+        {% block battleSystem %}
+            {% include 'encyclopedia/battle_system.html.twig' %}
+        {% endblock %}
     </div>
 {% endblock %}
