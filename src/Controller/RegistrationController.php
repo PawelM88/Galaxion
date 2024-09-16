@@ -18,7 +18,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'register')]
+    #[Route('/register', name: 'register', methods: ['GET', 'POST'])]
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
