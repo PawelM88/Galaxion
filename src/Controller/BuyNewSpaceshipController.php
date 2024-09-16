@@ -31,7 +31,7 @@ class BuyNewSpaceshipController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'index')]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(): Response
     {
         $userSpaceship = $this->userProvider->getUserSpaceship();

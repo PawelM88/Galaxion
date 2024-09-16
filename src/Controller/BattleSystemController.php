@@ -42,25 +42,25 @@ class BattleSystemController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'index')]
+    #[Route('/', name: 'index', methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('battle_system/index.html.twig');
     }
 
-    #[Route('/easy', name: 'easy')]
+    #[Route('/easy', name: 'easy', methods: ['GET'])]
     public function easyFight(): Response
     {
         return $this->handleFight([SpaceshipNamesConst::PIRATE, SpaceshipNamesConst::PARASITE], 'Easy');
     }
 
-    #[Route('/medium', name: 'medium')]
+    #[Route('/medium', name: 'medium', methods: ['GET'])]
     public function mediumFight(): Response
     {
         return $this->handleFight([SpaceshipNamesConst::HUNTER, SpaceshipNamesConst::ROBOT], 'Medium');
     }
 
-    #[Route('/hard', name: 'hard')]
+    #[Route('/hard', name: 'hard', methods: ['GET'])]
     public function hardFight(): Response
     {
         return $this->handleFight([SpaceshipNamesConst::INSECTOID, SpaceshipNamesConst::PROPHET], 'Hard');
@@ -95,7 +95,7 @@ class BattleSystemController extends AbstractController
         return $this->redirectToRoute('battle_index');
     }
 
-    #[Route('/stats', name: 'stats')]
+    #[Route('/stats', name: 'stats', methods: ['GET'])]
     public function battleStats(): Response
     {
         $session = $this->requestStack->getSession();

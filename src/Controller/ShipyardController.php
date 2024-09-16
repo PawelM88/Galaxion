@@ -29,7 +29,7 @@ class ShipyardController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'index')]
+    #[Route('/', name: 'index', methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
         $userSpaceship = $this->userProvider->getUserSpaceship();
@@ -62,8 +62,12 @@ class ShipyardController extends AbstractController
         ]);
     }
 
-    #[Route('/update', name: 'update')]
-    public function updateShip(UserSpaceship $userSpaceship): void
+    /**
+     * @param \App\Entity\UserSpaceship $userSpaceship
+     *
+     * @return void
+     */
+    private function updateShip(UserSpaceship $userSpaceship): void
     {
         $entityManager = $this->entityManager;
 

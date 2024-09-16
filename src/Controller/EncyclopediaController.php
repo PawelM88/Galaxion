@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EncyclopediaController extends AbstractController
 {
-    #[Route('/encyclopedia', name: 'encyclopedia')]
+    #[Route('/encyclopedia', name: 'encyclopedia', methods: ['GET'])]
     public function index(
         ArmorRepository $armorRepository,
         CockpitRepository $cockpitRepository,
