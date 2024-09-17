@@ -20,6 +20,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserSpaceshipType extends AbstractType
 {
+    /**
+     * Builds the form with dropdowns for selecting spaceship components.
+     * Each field uses EntityType, displaying the entity's 'name' property instead of the ID.
+     * The form is styled with custom CSS classes for better appearance.
+     *
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @param array<mixed> $options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $options = [
@@ -52,6 +63,13 @@ class UserSpaceshipType extends AbstractType
             );
     }
 
+    /**
+     * Configures the form to be associated with the UserSpaceship entity.
+     *
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

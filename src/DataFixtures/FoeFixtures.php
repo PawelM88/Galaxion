@@ -11,6 +11,11 @@ use Doctrine\Persistence\ObjectManager;
 class FoeFixtures extends Fixture
 {
     /**
+     * Loads Foe data fixtures into the database.
+     * This method creates six foe types (Pirates, Space Parasites, Bounty Hunter,
+     * Rebel Robots, Insectoids, Prophet Cruiser),
+     * persists them to the engine and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -35,6 +40,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Pirates foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setPirates(): Foe
@@ -56,6 +64,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Space Parasites foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setSpaceParasites(): Foe
@@ -77,6 +88,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Bounty Hunters foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setBountyHunters(): Foe
@@ -98,6 +112,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Rebel Robots foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setRebelRobots(): Foe
@@ -119,6 +136,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Insectoids foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setInsectoids(): Foe
@@ -140,6 +160,9 @@ class FoeFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Prophet Cruiser foe entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Foe
      */
     private function setProphetCruiser(): Foe

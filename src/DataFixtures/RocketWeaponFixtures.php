@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class RocketWeaponFixtures extends Fixture
 {
     /**
+     * Loads RocketWeapon data fixtures into the database.
+     * This method creates three rocketWeapon types (Hermes, Eris, Apollo),
+     * persists them to the rocketWeapon and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class RocketWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Minotaur rocketWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\RocketWeapon
      */
     private function setMinotaur(): RocketWeapon
@@ -43,6 +50,9 @@ class RocketWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Harpy rocketWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\RocketWeapon
      */
     private function setHarpy(): RocketWeapon
@@ -57,6 +67,9 @@ class RocketWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Typhon rocketWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\RocketWeapon
      */
     private function setTyphon(): RocketWeapon

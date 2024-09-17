@@ -12,6 +12,11 @@ use PHPUnit\Framework\TestCase;
 class CostRetrieverTraitTest extends TestCase
 {
     /**
+     * Tests if the `getCost` method correctly retrieves the data.
+     * This test mocks the Doctrine QueryBuilder and Query classes to simulate fetching 
+     * data from the database. It checks if the correct number of results are returned 
+     * and if their values are as expected.
+     * 
      * @return void
      */
     public function testGetCostReturnsCorrectData(): void

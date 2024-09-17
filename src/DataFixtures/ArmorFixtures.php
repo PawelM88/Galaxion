@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class ArmorFixtures extends Fixture
 {
     /**
+     * Loads Armor data fixtures into the database.
+     * This method creates three armor types (Kraken, Medusa, Titan),
+     * persists them to the ObjectManager and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class ArmorFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Kraken armor entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Armor
      */
     private function setKraken(): Armor
@@ -43,6 +50,9 @@ class ArmorFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Medusa armor entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Armor
      */
     private function setMedusa(): Armor
@@ -57,6 +67,9 @@ class ArmorFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Titan armor entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Armor
      */
     private function setTitan(): Armor

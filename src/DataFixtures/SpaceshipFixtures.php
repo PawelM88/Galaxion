@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class SpaceshipFixtures extends Fixture
 {
     /**
+     * Loads Spaceship data fixtures into the database.
+     * This method creates two spaceship types (Corvette, Frigate),
+     * persists them to the engine and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -27,6 +31,9 @@ class SpaceshipFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Corvette spaceship entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Spaceship
      */
     private function setCorvette(): Spaceship
@@ -48,6 +55,9 @@ class SpaceshipFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Frigate spaceship entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Spaceship
      */
     private function setFrigate(): Spaceship

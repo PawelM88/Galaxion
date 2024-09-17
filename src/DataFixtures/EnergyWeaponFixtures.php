@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class EnergyWeaponFixtures extends Fixture
 {
     /**
+     * Loads EnergyWeapon data fixtures into the database.
+     * This method creates three energyShield types (Laser, Plasma, Tachyons),
+     * persists them to the ObjectManager and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class EnergyWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Laser energyWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyWeapon
      */
     private function setLaser(): EnergyWeapon
@@ -43,6 +50,9 @@ class EnergyWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Plasma energyWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyWeapon
      */
     private function setPlasma(): EnergyWeapon
@@ -57,6 +67,9 @@ class EnergyWeaponFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Tachyons energyWeapon entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyWeapon
      */
     private function setTachyons(): EnergyWeapon

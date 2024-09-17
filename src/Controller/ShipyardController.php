@@ -63,6 +63,8 @@ class ShipyardController extends AbstractController
     }
 
     /**
+     * Updates the user's spaceship by persisting the changes to the database and saving the updated spaceship entity.
+     *
      * @param \App\Entity\UserSpaceship $userSpaceship
      *
      * @return void

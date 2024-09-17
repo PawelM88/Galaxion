@@ -12,6 +12,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BattleCalculationType extends AbstractType
 {
+    /**
+     * Builds the battle calculation form.
+     * This form collects hidden inputs for user and foe statistics, module modifiers, and the battle level.
+     * It also includes a submit button labeled "Quick Fight".
+     *
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array<mixed> $options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -57,6 +67,13 @@ class BattleCalculationType extends AbstractType
         ]);
     }
 
+    /**
+     * Configures the default options for the form.
+     *
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([]);

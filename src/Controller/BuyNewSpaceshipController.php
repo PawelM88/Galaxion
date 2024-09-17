@@ -64,6 +64,9 @@ class BuyNewSpaceshipController extends AbstractController
     }
 
     /**
+     * Retrieves and returns the new spaceship entity based on a predefined constant.
+     * Returns null if the spaceship is not found.
+     *
      * @return \App\Entity\Spaceship|null
      */
     private function getNewSpaceship(): ?Spaceship
@@ -72,6 +75,9 @@ class BuyNewSpaceshipController extends AbstractController
     }
 
     /**
+     * Processes the purchase of a new spaceship by deducting the cost from the user's available points
+     * updating the user's spaceship and saving the changes to the database.
+     *
      * @param \App\Entity\UserSpaceship $userSpaceship
      * @param \App\Entity\Spaceship $newSpaceship
      * @param int $newSpaceshipCost

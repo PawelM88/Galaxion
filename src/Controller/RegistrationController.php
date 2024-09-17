@@ -53,6 +53,8 @@ class RegistrationController extends AbstractController
     }
 
     /**
+     * Dispatches the UserRegisteredEvent to trigger the process of assigning a default spaceship to the newly registered user.
+     *
      * @param \Symfony\Contracts\EventDispatcher\EventDispatcherInterface $eventDispatcher
      * @param \App\Entity\User $user
      *

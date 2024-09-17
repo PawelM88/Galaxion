@@ -35,7 +35,11 @@ class ComponentDataManager
     }
 
     /**
-     * @return array<mixed>
+     * Retrieves the cost of all available modules from the repositories.
+     * The data from multiple repositories (armor, cockpit, defence systems, etc.)
+     * is combined into a single array.
+     *
+     * @return array<int, array<string, int>>
      */
     public function getCostOfAllComponents(): array
     {
@@ -59,7 +63,11 @@ class ComponentDataManager
     }
 
     /**
-     * @return array<mixed>
+     * Retrieves the modifiers of all available modules from the repositories.
+     * Similar to the costs, this method combines data from various repositories
+     * (armor, cockpit, defence systems, etc.) into one array.
+     *
+     * @return array<int, array<string, int>>
      */
     public function getModifiersOfAllComponents(): array
     {

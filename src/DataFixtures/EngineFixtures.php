@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class EngineFixtures extends Fixture
 {
     /**
+     * Loads Engine data fixtures into the database.
+     * This method creates three engine types (Hermes, Eris, Apollo),
+     * persists them to the engine and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class EngineFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Hermes engine entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Engine
      */
     private function setHermes(): Engine
@@ -43,6 +50,9 @@ class EngineFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Eris engine entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Engine
      */
     private function setEris(): Engine
@@ -57,6 +67,9 @@ class EngineFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Apollo engine entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Engine
      */
     private function setApollo(): Engine

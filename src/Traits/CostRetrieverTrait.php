@@ -7,7 +7,10 @@ namespace App\Traits;
 trait CostRetrieverTrait
 {
     /**
-     * @return array<mixed>
+     * Retrieves a list of module costs from the database.
+     * Each element in the returned array contains the module's ID and its cost.
+     *
+     * @return array<int, array{id: int, cost: int}>
      */
     public function getCost(): array
     {
@@ -18,7 +21,10 @@ trait CostRetrieverTrait
     }
 
     /**
-     * @return array<mixed>
+     * Retrieves a list of modifier ids from the database.
+     * Each element in the returned array contains the modifier ID and its entity ID.
+     *
+     * @return array<int, array{id: int, cost: int}>
      */
     public function getModifier(): array
     {

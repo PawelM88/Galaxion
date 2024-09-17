@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class CockpitFixtures extends Fixture
 {
     /**
+     * Loads Cockpit data fixtures into the database.
+     * This method creates three cockpit types (HawkEye, Griffin, Phantom),
+     * persists them to the ObjectManager and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class CockpitFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the HawEye cockpit entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Cockpit
      */
     private function setHawkEye(): Cockpit
@@ -43,6 +50,9 @@ class CockpitFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Griffin cockpit entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Cockpit
      */
     private function setGriffin(): Cockpit
@@ -57,6 +67,9 @@ class CockpitFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Phantom cockpit entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\Cockpit
      */
     private function setPhantom(): Cockpit

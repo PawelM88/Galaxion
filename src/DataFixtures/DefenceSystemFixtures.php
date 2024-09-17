@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class DefenceSystemFixtures extends Fixture
 {
     /**
+     * Loads DefenceSystem data fixtures into the database.
+     * This method creates three cockpit types (Phoenix, Chimera, Hydra),
+     * persists them to the ObjectManager and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class DefenceSystemFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Phoenix defenceSystem entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\DefenceSystem
      */
     private function setPhoenix(): DefenceSystem
@@ -43,6 +50,9 @@ class DefenceSystemFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Chimera defenceSystem entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\DefenceSystem
      */
     private function setChimera(): DefenceSystem
@@ -57,6 +67,9 @@ class DefenceSystemFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Hydra defenceSystem entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\DefenceSystem
      */
     private function setHydra(): DefenceSystem
