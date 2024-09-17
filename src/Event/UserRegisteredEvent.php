@@ -22,6 +22,8 @@ class UserRegisteredEvent extends Event
     }
 
     /**
+     * Returns the user entity associated with the event, which is triggered when a new user registers.
+     *
      * @return \App\Entity\User
      */
     public function getUser(): User

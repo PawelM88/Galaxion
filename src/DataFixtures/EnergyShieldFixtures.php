@@ -11,6 +11,10 @@ use Doctrine\Persistence\ObjectManager;
 class EnergyShieldFixtures extends Fixture
 {
     /**
+     * Loads EnergyShield data fixtures into the database.
+     * This method creates three energyShield types (Aegis, Aurora, Atlas),
+     * persists them to the ObjectManager and flushes the changes.
+     *
      * @param \Doctrine\Persistence\ObjectManager $manager
      *
      * @return void
@@ -29,6 +33,9 @@ class EnergyShieldFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Aegis energyShield entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyShield
      */
     private function setAegis(): EnergyShield
@@ -43,6 +50,9 @@ class EnergyShieldFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Aurora energyShield entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyShield
      */
     private function setAurora(): EnergyShield
@@ -57,6 +67,9 @@ class EnergyShieldFixtures extends Fixture
     }
 
     /**
+     * Creates and returns the Atlas energyShield entity with a predefined name,
+     * description, modifier, and cost.
+     *
      * @return \App\Entity\EnergyShield
      */
     private function setAtlas(): EnergyShield

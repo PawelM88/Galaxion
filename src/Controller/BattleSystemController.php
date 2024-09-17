@@ -115,25 +115,12 @@ class BattleSystemController extends AbstractController
     }
 
     /**
-     * @param \App\Entity\UserSpaceship $userSpaceship
+     * Handles the battle initialization process by retrieving the user's spaceship
+     * and a random foe based on the given difficulty level.
+     * Prepares the battle form and renders the battle page with relevant data,
+     * including the spaceship modules and foe details.
      *
-     * @return array<mixed>
-     */
-    private function getModules(UserSpaceship $userSpaceship): array
-    {
-        return [
-            'Cockpit' => $userSpaceship->getCockpit()?->getModifier(),
-            'Engine' => $userSpaceship->getEngine()?->getModifier(),
-            'EnergyWeapon' => $userSpaceship->getEnergyWeapon()?->getModifier(),
-            'RocketWeapon' => $userSpaceship->getRocketWeapon()?->getModifier(),
-            'EnergyShield' => $userSpaceship->getEnergyShield()?->getModifier(),
-            'Armor' => $userSpaceship->getArmor()?->getModifier(),
-            'DefenceSystem' => $userSpaceship->getDefenceSystem()?->getModifier()
-        ];
-    }
-
-    /**
-     * @param array<mixed> $foes
+     * @param array<int, string> $foes
      * @param string $level
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -162,5 +149,25 @@ class BattleSystemController extends AbstractController
             'form' => $form,
             'level' => $level
         ]);
+    }
+
+    /**
+     * Retrieves and returns the module modifiers for a user's spaceship
+     *
+     * @param \App\Entity\UserSpaceship $userSpaceship
+     *
+     * @return array<string, int>
+     */
+    private function getModules(UserSpaceship $userSpaceship): array
+    {
+        return [
+            'Cockpit' => $userSpaceship->getCockpit()?->getModifier(),
+            'Engine' => $userSpaceship->getEngine()?->getModifier(),
+            'EnergyWeapon' => $userSpaceship->getEnergyWeapon()?->getModifier(),
+            'RocketWeapon' => $userSpaceship->getRocketWeapon()?->getModifier(),
+            'EnergyShield' => $userSpaceship->getEnergyShield()?->getModifier(),
+            'Armor' => $userSpaceship->getArmor()?->getModifier(),
+            'DefenceSystem' => $userSpaceship->getDefenceSystem()?->getModifier()
+        ];
     }
 }

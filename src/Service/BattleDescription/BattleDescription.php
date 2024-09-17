@@ -6,6 +6,12 @@ namespace App\Service\BattleDescription;
 
 class BattleDescription
 {
+    /**
+     * A collection of pre-defined battle descriptions, each representing a unique scenario
+     * that sets the atmosphere for the start of a space battle.
+     *
+     * @var array<int, string>
+     */
     private const DESCRIPTIONS = [
         "You are flying alone through the dark wasteland of space, near a dangerous asteroid belt. Your sensors detect an unidentified object approaching your ship quickly. You try to make contact and find out who you are dealing with, but there is no answer. Suddenly, a stream of missiles fires from the flickering shadows - the enemy does not intend to talk. There is only one way out - to prepare for battle and face the unknown enemy.",
         "You are traveling through endless space when suddenly your sensors detect a strange movement in the distance. An unknown ship appears on the horizon, which at first seems to ignore you. However, it suddenly changes course, accelerates and heads towards you. Before you can realize it, the enemy opens fire. It looks like this will not be a friendly encounter.",
@@ -25,6 +31,8 @@ class BattleDescription
     ];
 
     /**
+     * Returns a random battle description.
+     *
      * @return string
      */
     public function getRandomDescription(): string

@@ -22,6 +22,9 @@ class UserProvider
     }
 
     /**
+     * Retrieves the current user's spaceship from the database.
+     * This method gets the currently authenticated user and uses their ID to find the corresponding spaceship entity.
+     *
      * @return \App\Entity\UserSpaceship
      */
     public function getUserSpaceship(): UserSpaceship
@@ -34,6 +37,9 @@ class UserProvider
     }
 
     /**
+     * Retrieves the currently authenticated user from the security token.
+     * This method returns the user if the token exists and is a valid UserInterface instance.
+     *
      * @return \Symfony\Component\Security\Core\User\UserInterface|null
      */
     private function getCurrentUser(): ?UserInterface

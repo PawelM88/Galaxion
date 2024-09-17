@@ -27,6 +27,9 @@ class UserRegisteredListener
     }
 
     /**
+     * Assigns default attributes to a newly registered user, including a default spaceship
+     * and a set amount of starting points. The user and spaceship data are persisted to the database.
+     *
      * @param \App\Event\UserRegisteredEvent $event
      *
      * @return void
