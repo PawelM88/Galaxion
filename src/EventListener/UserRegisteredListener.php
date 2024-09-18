@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use App\Const\SpaceshipNamesConst;
 use App\Entity\UserSpaceship;
 use App\Event\UserRegisteredEvent;
-use App\Repository\SpaceshipRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserRegisteredListener
@@ -21,8 +19,7 @@ class UserRegisteredListener
      * @param \Doctrine\ORM\EntityManagerInterface $entityManager
      */
     public function __construct(
-        private EntityManagerInterface $entityManager,
-        private SpaceshipRepository $spaceshipRepository
+        private EntityManagerInterface $entityManager
     ) {
     }
 
@@ -37,7 +34,7 @@ class UserRegisteredListener
     public function assignDefaultAttributesToUser(UserRegisteredEvent $event): void
     {
         $user = $event->getUser();
-        $defaultSpaceship = $this->spaceshipRepository->findOneByName(SpaceshipNamesConst::DEFAULT_SPACESHIP_NAME);
+        $defaultSpaceship = $event->getDefaultSpaceship();
 
         $userSpaceship = new UserSpaceship();
         $userSpaceship

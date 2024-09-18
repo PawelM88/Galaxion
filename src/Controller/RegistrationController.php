@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Const\SpaceshipNamesConst;
+use App\Entity\Spaceship;
 use App\Entity\User;
 use App\Event\UserRegisteredEvent;
 use App\Form\RegistrationFormType;
+use App\Repository\SpaceshipRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -24,7 +27,8 @@ class RegistrationController extends AbstractController
         UserPasswordHasherInterface $userPasswordHasher,
         Security $security,
         EntityManagerInterface $entityManager,
-        EventDispatcherInterface $eventDispatcher
+        EventDispatcherInterface $eventDispatcher,
+        SpaceshipRepository $spaceshipRepository
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -39,10 +43,18 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $defaultSpaceship = $spaceshipRepository->findOneByName(SpaceshipNamesConst::DEFAULT_SPACESHIP_NAME);
+
+            if (!$defaultSpaceship) {
+                $this->addFlash('error', 'Could not assign default ship. Registration canceled.');
+
+                return $this->redirectToRoute('register');
+            }
+
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->dispatchUserRegisteredEvent($eventDispatcher, $user);
+            $this->dispatchUserRegisteredEvent($eventDispatcher, $user, $defaultSpaceship);
 
             return $security->login($user, 'form_login', 'main');
         }
@@ -57,11 +69,15 @@ class RegistrationController extends AbstractController
      *
      * @param \Symfony\Contracts\EventDispatcher\EventDispatcherInterface $eventDispatcher
      * @param \App\Entity\User $user
+     * @param \App\Entity\Spaceship $defaultSpaceship
      *
      * @return void
      */
-    private function dispatchUserRegisteredEvent(EventDispatcherInterface $eventDispatcher, User $user): void
-    {
-        $eventDispatcher->dispatch(new UserRegisteredEvent($user), UserRegisteredEvent::NAME);
+    private function dispatchUserRegisteredEvent(
+        EventDispatcherInterface $eventDispatcher,
+        User $user,
+        Spaceship $defaultSpaceship
+    ): void {
+        $eventDispatcher->dispatch(new UserRegisteredEvent($user, $defaultSpaceship), UserRegisteredEvent::NAME);
     }
 }

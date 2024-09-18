@@ -29,8 +29,7 @@ class SpaceshipRepository extends ServiceEntityRepository
             ->andWhere('s.name = :name')
             ->setParameter('name', $name)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 
     //    /**
