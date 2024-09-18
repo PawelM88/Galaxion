@@ -5,9 +5,13 @@
 {% block body %}
 	<div class="d-flex align-items-center justify-content-center">
 		<div class="login-form-container">
-			<h1 class="h3 mb-3 font-weight-normal">Register</h1>
+			<h1 class="h3 mb-3 font-weight-normal">Register</h1>		
 
-			{{ form_errors(registrationForm) }}
+			{% for message in app.flashes('error') %}
+				{{ message }}
+			{% endfor %}
+
+			{{ form_errors(registrationForm.email) }}
 
 			{{ form_start(registrationForm, {'attr': {'class': 'form-signin w-100'}}) }}
 			<div class="form-group">
