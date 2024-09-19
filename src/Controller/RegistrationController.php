@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
             $defaultSpaceship = $spaceshipRepository->findOneByName(SpaceshipNamesConst::DEFAULT_SPACESHIP_NAME);
 
             if (!$defaultSpaceship) {
-                $this->addFlash('error', 'Could not assign default ship. Registration canceled.');
+                $this->addFlash('danger', 'Could not assign default ship. Registration canceled.');
 
                 return $this->redirectToRoute('register');
             }

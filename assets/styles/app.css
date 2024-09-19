@@ -300,12 +300,5 @@ body.auth-page {
 }
 
 .auth-page .flash-message {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 0.625rem;
-    box-shadow: 0rem 0rem 0.625rem rgba(0, 0, 0, 0.1);
     width: fit-content;
-}
-
-.flash-message .alert {
-    margin-left: 0rem;
 }
