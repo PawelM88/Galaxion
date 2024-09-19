@@ -38,6 +38,12 @@ class BuyNewSpaceshipController extends AbstractController
         $newSpaceship = $this->getNewSpaceship();
         $userAvailablePoints = $userSpaceship->getAvailablePoints();
 
+        if (!$userSpaceship || !$newSpaceship) {
+            $this->addFlash('danger', 'There was an issue retrieving your or new spaceship. Please try again later.');
+            
+            return $this->redirectToRoute('shipyard_index');
+        }
+
         return $this->render('buy_new_spaceship/index.html.twig', [
             'userOwnedSpaceship' => $userSpaceship->getSpaceship(),
             'newSpaceship' => $newSpaceship,
