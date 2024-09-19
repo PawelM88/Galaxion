@@ -132,6 +132,12 @@ class BattleSystemController extends AbstractController
         $foeName = $foes[array_rand($foes)];
         $foe = $this->foeRepository->findOneByName($foeName);
 
+        if (!$foe) {
+            $this->addFlash('danger', 'There was an issue retrieving ' . $foeName .' spaceship. Please try again later.');
+            
+            return $this->redirectToRoute('battle_index');
+        }
+
         if ($userSpaceship->getSpaceship()->getName() == SpaceshipNamesConst::NEW_SPACESHIP_NAME) {
             $foe = $this->foeLevelBalancer->balanceFoeWithNewShip($foe);
         }
