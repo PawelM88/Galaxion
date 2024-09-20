@@ -60,7 +60,7 @@ class BattleCalculationType extends AbstractType
         $builder->add('level', HiddenType::class);
 
         $builder->add('save', SubmitType::class, [
-            'label' => 'Quick Fight',
+            'label' => 'quick_fight_label',
             'attr' => [
                 'class' => 'btn btn-secondary btn-lg mb-5 mx-2 battle-buttons'
             ]
