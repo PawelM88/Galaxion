@@ -71,6 +71,9 @@ php bin/phpunit tests/Unit/PointsHandlerTest.php
 - Point System: Players earn points for winning battles, which they can spend on new modules and ship upgrades.<br>
 - Encyclopedia: An in-game page that contains descriptions of modules, enemies, and combat mechanics.
 
+## TODO
+- Introduce a turn-based combat system in JavaScript (coming in the future), where the user will see updated statistics after each turn.
+
 ## Author
 - Paweł Młynarczyk
 
