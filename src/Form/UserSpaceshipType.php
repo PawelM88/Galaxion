@@ -35,7 +35,7 @@ class UserSpaceshipType extends AbstractType
     {
         $options = [
             'choice_label' => 'name',
-            'placeholder' => 'None',
+            'placeholder' => 'none_label',
             'required' => false,
             'attr' => [
                 'class' => 'form-select w-50 mx-auto bg-secondary text-white',
@@ -55,7 +55,7 @@ class UserSpaceshipType extends AbstractType
                 'save',
                 SubmitType::class,
                 [
-                    'label' => 'Upgrade Spaceship',
+                    'label' => 'upgrade_spaceship_label',
                     'attr' => [
                         'class' => 'btn btn-secondary'
                     ]
