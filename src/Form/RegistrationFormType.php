@@ -17,6 +17,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+    /**
+     * Builds the form with email, agreeTerms, and plainPassword fields.
+     * - The agreeTerms field is a checkbox and is not mapped to the user entity.
+     * - The plainPassword field is not mapped and will be handled and encoded in the controller.
+     *
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @param array<mixed> $options
+     *
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -53,6 +64,14 @@ class RegistrationFormType extends AbstractType
         ;
     }
 
+    /**
+     * Configures the default options for the registration form.
+     * The form is mapped to the User entity.
+     *
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
